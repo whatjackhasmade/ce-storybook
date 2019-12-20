@@ -1,5 +1,6 @@
 const ThemeDefault = {
 	/* Colours */
+	black: "#141213",
 	purple100: "#EDE9FB",
 	purple200: "#C9BEF3",
 	purple300: "#A593EC",
