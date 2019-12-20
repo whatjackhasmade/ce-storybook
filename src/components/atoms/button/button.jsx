@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import StyledButton from "./button.styles.jsx";
+import StyledButton, { StyledLinkButton } from "./button.styles.jsx";
 
 const Button = ({ children, href, onClick, variant }) => {
 	if (!href)
@@ -11,9 +11,9 @@ const Button = ({ children, href, onClick, variant }) => {
 			</StyledButton>
 		);
 	return (
-		<a className="button" href={href}>
+		<StyledLinkButton className="button" variant={variant} href={href}>
 			{children}
-		</a>
+		</StyledLinkButton>
 	);
 };
 
