@@ -13,6 +13,11 @@ export const secondaryButton = () => (
 export const tertiaryButton = () => (
 	<Button variant="tertiary">Tertiary button</Button>
 );
+export const removeIconButton = () => (
+	<Button icon="times" variant="primary">
+		Remove button
+	</Button>
+);
 export const functionButton = () => (
 	<Button onClick={alertText}>Click me</Button>
 );
