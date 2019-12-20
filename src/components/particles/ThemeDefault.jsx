@@ -1,5 +1,17 @@
 const ThemeDefault = {
 	/* Colours */
+	white: "#ffffff",
+	offWhite: "#F0F0F0",
+	grey: "#a6a6a6",
+	grey100: "#d9d9d9",
+	grey200: "#bfbfbf",
+	grey300: "#a6a6a6",
+	grey400: "#8c8c8c",
+	grey500: "#737373",
+	grey600: "#595959",
+	grey700: "#404040",
+	grey800: "#262626",
+	grey900: "#0d0d0d",
 	black: "#141213",
 	purple100: "#EDE9FB",
 	purple200: "#C9BEF3",
