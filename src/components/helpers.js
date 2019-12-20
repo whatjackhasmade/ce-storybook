@@ -1,3 +1,11 @@
+export function isInternal(url) {
+	if (!url) return false;
+	if (url.startsWith("mailto:")) return false;
+	if (url.startsWith("tel:")) return false;
+	if (url.startsWith("http")) return false;
+	return true;
+}
+
 export function shadeColour(color, percent) {
 	var R = parseInt(color.substring(1, 3), 16);
 	var G = parseInt(color.substring(3, 5), 16);
