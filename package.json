@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "gatsby-link": "^2.2.27",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
