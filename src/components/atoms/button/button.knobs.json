@@ -5,7 +5,7 @@
 		"label": "Background colour"
 	},
 	"btnText": {
-		"default": "Basic button",
+		"default": "Primary action",
 		"group": "Content",
 		"label": "Button text"
 	}

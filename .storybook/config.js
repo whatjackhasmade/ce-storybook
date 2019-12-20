@@ -2,6 +2,7 @@ import React from "react";
 import { addDecorator } from "@storybook/react";
 import { configure } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
+import { setOptions } from "@storybook/addon-options";
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "../src/components/particles/GlobalStyle";
@@ -19,6 +20,11 @@ const GlobalDecorator = storyFn => (
 
 addDecorator(GlobalDecorator);
 addDecorator(withKnobs);
+
+// Set Figma add-on to show panel in right side
+setOptions({
+	downPanelInRight: true
+});
 
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here

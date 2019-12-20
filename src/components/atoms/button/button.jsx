@@ -24,14 +24,14 @@ const Button = props => {
 	if (!href)
 		return (
 			<StyledButton className="button" {...props}>
-				{children}
 				{icon && <ButtonIcon icon={icon} />}
+				{children}
 			</StyledButton>
 		);
 	return (
 		<StyledLinkButton className="button" {...props}>
-			{children}
 			{icon && <ButtonIcon icon={icon} />}
+			{children}
 		</StyledLinkButton>
 	);
 };

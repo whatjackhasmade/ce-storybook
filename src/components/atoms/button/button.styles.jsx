@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import buttonReset from "./button.reset";
+import { shadeColour } from "../../helpers";
 
 const buttonBackground = props => {
 	// Fallback value if we can't get access to props
@@ -31,11 +33,41 @@ const buttonBackground = props => {
 };
 
 export const StyledButton = styled.button`
+	${buttonReset}
+
+	align-items: center;
 	display: inline-flex;
-	padding: 6px 10px;
+	justify-content: center;
+	min-width: 208px;
+	padding: 16px;
 
 	background-color: ${props => buttonBackground(props)};
 	color: white;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 22px;
+	text-align: center;
+	text-transform: capitalize;
+	transition: 0.2s background-color ease;
+
+	&:active,
+	&:focus,
+	&:hover {
+		background-color: ${props => shadeColour(buttonBackground(props), 30)};
+	}
+
+	svg {
+		display: block;
+		height: 20px;
+		stroke-width: 3px;
+	}
+
+	.button__icon {
+		display: block;
+		margin-left: -4px;
+		margin-right: 4px;
+	}
 `;
 
 export const StyledLinkButton = styled(StyledButton).attrs({ as: "a" })`

@@ -1,9 +1,12 @@
 import React from "react";
 import { color, text } from "@storybook/addon-knobs";
+import { WithFigma } from "storybook-addon-figma";
 import Button from "./button";
 
 import knobData from "./button.knobs.json";
 const { btnBackground, btnText } = knobData;
+
+import themeDefault from "../../particles/ThemeDefault";
 
 const alertText = e => {
 	e.preventDefault();
@@ -11,15 +14,21 @@ const alertText = e => {
 };
 
 export const basicButton = () => (
-	<Button
-		background={color(
-			btnBackground.label,
-			btnBackground.default,
-			btnBackground.group
-		)}
+	<WithFigma
+		url={
+			"https://www.figma.com/file/uihfnI2u5KSj2LuAVZR7lt/Celtic-Elements?node-id=954%3A426"
+		}
 	>
-		{text(btnText.label, btnText.default, btnText.group)}
-	</Button>
+		<Button
+			background={color(
+				btnBackground.label,
+				themeDefault.primary,
+				btnBackground.group
+			)}
+		>
+			{text(btnText.label, btnText.default, btnText.group)}
+		</Button>
+	</WithFigma>
 );
 export const secondaryButton = () => (
 	<Button variant="secondary">Secondary button</Button>
