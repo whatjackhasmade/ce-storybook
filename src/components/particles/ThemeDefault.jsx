@@ -9,7 +9,7 @@ const ThemeDefault = {
 	purple700: "#341B97",
 	purple800: "#25136C",
 	purple900: "#170C41",
-	primary: "#4E2ECD",
+	primary: "#5D3DDC",
 	secondary: "#3788A1",
 	tertiary: "#2ECDBA"
 };
