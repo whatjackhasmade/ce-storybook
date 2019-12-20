@@ -1,36 +1,36 @@
 {
-  "name": "ce-storybook",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "@storybook/addon-knobs": "^5.2.6",
-    "@storybook/addon-options": "^5.2.8",
-    "gatsby-link": "^2.2.27",
-    "storybook-addon-figma": "^0.1.0",
-    "styled-components": "^4.4.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-links": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/react": "^5.2.8",
-    "babel-loader": "^8.0.6"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/whatjackhasmade/ce-storybook.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/whatjackhasmade/ce-storybook/issues"
-  },
-  "homepage": "https://github.com/whatjackhasmade/ce-storybook#readme"
+	"name": "ce-storybook",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"dependencies": {
+		"@storybook/addon-knobs": "^5.2.6",
+		"@storybook/addon-options": "^5.2.8",
+		"gatsby-link": "^2.2.27",
+		"storybook-addon-figma": "^0.1.0",
+		"styled-components": "^4.4.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.7.7",
+		"@storybook/addon-actions": "^5.2.8",
+		"@storybook/addon-links": "^5.2.8",
+		"@storybook/addons": "^5.2.8",
+		"@storybook/react": "^5.2.8",
+		"babel-loader": "^8.0.6"
+	},
+	"scripts": {
+		"postinstall": "git pull --recurse-submodules",
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/whatjackhasmade/ce-storybook.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/whatjackhasmade/ce-storybook/issues"
+	},
+	"homepage": "https://github.com/whatjackhasmade/ce-storybook#readme"
 }
