@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "styled-components": "^4.4.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@storybook/addon-actions": "^5.2.8",
