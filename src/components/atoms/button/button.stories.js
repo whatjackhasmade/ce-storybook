@@ -1,12 +1,26 @@
 import React from "react";
+import { color, text } from "@storybook/addon-knobs";
 import Button from "./button";
+
+import knobData from "./button.knobs.json";
+const { btnBackground, btnText } = knobData;
 
 const alertText = e => {
 	e.preventDefault();
 	alert("You clicked the button");
 };
 
-export const basicButton = () => <Button>Basic button</Button>;
+export const basicButton = () => (
+	<Button
+		background={color(
+			btnBackground.label,
+			btnBackground.default,
+			btnBackground.group
+		)}
+	>
+		{text(btnText.label, btnText.default, btnText.group)}
+	</Button>
+);
 export const secondaryButton = () => (
 	<Button variant="secondary">Secondary button</Button>
 );

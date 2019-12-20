@@ -18,16 +18,18 @@ const Icons = {
 	user: IconUser
 };
 
-const Button = ({ children, href, icon, onClick, variant }) => {
+const Button = props => {
+	const { background, children, href, icon, onClick, variant } = props;
+
 	if (!href)
 		return (
-			<StyledButton className="button" onClick={onClick} variant={variant}>
+			<StyledButton className="button" {...props}>
 				{children}
 				{icon && <ButtonIcon icon={icon} />}
 			</StyledButton>
 		);
 	return (
-		<StyledLinkButton className="button" variant={variant} href={href}>
+		<StyledLinkButton className="button" {...props}>
 			{children}
 			{icon && <ButtonIcon icon={icon} />}
 		</StyledLinkButton>
@@ -36,6 +38,7 @@ const Button = ({ children, href, icon, onClick, variant }) => {
 
 // Expected prop values
 Button.propTypes = {
+	background: PropTypes.string,
 	children: PropTypes.node.isRequired,
 	href: PropTypes.string,
 	icon: PropTypes.string,

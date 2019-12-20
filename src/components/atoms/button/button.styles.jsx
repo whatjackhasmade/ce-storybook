@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 const buttonBackground = props => {
 	// Fallback value if we can't get access to props
-	if (!props || !props.theme || !props.theme.primary) return "#00FFFF";
+	if (!props || !props.theme || !props.theme.primary) return "#4E2ECD";
+
+	// If a background value is specified, use that instead of theme
+	if (props.background) return props.background;
+
 	// If no variant is specified, return the primary colour in our theme
 	if (!props.variant) return props.theme.primary;
 
