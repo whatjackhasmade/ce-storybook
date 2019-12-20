@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Button = ({ children, href, onClick }) => {
+import StyledButton from "./button.styles.jsx";
+
+const Button = ({ children, href, onClick, variant }) => {
 	if (!href)
 		return (
-			<button className="button" onClick={onClick}>
+			<StyledButton className="button" onClick={onClick} variant={variant}>
 				{children}
-			</button>
+			</StyledButton>
 		);
 	return (
 		<a className="button" href={href}>
@@ -19,12 +21,14 @@ const Button = ({ children, href, onClick }) => {
 Button.propTypes = {
 	children: PropTypes.node.isRequired,
 	href: PropTypes.string,
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	variant: PropTypes.string
 };
 
 // Default prop values
 Button.defaultProps = {
-	children: "Button text"
+	children: "Button text",
+	variant: "primary"
 };
 
 export default Button;
