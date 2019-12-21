@@ -1,3 +1,20 @@
+export function hexToRGB(hex) {
+	if (!hex) return "0,0,0";
+
+	// Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+	const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+		return r + r + g + g + b + b;
+	});
+
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return (
+		parseString(result[1], 16) +
+		parseString(result[2], 16) +
+		parseString(result[3], 16)
+	);
+}
+
 export function isInternal(url) {
 	if (!url) return false;
 	if (url.startsWith("mailto:")) return false;

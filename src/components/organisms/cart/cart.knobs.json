@@ -1,0 +1,14 @@
+{
+	"cartContents": {
+		"default": [
+			{
+				"image": "https://source.unsplash.com/HOs5ZoXuG18/80x80",
+				"price": 70.0,
+				"slug": "beauty-sleep-in-a-box",
+				"title": "Beauty Sleep in a Box"
+			}
+		],
+		"group": "Content",
+		"label": "Cart Contents"
+	}
+}
