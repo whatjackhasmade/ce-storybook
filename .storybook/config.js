@@ -3,22 +3,16 @@ import { addDecorator } from "@storybook/react";
 import { configure } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
 import { setOptions } from "@storybook/addon-options";
-import { ThemeProvider } from "styled-components";
 
-import ApplicationState from "../src/components/particles/context/applicationState";
-import GlobalStyle from "../src/components/particles/GlobalStyle";
-import ThemeDefault from "../src/components/particles/ThemeDefault";
+import Layout from "../src/components/particles/layout";
 
 // automatically import all files ending in *.stories.js
 configure(require.context("../src/components", true, /\.stories\.js$/), module);
 
 const GlobalDecorator = storyFn => (
-	<ApplicationState>
-		<ThemeProvider theme={ThemeDefault}>
-			<GlobalStyle />
-			{storyFn()}
-		</ThemeProvider>
-	</ApplicationState>
+	<Layout cart={false} footer={false} header={false}>
+		{storyFn()}
+	</Layout>
 );
 
 addDecorator(GlobalDecorator);

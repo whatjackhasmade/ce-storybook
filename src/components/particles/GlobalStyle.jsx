@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import "normalize.css/normalize.css";
 
-import device from "./MediaQueries";
-import Fonts from "./Fonts";
+import device from "./mediaQueries";
+import Fonts from "./fonts";
 
 const GlobalStyle = createGlobalStyle`
 	@font-face {

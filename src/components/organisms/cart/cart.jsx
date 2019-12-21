@@ -68,7 +68,7 @@ const Cart = ({ items }) => {
 					{/* If no items are available, disable the checkout option */}
 					<Button
 						className="cart__checkout"
-						disabled={!cart.length && !items.length}
+						disabled={!cart && !cart.length && !items && !items.length}
 						href="/checkout"
 					>
 						Continue to checkout

@@ -6,7 +6,7 @@ import Button from "./button";
 import knobData from "./button.knobs.json";
 const { btnBackground, btnText } = knobData;
 
-import themeDefault from "../../particles/ThemeDefault";
+import ThemeDefault from "../../particles/themeDefault";
 
 const alertText = e => {
 	e.preventDefault();
@@ -22,7 +22,7 @@ export const basicButton = () => (
 		<Button
 			background={color(
 				btnBackground.label,
-				themeDefault.primary,
+				ThemeDefault.primary,
 				btnBackground.group
 			)}
 		>

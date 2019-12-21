@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 const { arrayOf, shape, string } = PropTypes;
 
-import StyledHeader from "./header.styles.jsx";
+import StyledHeader from "./header.styles";
 
 import BrandLogo from "../../../assets/images/brand/logo.png";
 
