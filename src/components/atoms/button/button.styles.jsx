@@ -22,10 +22,40 @@ const buttonBackground = props => {
 			colour = props.theme.secondary;
 			break;
 		case "tertiary":
-			colour = props.theme.tertiary;
+			colour = props.theme.offWhite;
 			break;
 		default:
 			colour = props.theme.primary;
+			break;
+	}
+
+	return colour;
+};
+
+const buttonColour = props => {
+	// Fallback value if we can't get access to props
+	if (!props || !props.theme || !props.theme.primary) return "white";
+
+	// If a background value is specified, use that instead of theme
+	if (props.background) return props.background;
+
+	// If no variant is specified, return the primary colour in our theme
+	if (!props.variant) return props.theme.primary;
+
+	// Dynamically determine the background colour based on props
+	let colour;
+	switch (props.variant) {
+		case "primary":
+			colour = props.theme.white;
+			break;
+		case "secondary":
+			colour = props.theme.white;
+			break;
+		case "tertiary":
+			colour = props.theme.black;
+			break;
+		default:
+			colour = props.theme.white;
 			break;
 	}
 
@@ -42,11 +72,12 @@ export const StyledButton = styled.button`
 	padding: 16px;
 
 	background-color: ${props => buttonBackground(props)};
-	color: white;
-	cursor: pointer;
+	color: ${props => buttonColour(props)};
+	cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 22px;
+	opacity: ${props => (props.disabled ? 0.4 : 1)};
 	text-align: center;
 	text-transform: capitalize;
 	transition: 0.2s background-color ease;

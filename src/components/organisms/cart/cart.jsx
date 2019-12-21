@@ -14,15 +14,11 @@ import Button from "../../atoms/button/button";
 import CartItem from "../../molecules/cart-item/cartItem";
 
 const Cart = ({ items }) => {
-	const [isOpen, setOpen] = useState(false);
+	const [isOpen, setOpen] = useState(true);
 
 	const { state } = useContext(ApplicationContext);
 	// Desctructure the cart value from our context (Initially [])
 	const { cart } = state;
-
-	{
-		console.log(isOpen);
-	}
 
 	{
 		/* Create toggle button when cart is closed */
@@ -49,21 +45,25 @@ const Cart = ({ items }) => {
 			<aside className="cart__aside">
 				<header className="cart__header">
 					<h2 className="cart__heading">Your Cart</h2>
-					<span className="cart__total">{total}</span>
+					{total && (
+						<span className="cart__total">
+							{total}
+							{parseFloat(total.toString().substr(1)) > 100 && ` + Free P&P`}
+						</span>
+					)}
 				</header>
 				{/*
 					We could remove the support for `items` as a itterable key but to keep
 					the component documented and updatable in storybook, we will have fallback
 					support for when the application context is unavailable but items are provided.
 				*/}
-				{(cart && cart.length) ||
-					(items && items.length && (
-						<div className="cart__products">
-							{cart
-								? cart.map(product => <CartItem {...product} />)
-								: items.map(product => <CartItem {...product} />)}
-						</div>
-					))}
+				{((cart && cart.length) || (items && items.length)) && (
+					<div className="cart__products">
+						{cart && cart.length
+							? cart.map(product => <CartItem {...product} />)
+							: items.map(product => <CartItem {...product} />)}
+					</div>
+				)}
 				<div className="cart__actions">
 					{/* If no items are available, disable the checkout option */}
 					<Button
@@ -79,6 +79,7 @@ const Cart = ({ items }) => {
 							e.preventDefault();
 							setOpen(false);
 						}}
+						variant="tertiary"
 					>
 						Continue shopping
 					</Button>

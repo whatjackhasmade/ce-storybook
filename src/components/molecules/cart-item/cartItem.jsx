@@ -11,6 +11,11 @@ const CartItem = product => {
 	const { image, price, quantity, slug, title } = product;
 	const { dispatch } = useContext(ApplicationContext);
 
+	const priceFormatted = new Intl.NumberFormat("en-GB", {
+		style: "currency",
+		currency: "GBP"
+	}).format(price);
+
 	const updateCart = (e, action) => {
 		e.preventDefault();
 		dispatch({ key: null, type: action, value: product });
@@ -23,8 +28,10 @@ const CartItem = product => {
 				className="product__image"
 				src={image}
 			/>
-			<h3 className="product__title">{title}</h3>
-			<span className="product__price">{price}</span>
+			<div className="product__meta">
+				<h3 className="product__title">{title}</h3>
+				<span className="product__price">{priceFormatted}</span>
+			</div>
 			<div className="product__actions">
 				<button
 					className="product__decrease"

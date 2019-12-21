@@ -41,11 +41,7 @@ export function hexToRGB(hex) {
 	});
 
 	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	return (
-		(result[1], 16).toString +
-		(result[2], 16).toString +
-		(result[3], 16).toString
-	);
+	return `${result[1].toString()}, ${result[2].toString()}, ${result[3].toString()}`;
 }
 
 export function isInternal(url) {
