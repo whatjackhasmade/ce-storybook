@@ -5,6 +5,7 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { setOptions } from "@storybook/addon-options";
 import { ThemeProvider } from "styled-components";
 
+import ApplicationState from "../src/components/particles/context/applicationState";
 import GlobalStyle from "../src/components/particles/GlobalStyle";
 import ThemeDefault from "../src/components/particles/ThemeDefault";
 
@@ -12,10 +13,12 @@ import ThemeDefault from "../src/components/particles/ThemeDefault";
 configure(require.context("../src/components", true, /\.stories\.js$/), module);
 
 const GlobalDecorator = storyFn => (
-	<ThemeProvider theme={ThemeDefault}>
-		<GlobalStyle />
-		{storyFn()}
-	</ThemeProvider>
+	<ApplicationState>
+		<ThemeProvider theme={ThemeDefault}>
+			<GlobalStyle />
+			{storyFn()}
+		</ThemeProvider>
+	</ApplicationState>
 );
 
 addDecorator(GlobalDecorator);

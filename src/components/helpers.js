@@ -1,3 +1,36 @@
+export function calculateTotalCost(items) {
+	if (!items || !items.length) return null;
+
+	const filteredItems = items.filter(({ price, quantity }) => {
+		if (!price)
+			console.error(
+				"calculateTotalCost items array needs objects with key 'price'"
+			);
+		if (!quantity)
+			console.error(
+				"calculateTotalCost items array needs objects with key 'price'"
+			);
+		if (!price || !quantity) return false;
+		return true;
+	});
+
+	if (!filteredItems || !filteredItems.length) return null;
+
+	const reducer = (currentTotal, nextProduct) => {
+		const { price, quantity } = nextProduct;
+		const current = parseFloat(price) * parseFloat(quantity);
+		const newTotal = currentTotal + current;
+		return newTotal;
+	};
+
+	const total = filteredItems.reduce(reducer, 0);
+	const totalFormatted = new Intl.NumberFormat("en-GB", {
+		style: "currency",
+		currency: "GBP"
+	}).format(total);
+	return totalFormatted;
+}
+
 export function hexToRGB(hex) {
 	if (!hex) return "0,0,0";
 
@@ -9,9 +42,9 @@ export function hexToRGB(hex) {
 
 	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 	return (
-		parseString(result[1], 16) +
-		parseString(result[2], 16) +
-		parseString(result[3], 16)
+		(result[1], 16).toString +
+		(result[2], 16).toString +
+		(result[3], 16).toString
 	);
 }
 

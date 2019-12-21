@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 const { arrayOf, number, shape, string } = PropTypes;
+import { calculateTotalCost } from "../../helpers.js";
 
 import StyledCart, { StyledCartToggle } from "./cart.styles.jsx";
 
 import IconCart from "../../../assets/images/icons/shopping-cart.svg";
+
+import ApplicationContext from "../../particles/context/applicationContext";
 
 import Button from "../../atoms/button/button";
 
@@ -12,6 +15,14 @@ import CartItem from "../../molecules/cart-item/cartItem";
 
 const Cart = ({ items }) => {
 	const [isOpen, setOpen] = useState(false);
+
+	const { state } = useContext(ApplicationContext);
+	// Desctructure the cart value from our context (Initially [])
+	const { cart } = state;
+
+	{
+		console.log(isOpen);
+	}
 
 	{
 		/* Create toggle button when cart is closed */
@@ -31,27 +42,44 @@ const Cart = ({ items }) => {
 		);
 	}
 
+	const total = calculateTotalCost(cart);
+
 	return (
 		<StyledCart className="cart">
 			<aside className="cart__aside">
 				<header className="cart__header">
 					<h2 className="cart__heading">Your Cart</h2>
-					{/* We'll hook this up later */}
-					<span className="cart__total">£0.00</span>
+					<span className="cart__total">{total}</span>
 				</header>
-				{items && items.length && (
-					<div className="cart__products">
-						{items.map(product => (
-							<CartItem {...product} />
-						))}
-					</div>
-				)}
+				{/*
+					We could remove the support for `items` as a itterable key but to keep
+					the component documented and updatable in storybook, we will have fallback
+					support for when the application context is unavailable but items are provided.
+				*/}
+				{(cart && cart.length) ||
+					(items && items.length && (
+						<div className="cart__products">
+							{cart
+								? cart.map(product => <CartItem {...product} />)
+								: items.map(product => <CartItem {...product} />)}
+						</div>
+					))}
 				<div className="cart__actions">
-					{/* We'll hook this up later */}
-					<Button className="cart__checkout" disabled={true} href="/checkout">
+					{/* If no items are available, disable the checkout option */}
+					<Button
+						className="cart__checkout"
+						disabled={!cart.length && !items.length}
+						href="/checkout"
+					>
 						Continue to checkout
 					</Button>
-					<Button className="cart__return" onClick={setOpen(false)}>
+					<Button
+						className="cart__return"
+						onClick={e => {
+							e.preventDefault();
+							setOpen(false);
+						}}
+					>
 						Continue shopping
 					</Button>
 				</div>

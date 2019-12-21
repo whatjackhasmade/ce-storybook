@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 const { number, string } = PropTypes;
 
 import IconMinus from "../../../assets/images/icons/minus.svg";
 import IconPlus from "../../../assets/images/icons/plus.svg";
 
-const CartItem = ({ image, price, slug, title }) => {
-	const [quantity, setQuantity] = useState(1);
+import ApplicationContext from "../../particles/context/applicationContext";
 
-	const decrease = e => {
-		e.preventDefault();
-		if (quantity > 0) setQuantity(quantity - 1);
-	};
+const CartItem = product => {
+	const { image, price, quantity, slug, title } = product;
+	const { dispatch } = useContext(ApplicationContext);
 
-	const increase = e => {
+	const updateCart = (e, action) => {
 		e.preventDefault();
-		setQuantity(quantity + 1);
+		dispatch({ key: null, type: action, value: product });
 	};
 
 	return (
@@ -31,12 +29,15 @@ const CartItem = ({ image, price, slug, title }) => {
 				<button
 					className="product__decrease"
 					disabled={quantity < 1}
-					onClick={decrease}
+					onClick={e => updateCart(e, "productDecrease")}
 				>
 					<IconMinus />
 				</button>
 				<span className="product__quantity">{quantity}</span>
-				<button className="product__increase" onClick={increase}>
+				<button
+					className="product__increase"
+					onClick={e => updateCart(e, "productIncrease")}
+				>
 					<IconPlus />
 				</button>
 			</div>
@@ -44,11 +45,13 @@ const CartItem = ({ image, price, slug, title }) => {
 	);
 };
 
+export default CartItem;
+
+// Expected prop values
 CartItem.propTypes = {
 	image: string.isRequired,
 	price: number.isRequired,
+	quantity: number.isRequired,
 	slug: string.isRequired,
 	title: string.isRequired
 };
-
-export default CartItem;
