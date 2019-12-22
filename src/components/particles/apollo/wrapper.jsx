@@ -1,23 +1,9 @@
-import React from "react";
-import { ApolloProvider } from "react-apollo";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloClient } from "apollo-client";
-import { ApolloLink } from "apollo-link";
-
-// Our custom Apollo logic for our application
-import authLink from "./authLink";
-import errorLink from "./errorLink";
-import httpLink from "./httpLink";
+import React from "react"
+import { ApolloProvider } from "@apollo/react-hooks"
+import client from "./client"
 
 const ApolloWrapper = ({ children }) => {
-	const link = ApolloLink.from([errorLink, authLink.concat(httpLink)]);
+  return <ApolloProvider client={client}>{children}</ApolloProvider>
+}
 
-	const client = new ApolloClient({
-		cache: new InMemoryCache(),
-		link
-	});
-
-	return <ApolloProvider client={client}>{children}</ApolloProvider>;
-};
-
-export default ApolloWrapper;
+export default ApolloWrapper
