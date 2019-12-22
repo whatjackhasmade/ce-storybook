@@ -1,16 +1,30 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledHeader = styled.header`
-	display: flex;
+  display: flex;
+  padding: 30px;
+  position: relative;
 
-	background-color: ${props => props.theme.grey800};
-	color: ${props => props.theme.white};
+  color: ${props => props.theme.white};
 
-	button {
-		display: inline-flex;
+  button {
+    display: inline-flex;
 
-		display: none;
-	}
-`;
+    display: none;
+  }
 
-export default StyledHeader;
+  img {
+    left: 50%;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  nav + nav {
+    margin-left: auto;
+  }
+`
+
+export default StyledHeader

@@ -13,6 +13,7 @@ const { arrayOf, shape, string } = PropTypes
 
 const Header = ({ navigation }) => {
   const [isOpen, setOpen] = useState(false)
+  console.log({ navigation })
 
   const toggleNavigation = e => {
     e.preventDefault()
@@ -21,7 +22,9 @@ const Header = ({ navigation }) => {
 
   return (
     <StyledHeader className={isOpen ? `header--open` : `header--closed`}>
-      <button onClick={toggleNavigation} />
+      <button onClick={toggleNavigation}>
+        {isOpen ? `Hide` : `Show`} Navigation
+      </button>
       {navigation &&
         navigation.length &&
         navigation.map(({ items }) => <Navigation items={items} />)}

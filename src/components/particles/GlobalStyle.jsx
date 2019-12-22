@@ -1,16 +1,16 @@
-import { createGlobalStyle } from "styled-components";
-import "normalize.css/normalize.css";
+import { createGlobalStyle } from "styled-components"
+import "normalize.css/normalize.css"
 
-import device from "./mediaQueries";
-import Fonts from "./fonts";
+import device from "./mediaQueries"
+import Fonts from "./fonts"
 
 const GlobalStyle = createGlobalStyle`
 	@font-face {
 		font-family: 'Linto';
 		src: url(${Fonts.LintoBrownLightEOT}); /* IE9 Compat Modes */
 		src: url(${
-			Fonts.LintoBrownLightEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
+      Fonts.LintoBrownLightEOTIE
+    }) format('embedded-opentype'), /* IE6-IE8 */
 			url(${Fonts.LintoBrownLightWOFF2}) format('woff2'), /* Super Modern Browsers */
 			url(${Fonts.LintoBrownLightWOFF}) format('woff'), /* Pretty Modern Browsers */
 			url(${Fonts.LintoBrownLightTTF})  format('truetype');
@@ -22,11 +22,11 @@ const GlobalStyle = createGlobalStyle`
 		font-family: 'Linto';
 		src: url(${Fonts.LintoBrownRegularEOT}); /* IE9 Compat Modes */
 		src: url(${
-			Fonts.LintoBrownRegularEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
+      Fonts.LintoBrownRegularEOTIE
+    }) format('embedded-opentype'), /* IE6-IE8 */
 			url(${
-				Fonts.LintoBrownRegularWOFF2
-			}) format('woff2'), /* Super Modern Browsers */
+        Fonts.LintoBrownRegularWOFF2
+      }) format('woff2'), /* Super Modern Browsers */
 			url(${Fonts.LintoBrownRegularWOFF}) format('woff'), /* Pretty Modern Browsers */
 			url(${Fonts.LintoBrownRegularTTF})  format('truetype');
 		font-style: normal;
@@ -37,8 +37,8 @@ const GlobalStyle = createGlobalStyle`
 		font-family: 'Linto';
 		src: url(${Fonts.LintoBrownBoldEOT}); /* IE9 Compat Modes */
 		src: url(${
-			Fonts.LintoBrownBoldEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
+      Fonts.LintoBrownBoldEOTIE
+    }) format('embedded-opentype'), /* IE6-IE8 */
 			url(${Fonts.LintoBrownBoldWOFF2}) format('woff2'), /* Super Modern Browsers */
 			url(${Fonts.LintoBrownBoldWOFF}) format('woff'), /* Pretty Modern Browsers */
 			url(${Fonts.LintoBrownBoldTTF})  format('truetype');
@@ -46,8 +46,15 @@ const GlobalStyle = createGlobalStyle`
 		font-weight: bold;
 	}
 
-	*, *:before, *:after {
-		box-sizing: inherit;
+		/* Accessibly remove animations: https://gist.githubusercontent.com/bellangerq/6cdfe6e3701b4048c72546960c7c9f66/raw/dc5036697d0da57eff8e0f659106b319102e72a0/a11y-disable-animations.css */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.001ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.001ms !important;
+		}
 	}
 
 	html {
@@ -65,6 +72,31 @@ const GlobalStyle = createGlobalStyle`
 		text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 	}
 
+	html {
+		box-sizing: border-box;
+	}
+
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	p {
+		a {
+			color: ${props => props.theme.primary};
+
+			&:active,
+			&:focus,
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
 	button {
 		font-weight: 700;
 	}
@@ -76,17 +108,13 @@ const GlobalStyle = createGlobalStyle`
 		line-height: 1.5;
 	}
 
-		main {
+	main {
 		flex: 1;
 		margin: 0 auto;
-		max-width: 1506px;
-		padding: 0 15px;
 		width: 100%;
+	}
 
-		@media ${device.xs} {
-			padding: 0 30px;
-		}
-
+	#___gatsby {
 		/* Fix anchor scroll positioning */
 		[id]::before {
 			display: block;
@@ -104,10 +132,13 @@ const GlobalStyle = createGlobalStyle`
 		}
 	}
 
-
 	/* Common base styles for the site */
-	img, svg, video {
+	figure, img, svg, video {
 		max-width: 100%;
+	}
+
+	figure {
+		width: auto !important;
 	}
 
 	video {
@@ -199,6 +230,164 @@ const GlobalStyle = createGlobalStyle`
 			font-size: 18px;
 		}
 	}
-`;
 
-export default GlobalStyle;
+	main {
+		ol,
+		ul {
+			margin: 48px 0;
+		}
+
+		li {
+			font-size: 16px;
+			font-weight: 300;
+			line-height: 30px;
+
+			+ li {
+				margin-top: 24px;
+			}
+		}
+	}
+
+	ol {
+		padding-left: 48px;
+
+		counter-reset: list-counter;
+		list-style: none;
+	}
+
+	ol {
+		margin: 48px 0;
+
+		li {
+			position: relative;
+
+			counter-increment: list-counter;
+			font-size: 16px;
+			font-weight: 300;
+			line-height: 30px;
+
+			+ li {
+				margin-top: 24px;
+			}
+
+			&::before {
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				color: ${props => props.theme.primary};
+				content: counter(list-counter) ". ";
+				font-family: ${props => props.theme.fontSecondary};
+				font-size: 32px;
+				font-style: normal;
+				font-weight: bold;
+				line-height: 48px;
+
+				transform: translateX(-110%);
+				transform: translateX(calc(-100% - 24px));
+			}
+		}
+	}
+
+	/* FORM */
+	button[type="submit"] {
+		margin-top: 24px;
+	}
+
+	input[disabled] {
+		cursor: not-allowed;
+	}
+
+  input,
+  label,
+  textarea {
+    display: block;
+    width: 100%;
+	}
+
+  input,
+  textarea {
+    padding: 16px;
+
+		background-color: ${props => props.theme.white};
+		border: 1px solid rgba(0, 0, 0, 0.12);
+
+    & + & {
+      margin-top: 24px;
+    }
+  }
+
+  label {
+    margin: 16px 0 8px;
+
+		color: ${props => props.theme.black};
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 32px;
+    text-transform: capitalize;
+	}
+
+	textarea {
+		min-height: 150px;
+		resize: vertical;
+		width: 100%;
+	}
+
+	select {
+		border-radius: 0;
+		display: block;
+    margin: 0;
+    max-width: 100%;
+		padding: 16px;
+    width: 100%;
+
+		 -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+		background-color: ${props => props.theme.white};
+		border: 1px solid #ccc;
+    box-shadow: none;
+		color: ${props => props.theme.grey700};
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292.4 164.4'%3E%3Cpath d='M287 5.4c-3.4-3.5-8.1-5.5-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4C2 8.7 0 13.4 0 18.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 31c3.5-3.5 5.4-7.8 5.4-12.8s-1.9-9.2-5.5-12.8h.1z' fill='%23787878'/%3E%3C/svg%3E"),
+      linear-gradient(to bottom, #fff 0%,#fff 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 1.1em top 50%, 0 0;
+    background-size: .75em auto, 100%;
+	}
+
+	select::-ms-expand {
+		display: none;
+	}
+
+	select:focus {
+		outline: none;
+	}
+
+	option {
+		padding: 16px;
+
+		font-weight:normal;
+	}
+
+	::placeholder {
+		color: #282220;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 20px;
+	}
+
+	/* https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html */
+	.hide:not(:focus):not(:active),
+	.hidden:not(:focus):not(:active) {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+		}
+	}
+`
+
+export default GlobalStyle

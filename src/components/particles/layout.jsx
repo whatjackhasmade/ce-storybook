@@ -13,23 +13,66 @@ import Header from "../organisms/header/header"
 
 const { bool, node } = PropTypes
 
-const Layout = ({ cart, children, footer, header }) => (
-  <ApolloWrapper>
-    <ApplicationState>
-      <ThemeProvider theme={ThemeDefault}>
-        <GlobalStyle />
-        <>
-          {/* Start of visual page components */}
-          {header && <Header />}
-          {cart && <Cart />}
-          {children}
-          {footer && <Footer />}
-          {/* End of visual page components */}
-        </>
-      </ThemeProvider>
-    </ApplicationState>
-  </ApolloWrapper>
-)
+const Layout = props => {
+  const { cart, children, footer, header, pageContext } = props
+  let menuHeader
+
+  if (pageContext && pageContext.menuHeader) {
+    menuHeader = pageContext.menuHeader.map(node => node.node)
+    menuHeader = [
+      { items: menuHeader },
+      {
+        title: "account",
+        items: [
+          {
+            icon: null,
+            label: "Insights",
+            target: null,
+            url: "#",
+          },
+          {
+            icon: null,
+            label: "Account",
+            target: null,
+            url: "#",
+          },
+          {
+            icon: "user",
+            label: "User",
+            target: null,
+            url: "#",
+          },
+          {
+            icon: "bag",
+            label: "Cart",
+            target: null,
+            url: "#",
+          },
+        ],
+      },
+    ]
+  }
+
+  return (
+    <ApolloWrapper>
+      <ApplicationState>
+        <ThemeProvider theme={ThemeDefault}>
+          <GlobalStyle />
+          <>
+            {/* Start of visual page components */}
+            <div className="wrapper">
+              {header && <Header navigation={menuHeader} />}
+              {children && <main>{children}</main>}
+              {footer && <Footer />}
+            </div>
+            {cart && <Cart />}
+            {/* End of visual page components */}
+          </>
+        </ThemeProvider>
+      </ApplicationState>
+    </ApolloWrapper>
+  )
+}
 
 // Expected prop values
 Layout.propTypes = {
