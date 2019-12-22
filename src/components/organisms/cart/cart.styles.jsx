@@ -1,124 +1,158 @@
-import styled from "styled-components";
-import { hexToRGB, shadeColour } from "../../helpers.js";
+import styled from "styled-components"
+import { hexToRGB, shadeColour } from "../../helpers.js"
 
 export const StyledCart = styled.div`
-	display: flex;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 100%;
+  display: flex;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
-	background-color: ${props => `rgba(${hexToRGB(props.theme.grey800)}, 0.8)`};
+  background-color: ${props => `rgba(${hexToRGB(props.theme.grey800)}, 0.8)`};
+  opacity: 0;
 
-	h2 {
-		margin: 0;
+  animation-name: fadeIn;
+  animation-duration: 0.2s;
+  animation-direction: forwards;
+  animation-fill-mode: forwards;
 
-		font-size: 20px;
-	}
+  h2 {
+    margin: 0;
 
-	h3 {
-		margin: 0;
-		margin-bottom: 8px;
+    font-size: 20px;
+  }
 
-		font-size: 16px;
-	}
+  h3 {
+    margin: 0;
+    margin-bottom: 8px;
 
-	.cart__actions {
-		display: flex;
-		flex-direction: column;
-		margin-top: auto;
-		padding-top: 24px;
-	}
+    font-size: 16px;
+  }
 
-	.cart__aside {
-		display: flex;
-		flex-direction: column;
-		margin-left: auto;
-		padding: 40px;
+  .cart__actions {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    padding-top: 24px;
+  }
 
-		background-color: ${props => props.theme.white};
-		color: ${props => props.theme.grey800};
-	}
+  .cart__aside {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    padding: 40px;
 
-	.cart__header {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 32px;
-		padding: 24px 0;
+    background-color: ${props => props.theme.white};
+    color: ${props => props.theme.grey800};
+    opacity: 0;
 
-		border-bottom: 1px solid ${props => props.theme.grey100};
-		border-top: 1px solid ${props => props.theme.grey100};
-	}
+    animation-name: cartSlide;
+    animation-delay: 0.2s;
+    animation-duration: 0.4s;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
+  }
 
-	.cart__product {
-		display: flex;
+  .cart__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    padding: 24px 0;
 
-		button {
-			height: 100%;
-			padding: 8px;
+    border-bottom: 1px solid ${props => props.theme.grey100};
+    border-top: 1px solid ${props => props.theme.grey100};
+  }
 
-			background-color: ${props => props.theme.grey500};
+  .cart__product {
+    display: flex;
 
-			svg {
-				width: 16px;
+    button {
+      height: 100%;
+      padding: 8px;
 
-				stroke: ${props => props.theme.white};
-			}
-		}
-	}
+      background-color: ${props => props.theme.grey500};
 
-	.cart__return {
-		margin-top: 16px;
-	}
+      svg {
+        width: 16px;
 
-	.product__meta {
-		display: flex;
-		flex-direction: column;
-		margin: 0 24px 0 12px;
-	}
+        stroke: ${props => props.theme.white};
+      }
+    }
+  }
 
-	.product__quantity {
-		display: inline-block;
-		min-width: 40px;
-		padding: 8px;
-		text-align: center;
+  .cart__return {
+    margin-top: 16px;
+  }
 
-		font-size: 24px;
-		font-weight: bold;
-	}
-`;
+  .product__meta {
+    display: flex;
+    flex-direction: column;
+    margin: 0 24px 0 12px;
+  }
+
+  .product__quantity {
+    display: inline-block;
+    min-width: 40px;
+    padding: 8px;
+    text-align: center;
+
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  @keyframes cartSlide {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`
 
 export const StyledCartToggle = styled.nav`
-	bottom: 32px;
-	position: fixed;
-	right: 32px;
+  bottom: 32px;
+  position: fixed;
+  right: 32px;
 
-	button {
-		align-items: center;
-		border-radius: 48px;
-		display: flex;
-		height: 48px;
-		justify-content: center;
-		width: 48px;
+  button {
+    align-items: center;
+    border-radius: 48px;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    width: 48px;
 
-		background-color: ${props => props.theme.primary};
+    background-color: ${props => props.theme.primary};
 
-		&:active,
-		&:focus,
-		&:hover {
-			background-color: ${props => shadeColour(props.theme.primary, 30)};
-		}
-	}
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: ${props => shadeColour(props.theme.primary, 30)};
+    }
+  }
 
-	svg {
-		display: block;
-		max-width: 32px;
-		width: 100%;
+  svg {
+    display: block;
+    max-width: 32px;
+    width: 100%;
 
-		stroke: ${props => props.theme.white};
-		transform: translateX(-2px);
-	}
-`;
+    stroke: ${props => props.theme.white};
+    transform: translateX(-2px);
+  }
+`
 
-export default StyledCart;
+export default StyledCart

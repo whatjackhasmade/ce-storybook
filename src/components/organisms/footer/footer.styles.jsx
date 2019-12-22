@@ -1,87 +1,91 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledFooter = styled.footer`
-	display: flex;
-	flex-wrap: wrap;
-	padding: 48px 48px 64px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
 
-	background-color: ${props => props.theme.grey800};
-	color: ${props => props.theme.white};
+  background-color: ${props => props.theme.grey800};
+  color: ${props => props.theme.white};
 
-	a {
-		color: ${props => props.theme.white};
-		text-decoration: none;
-	}
+  a {
+    color: ${props => props.theme.white};
+    text-decoration: none;
+  }
 
-	button {
-		min-width: auto;
-	}
+  button {
+    min-width: auto;
+  }
 
-	form {
-		display: flex;
-	}
+  button[type="submit"] {
+    margin-top: 0;
+  }
 
-	input[type="email"] {
-		width: 100%;
-	}
+  form {
+    display: flex;
+  }
 
-	svg {
-		max-width: 24px;
+  input[type="email"] {
+    width: 100%;
+  }
 
-		fill: ${props => props.theme.white};
-	}
+  svg {
+    max-width: 24px;
 
-	.footer__social {
-		margin: 16px auto;
+    fill: ${props => props.theme.white};
+  }
 
-		a + a {
-			margin-left: 12px;
-		}
-	}
+  .footer__social {
+    margin: 24px auto 16px;
 
-	.footer__copyright {
-		align-items: center;
-		display: flex;
-		margin: 48px auto 0;
-		width: 100%;
+    a + a {
+      margin-left: 12px;
+    }
+  }
 
-		* {
-			margin: 0;
-		}
+  .footer__copyright {
+    align-items: center;
+    display: flex;
+    margin: 48px auto 0;
+    width: 100%;
 
-		a {
-			padding: 16px;
-		}
-	}
+    * {
+      margin: 0;
+    }
 
-	.footer__navigation {
-		a {
-			font-weight: 400;
-		}
+    a {
+      padding: 16px;
+    }
+  }
 
-		a + a {
-			margin-left: 0;
-			margin-top: 16px;
-		}
+  .footer__navigation {
+    a {
+      font-weight: 400;
+    }
 
-		nav {
-			flex-direction: column;
-			padding: 0;
-		}
-	}
+    a + a {
+      margin-left: 0;
+      margin-top: 16px;
+    }
 
-	.footer__navigation + .footer__navigation {
-		margin-left: 64px;
-	}
+    nav {
+      flex-direction: column;
+      padding: 0;
+    }
+  }
 
-	.footer__newsletter {
-		margin-left: auto;
-		max-width: 320px;
-	}
+  .footer__navigation + .footer__navigation {
+    margin-left: 64px;
+  }
 
-	.footer__wrapper {
-		display: flex;
-	}
-`;
+  .footer__newsletter {
+    margin-left: auto;
+    max-width: 320px;
+  }
 
-export default StyledFooter;
+  .footer__wrapper {
+    display: flex;
+  }
+`
+
+export default StyledFooter

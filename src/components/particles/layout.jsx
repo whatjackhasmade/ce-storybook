@@ -14,44 +14,7 @@ import Header from "../organisms/header/header"
 const { bool, node } = PropTypes
 
 const Layout = props => {
-  const { cart, children, footer, header, pageContext } = props
-  let menuHeader
-
-  if (pageContext && pageContext.menuHeader) {
-    menuHeader = pageContext.menuHeader.map(node => node.node)
-    menuHeader = [
-      { items: menuHeader },
-      {
-        title: "account",
-        items: [
-          {
-            icon: null,
-            label: "Insights",
-            target: null,
-            url: "#",
-          },
-          {
-            icon: null,
-            label: "Account",
-            target: null,
-            url: "#",
-          },
-          {
-            icon: "user",
-            label: "User",
-            target: null,
-            url: "#",
-          },
-          {
-            icon: "bag",
-            label: "Cart",
-            target: null,
-            url: "#",
-          },
-        ],
-      },
-    ]
-  }
+  const { cart, children, footer, gatsbyContext, header, pageContext } = props
 
   return (
     <ApolloWrapper>
@@ -61,8 +24,16 @@ const Layout = props => {
           <>
             {/* Start of visual page components */}
             <div className="wrapper">
-              {header && <Header navigation={menuHeader} />}
-              {children && <main>{children}</main>}
+              {header && (
+                <Header
+                  navigation={gatsbyContext && gatsbyContext.headerMenu}
+                />
+              )}
+              {children && (
+                <main>
+                  <div className="grid">{children}</div>
+                </main>
+              )}
               {footer && <Footer />}
             </div>
             {cart && <Cart />}

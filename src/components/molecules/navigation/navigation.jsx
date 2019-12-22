@@ -31,6 +31,7 @@ const Navigation = ({ items }) => {
         const relativeUrl = url.replace(/^(?:\/\/|[^\/]+)*\//, "")
         return (
           <Link
+            className={icon ? `link--icon` : null}
             href={relativeUrl}
             target={target}
             title={icon ? label : undefined}
@@ -59,9 +60,10 @@ const NavIcon = ({ icon, label }) => {
   // If icon name value doesn't match Icons object keys then return null
   if (Icons[icon] === undefined) return null
   // If icon found, return the icon with a visibly hiddent text label
+  const Icon = Icons[icon]
   return (
     <>
-      {Icons[icon]}
+      <Icon />
       <span className="hidden">{label}</span>
     </>
   )

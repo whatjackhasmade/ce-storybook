@@ -22,8 +22,17 @@ export const StyledHeader = styled.header`
     transform: translate(-50%, -50%);
   }
 
+  nav {
+    padding: 0;
+  }
+
   nav + nav {
     margin-left: auto;
+  }
+
+  svg {
+    height: 24px;
+    stroke: 1px solid ${props => props.theme.black};
   }
 `
 

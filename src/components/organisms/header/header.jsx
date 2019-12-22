@@ -13,7 +13,6 @@ const { arrayOf, shape, string } = PropTypes
 
 const Header = ({ navigation }) => {
   const [isOpen, setOpen] = useState(false)
-  console.log({ navigation })
 
   const toggleNavigation = e => {
     e.preventDefault()

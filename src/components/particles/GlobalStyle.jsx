@@ -85,6 +85,10 @@ const GlobalStyle = createGlobalStyle`
 		text-decoration: none;
 	}
 
+	.link--icon::after {
+		display: none !important;
+	}
+
 	p {
 		a {
 			color: ${props => props.theme.primary};
@@ -130,6 +134,12 @@ const GlobalStyle = createGlobalStyle`
 			flex-direction: column;
 			min-height: 100vh;
 		}
+	}
+
+	.grid {
+		margin: 0 auto;
+		max-width: 1440px;
+		padding: 0 30px;
 	}
 
 	/* Common base styles for the site */
