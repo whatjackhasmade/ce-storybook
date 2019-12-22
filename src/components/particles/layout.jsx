@@ -14,7 +14,7 @@ import Header from "../organisms/header/header"
 const { bool, node } = PropTypes
 
 const Layout = props => {
-  const { cart, children, footer, gatsbyContext, header, pageContext } = props
+  const { cart, children, footer, gatsbyContext, header } = props
 
   return (
     <ApolloWrapper>
@@ -34,7 +34,11 @@ const Layout = props => {
                   <div className="grid">{children}</div>
                 </main>
               )}
-              {footer && <Footer />}
+              {footer && (
+                <Footer
+                  navigation={gatsbyContext && gatsbyContext.footerMenus}
+                />
+              )}
             </div>
             {cart && <Cart />}
             {/* End of visual page components */}

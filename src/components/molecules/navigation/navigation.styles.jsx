@@ -8,8 +8,6 @@ export const StyledNavigation = styled.nav`
   font-weight: bold;
   line-height: 1.4;
 
-  color: ${props => props.theme.black};
-
   a {
     display: inline-block;
 
@@ -24,7 +22,7 @@ export const StyledNavigation = styled.nav`
       left: 0;
       width: 100%;
 
-      background-color: ${props => props.theme.black};
+      background-color: currentColor;
       transform: scaleX(0);
       transform-origin: right center;
       transition: 0.4s transform ease;

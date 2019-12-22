@@ -9,8 +9,31 @@ export const StyledFooter = styled.footer`
   color: ${props => props.theme.white};
 
   a {
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.grey200};
     text-decoration: none;
+    transition: 0.2s color ease;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: ${props => props.theme.white};
+
+      &:after {
+        display: none;
+      }
+
+      svg {
+        fill: ${props => props.theme.grey200};
+      }
+    }
+  }
+
+  a[aria-current="page"] {
+    color: ${props => props.theme.white};
+
+    &:after {
+      display: none;
+    }
   }
 
   button {
@@ -33,14 +56,7 @@ export const StyledFooter = styled.footer`
     max-width: 24px;
 
     fill: ${props => props.theme.white};
-  }
-
-  .footer__social {
-    margin: 24px auto 16px;
-
-    a + a {
-      margin-left: 12px;
-    }
+    transition: 0.2s fill ease;
   }
 
   .footer__copyright {
@@ -55,6 +71,8 @@ export const StyledFooter = styled.footer`
 
     a {
       padding: 16px;
+
+      color: ${props => props.theme.white};
     }
   }
 
@@ -69,6 +87,7 @@ export const StyledFooter = styled.footer`
     }
 
     nav {
+      align-items: flex-start;
       flex-direction: column;
       padding: 0;
     }
@@ -81,6 +100,14 @@ export const StyledFooter = styled.footer`
   .footer__newsletter {
     margin-left: auto;
     max-width: 320px;
+  }
+
+  .footer__social {
+    margin: 24px auto 16px;
+
+    a + a {
+      margin-left: 12px;
+    }
   }
 
   .footer__wrapper {

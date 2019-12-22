@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
   padding: 30px;
   position: relative;
 
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.black};
 
   button {
     display: inline-flex;
