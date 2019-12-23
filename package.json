@@ -26,12 +26,16 @@
 	},
 	"scripts": {
 		"build-storybook": "build-storybook",
+		"cypress:test": "wait-on http://localhost:6006 && cypress run",
+		"cypress:run": "cypress run",
+		"cypress:open": "cypress open",
 		"postinstall": "git pull --recurse-submodules",
 		"d": "npm run storybook",
 		"dev": "npm run storybook",
 		"develop": "npm run storybook",
 		"start": "npm run storybook",
-		"storybook": "start-storybook -p 6006"
+		"storybook": "start-storybook -p 6006",
+		"test": "concurrently 'npm run storybook:run' 'npm run cypress:test' -k -s first"
 	},
 	"repository": {
 		"type": "git",
