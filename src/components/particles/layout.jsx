@@ -1,11 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider } from "styled-components"
-
-import ApolloWrapper from "./apollo/wrapper"
-import ApplicationState from "./context/applicationState"
-import GlobalStyle from "./globalStyle"
-import ThemeDefault from "./themeDefault"
 
 import Cart from "../organisms/cart/cart"
 import Footer from "../organisms/footer/footer"
@@ -17,35 +11,24 @@ const Layout = props => {
   const { cart, children, footer, gatsbyContext, header } = props
 
   return (
-    <ApolloWrapper>
-      <ApplicationState>
-        <ThemeProvider theme={ThemeDefault}>
-          <GlobalStyle />
-          <>
-            {/* Start of visual page components */}
-            <div className="wrapper">
-              {header && (
-                <Header
-                  navigation={gatsbyContext && gatsbyContext.headerMenu}
-                />
-              )}
-              {children && (
-                <main>
-                  <div className="grid">{children}</div>
-                </main>
-              )}
-              {footer && (
-                <Footer
-                  navigation={gatsbyContext && gatsbyContext.footerMenus}
-                />
-              )}
-            </div>
-            {cart && <Cart />}
-            {/* End of visual page components */}
-          </>
-        </ThemeProvider>
-      </ApplicationState>
-    </ApolloWrapper>
+    <>
+      {/* Start of visual page components */}
+      <div className="wrapper">
+        {header && (
+          <Header navigation={gatsbyContext && gatsbyContext.headerMenu} />
+        )}
+        {children && (
+          <main>
+            <div className="grid">{children}</div>
+          </main>
+        )}
+        {footer && (
+          <Footer navigation={gatsbyContext && gatsbyContext.footerMenus} />
+        )}
+      </div>
+      {cart && <Cart />}
+      {/* End of visual page components */}
+    </>
   )
 }
 

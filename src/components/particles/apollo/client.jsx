@@ -1,21 +1,7 @@
-import { InMemoryCache } from "apollo-cache-inmemory"
-import { ApolloClient } from "apollo-client"
-import { ApolloLink } from "apollo-link"
+import ApolloClient from "apollo-boost"
+import fetch from "unfetch"
 
-// Our custom Apollo logic for our application
-import authLink from "./authLink"
-import errorLink from "./errorLink"
-import httpLink from "./httpLink"
-
-const Client = () => {
-  const link = ApolloLink.from([errorLink, authLink.concat(httpLink)])
-
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link,
-  })
-
-  return client
-}
-
-export default Client
+export const client = new ApolloClient({
+  uri: "https://celticwordpress.co.uk/graphql",
+  fetch,
+})

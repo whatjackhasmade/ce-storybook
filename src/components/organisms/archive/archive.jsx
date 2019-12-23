@@ -9,7 +9,6 @@ const { arrayOf, number, shape, string } = PropTypes
 
 const Archive = ({ items }) => (
   <StyledArchive className="archive">
-    {console.log(items)}
     {items.map(item => (
       <ArchiveItem {...item} />
     ))}

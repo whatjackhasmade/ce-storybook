@@ -1,7 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Link from "gatsby-link"
+import { isInternal } from "../../helpers"
 
-import StyledButton, { StyledLinkButton } from "./button.styles.jsx"
+import StyledButton, {
+  StyledLinkButton,
+  StyledLinkWrapper,
+} from "./button.styles.jsx"
 
 import IconPlus from "../../../assets/images/icons/plus.svg"
 import IconBag from "../../../assets/images/icons/shopping-bag.svg"
@@ -28,11 +33,23 @@ const Button = props => {
         {children}
       </StyledButton>
     )
+
+  if (!isInternal(href)) {
+    return (
+      <StyledLinkButton className="button" {...props}>
+        {icon && <ButtonIcon icon={icon} />}
+        {children}
+      </StyledLinkButton>
+    )
+  }
+
   return (
-    <StyledLinkButton className="button" {...props}>
-      {icon && <ButtonIcon icon={icon} />}
-      {children}
-    </StyledLinkButton>
+    <StyledLinkWrapper>
+      <Link {...props} className="button" to={href}>
+        {icon && <ButtonIcon icon={icon} />}
+        {children}
+      </Link>
+    </StyledLinkWrapper>
   )
 }
 
