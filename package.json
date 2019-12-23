@@ -5,18 +5,14 @@
 	"main": "index.js",
 	"dependencies": {
 		"@babel/core": "^7.7.7",
-		"@storybook/addons": "^5.2.8",
 		"@storybook/addon-actions": "^5.2.8",
 		"@storybook/addon-knobs": "^5.2.6",
 		"@storybook/addon-links": "^5.2.8",
 		"@storybook/addon-options": "^5.2.8",
+		"@storybook/addons": "^5.2.8",
 		"@storybook/react": "^5.2.8",
-		"apollo-cache-inmemory": "^1.6.5",
+		"apollo-boost": "^0.4.7",
 		"apollo-client": "^2.6.8",
-		"apollo-link": "^1.2.13",
-		"apollo-link-context": "^1.0.19",
-		"apollo-link-error": "^1.1.12",
-		"apollo-upload-client": "^12.1.0",
 		"babel-loader": "^8.0.6",
 		"gatsby-link": "^2.2.27",
 		"graphql": "^14.5.8",
@@ -28,9 +24,13 @@
 		"unfetch": "^4.1.0"
 	},
 	"scripts": {
+		"build-storybook": "build-storybook",
 		"postinstall": "git pull --recurse-submodules",
-		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"d": "npm run storybook",
+		"dev": "npm run storybook",
+		"develop": "npm run storybook",
+		"start": "npm run storybook",
+		"storybook": "start-storybook -p 6006"
 	},
 	"repository": {
 		"type": "git",

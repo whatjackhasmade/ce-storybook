@@ -1,15 +1,15 @@
 import React from "react";
-import { array } from "@storybook/addon-knobs";
-import Navigation from "./navigation";
+import { text } from "@storybook/addon-knobs";
+import Logout from "./logout";
 
-import knobData from "./navigation.knobs.json";
-const { navItems } = knobData;
+import knobData from "./logout.knobs.json";
+const { title } = knobData;
 
 export const basicNavigation = () => (
-	<Navigation items={array(navItems.label, navItems.default, navItems.group)} />
+	<Logout title={text(title.label, title.default, title.group)} />
 );
 
 export default {
-	component: Navigation,
-	title: "Navigation"
+	component: Logout,
+	title: "Logout"
 };

@@ -1,23 +1,7 @@
 {
-	"navItems": {
-		"default": [
-			{
-				"label": "Homepage",
-				"target": null,
-				"url": "#"
-			},
-			{
-				"label": "About us",
-				"target": null,
-				"url": "#"
-			},
-			{
-				"label": "Contact",
-				"target": null,
-				"url": "#"
-			}
-		],
+	"title": {
+		"default": "title",
 		"group": "Content",
-		"label": "Navigation items"
+		"label": "Title"
 	}
 }
