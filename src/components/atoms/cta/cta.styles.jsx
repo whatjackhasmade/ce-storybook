@@ -7,10 +7,10 @@ const LinkStyles = `
 	position: relative;
 
 	color: inherit;
-	font-size: 14px;
-	line-height: 140%;
+	font-size: 16px;
 	outline-offset: 8px;
 	text-decoration: none;
+	text-transform: capitalize;
 
 	&:after {
 		bottom: -4px;

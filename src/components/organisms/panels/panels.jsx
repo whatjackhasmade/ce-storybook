@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col } from "react-grid-system";
 
 import StyledPanels from "./panels.styles";
 
@@ -12,21 +11,15 @@ const Panels = ({ items }) => {
 	if (!items || !items.length) return null;
 	return (
 		<StyledPanels className="panels">
-			<Container>
-				<Row>
-					<Col offset={{ lg: 1 }} lg={10}>
-						<div className="panels__contents">
-							{items.map(({ content, link, title }) => (
-								<div className="panels__panel">
-									<h3>{title}</h3>
-									<p>{content}</p>
-									<CTA {...link}>{link.label}</CTA>
-								</div>
-							))}
-						</div>
-					</Col>
-				</Row>
-			</Container>
+			<div className="panels__contents">
+				{items.map(({ content, link, title }) => (
+					<div className="panels__panel">
+						<h3>{title}</h3>
+						<p>{content}</p>
+						<CTA {...link}>{link.label}</CTA>
+					</div>
+				))}
+			</div>
 		</StyledPanels>
 	);
 };

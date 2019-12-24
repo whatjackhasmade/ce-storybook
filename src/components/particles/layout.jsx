@@ -1,22 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ScreenClassProvider, setConfiguration } from "react-grid-system";
 import Cart from "../organisms/cart/cart";
 import Footer from "../organisms/footer/footer";
 import Header from "../organisms/header/header";
 
 const { bool, node } = PropTypes;
 
-setConfiguration({
-	breakpoints: [576, 768, 992, 1440],
-	containerWidths: [540, 750, 960, 1440]
-});
-
 const Layout = props => {
 	const { cart, children, footer, gatsbyContext, header } = props;
 
 	return (
-		<ScreenClassProvider>
+		<>
 			{/* Start of visual page components */}
 			<div className="wrapper">
 				{header && (
@@ -33,7 +27,7 @@ const Layout = props => {
 			</div>
 			{cart && <Cart />}
 			{/* End of visual page components */}
-		</ScreenClassProvider>
+		</>
 	);
 };
 
