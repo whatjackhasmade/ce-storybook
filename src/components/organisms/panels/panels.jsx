@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-grid-system";
 
 import StyledPanels from "./panels.styles";
 
-import IconArrowRight from "../../../assets/images/icons/arrow-right.svg";
+import CTA from "../../atoms/cta/cta";
 
 const { arrayOf, shape, string } = PropTypes;
 
@@ -20,9 +20,7 @@ const Panels = ({ items }) => {
 								<div className="panels__panel">
 									<h3>{title}</h3>
 									<p>{content}</p>
-									<a href={link.url} target={link.target}>
-										{link.label} <IconArrowRight />
-									</a>
+									<CTA {...link}>{link.label}</CTA>
 								</div>
 							))}
 						</div>
@@ -37,7 +35,13 @@ const Panels = ({ items }) => {
 Panels.propTypes = {
 	items: arrayOf(
 		shape({
-			content: string
+			content: string,
+			link: shape({
+				href: string,
+				label: string,
+				target: string
+			}),
+			title: string
 		})
 	)
 };
