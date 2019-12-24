@@ -34,7 +34,7 @@
 		"ci:test": "start-server-and-test dev http://localhost:6006/?path=/story/ cypress:run",
 		"cypress:run": "cypress run",
 		"cypress:open": "cypress open",
-		"postinstall": "git pull --recurse-submodules",
+		"postinstall": "git pull --recurse-submodules || true",
 		"d": "npm run storybook",
 		"dev": "npm run storybook",
 		"develop": "npm run storybook",
