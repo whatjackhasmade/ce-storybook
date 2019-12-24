@@ -30,8 +30,8 @@
 	"scripts": {
 		"build": "npm run build-storybook",
 		"build-storybook": "build-storybook",
-		"ci": "start-server-and-test dev http://localhost:6006 cypress:run",
-		"cypress:test": "wait-on http://localhost:6006 && cypress run",
+		"ci:manual": "start-server-and-test dev http://localhost:6006/?path=/story/ cypress:open",
+		"ci:test": "start-server-and-test dev http://localhost:6006/?path=/story/ cypress:run",
 		"cypress:run": "cypress run",
 		"cypress:open": "cypress open",
 		"postinstall": "git pull --recurse-submodules",
@@ -40,7 +40,7 @@
 		"develop": "npm run storybook",
 		"start": "npm run storybook",
 		"storybook": "start-storybook -p 6006",
-		"test": "start-server-and-test dev http://localhost:6006 cypress:open"
+		"test": "npm run ci:manual"
 	},
 	"repository": {
 		"type": "git",

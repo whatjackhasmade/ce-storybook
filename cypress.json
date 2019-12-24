@@ -1,1 +1,7 @@
-{}
+{
+	"baseUrl": "http://localhost:6006/?path=/story/",
+	"env": {},
+	"port": 9991,
+	"integrationFolder": "src/components",
+	"testFiles": "**/*.test.*"
+}
