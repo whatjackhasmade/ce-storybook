@@ -59,6 +59,10 @@ export const StyledPanels = styled.section`
 		}
 	}
 
+	.panels__footer {
+		margin: 24px auto 0;
+	}
+
 	.panels__panel {
 		flex: 1;
 		position: relative;
