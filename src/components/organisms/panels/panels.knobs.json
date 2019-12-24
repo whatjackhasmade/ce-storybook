@@ -1,0 +1,35 @@
+{
+	"items": {
+		"default": [
+			{
+				"content": "Hand made in Wales using the best natural products sourced from the hillside and coast of Wales.",
+				"link": {
+					"label": "Learn About Our Process",
+					"target": null,
+					"url": "#"
+				},
+				"title": "Truly Handcrafted"
+			},
+			{
+				"content": "Hand made in Wales using the best natural products sourced from the hillside and coast of Wales.",
+				"link": {
+					"label": "Learn About Our Process",
+					"target": null,
+					"url": "#"
+				},
+				"title": "Truly Handcrafted"
+			},
+			{
+				"content": "Hand made in Wales using the best natural products sourced from the hillside and coast of Wales.",
+				"link": {
+					"label": "Learn About Our Process",
+					"target": null,
+					"url": "#"
+				},
+				"title": "Truly Handcrafted"
+			}
+		],
+		"group": "Content",
+		"label": "Panel items"
+	}
+}
