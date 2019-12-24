@@ -9,6 +9,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
-          build: npm run build
+          build: npm run storybook
           start: npm ci
           wait-on: http://localhost:6006
