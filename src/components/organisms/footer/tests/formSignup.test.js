@@ -12,11 +12,11 @@ describe("Footer Newsletter Signup", () => {
 		cy.contains("Email sent!");
 	});
 
-	it("Should send an email containing a verification link", () => {
-		cy.getLastEmail(randomEmail).then(email => {
-			const link = email.match(/href="([^"]*)/)[1];
-			cy.visit(link);
-			cy.contains("Your email address has been verified!");
-		});
-	});
+	// it("Should send an email containing a verification link", () => {
+	// 	cy.getLastEmail(randomEmail).then(email => {
+	// 		const link = email.match(/href="([^"]*)/)[1];
+	// 		cy.visit(link);
+	// 		cy.contains("Your email address has been verified!");
+	// 	});
+	// });
 });
