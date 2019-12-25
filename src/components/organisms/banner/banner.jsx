@@ -15,7 +15,7 @@ const Banner = props => {
     <StyledBanner {...props} className="banner">
       <div className="banner__contents">
         {title && <h2 className="banner__title">{title}</h2>}
-        <p>{content}</p>
+        <p className="banner__content">{content}</p>
         {cta && (
           <footer className="banner__footer">
             <Button href={cta.href} target={cta.target} variant="tertiary">
