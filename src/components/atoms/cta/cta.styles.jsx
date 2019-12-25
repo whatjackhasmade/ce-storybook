@@ -53,6 +53,19 @@ export const StyledCTA = styled.a`
 	}
 `;
 
+export const StyledCTASpan = styled(StyledCTA).attrs({ as: "span" })`
+	text-decoration: none;
+
+	&[aria-current="page"],
+	&:active,
+	&:focus,
+	&:hover {
+		&:after {
+			display: none;
+		}
+	}
+`;
+
 export const StyledCTAWrapper = styled.span`
 	a {
 		${LinkStyles}

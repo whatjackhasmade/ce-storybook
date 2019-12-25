@@ -3,14 +3,19 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import { isInternal } from "../../helpers";
 
-import StyledCTA, { StyledCTAWrapper } from "./cta.styles";
+import StyledCTA, { StyledCTASpan, StyledCTAWrapper } from "./cta.styles";
 
 import IconArrowRight from "../../../assets/images/icons/arrow-right.svg";
 
 const CTA = props => {
 	const { children, href, target } = props;
 
-	if (!href) return null;
+	if (!href)
+		return (
+			<StyledCTASpan {...props} className="cta">
+				{children} <IconArrowRight />
+			</StyledCTASpan>
+		);
 
 	if (!isInternal(href)) {
 		return (
