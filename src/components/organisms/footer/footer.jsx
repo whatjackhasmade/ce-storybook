@@ -14,7 +14,7 @@ import Navigation from "../../molecules/navigation/navigation"
 const { arrayOf, shape, string } = PropTypes
 
 const expressDomain =
-  process.env.EXPRESS_DOMAIN || "https://ce-express.herokuapp.com"
+  process.env.GATSBY_EXPRESS_DOMAIN || "https://ce-express.herokuapp.com"
 
 const Footer = ({ navigation }) => (
   <StyledFooter>
