@@ -16,6 +16,7 @@ export const StyledArchive = styled.section`
     }
 
     @media ${device.md} {
+      grid-row-gap: 48px;
       grid-template-columns: repeat(3, 1fr);
     }
 
