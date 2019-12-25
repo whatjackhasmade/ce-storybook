@@ -6,7 +6,7 @@ export default () => `
 	overflow: visible;
 
 	background: transparent;
-
+	box-shadow: none;
 	color: inherit;
 	font: inherit;
 
@@ -21,4 +21,4 @@ export default () => `
 			border: 0;
 			padding: 0;
 	}
-`;
+`

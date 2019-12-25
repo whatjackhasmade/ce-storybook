@@ -1,38 +1,38 @@
-import React from "react";
-import { string } from "prop-types";
+import React from "react"
+import { string } from "prop-types"
 
-import StyledLogout from "./logout.styles";
+import StyledLogout from "./logout.styles"
 
-import Button from "../../atoms/button/button";
+import Button from "../../atoms/button/button"
 
 const Logout = ({ title }) => {
-	const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem("authToken")
 
-	if (!authToken) {
-		console.log("Not currently logged in, skipping logout component");
-		return null;
-	}
+  if (!authToken) {
+    console.log("Not currently logged in, skipping logout component")
+    return null
+  }
 
-	const logoutUser = e => {
-		e.preventDefault();
-		localStorage.removeItem("authToken");
-	};
+  const logoutUser = e => {
+    e.preventDefault()
+    localStorage.removeItem("authToken")
+  }
 
-	return (
-		<StyledLogout className="navigation">
-			<h4>{title}:</h4>
-			<Button onClick={logoutUser}>Logout</Button>
-		</StyledLogout>
-	);
-};
+  return (
+    <StyledLogout className="navigation">
+      <h4>{title}:</h4>
+      <Button onClick={logoutUser}>Logout</Button>
+    </StyledLogout>
+  )
+}
 
 // Expected prop values
 Logout.propTypes = {
-	title: string.isRequired
-};
+  title: string.isRequired,
+}
 
 Logout.defaultProps = {
-	title: "Logout of account"
-};
+  title: "Logout of account",
+}
 
-export default Logout;
+export default Logout
