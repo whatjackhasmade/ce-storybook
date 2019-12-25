@@ -4,3 +4,5 @@ import "@storybook/addon-actions/register";
 import "@storybook/addon-options/register";
 // Register the Figma addon
 import "storybook-addon-figma/register";
+// Register the Viewport addon
+import "@storybook/addon-viewport/register";

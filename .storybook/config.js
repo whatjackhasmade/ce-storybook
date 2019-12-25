@@ -3,6 +3,7 @@ import { addDecorator } from "@storybook/react";
 import { configure } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
 import { setOptions } from "@storybook/addon-options";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { ThemeProvider } from "styled-components";
 
 import ApolloWrapper from "../src/components/particles/apollo/wrapper";
@@ -30,6 +31,23 @@ const GlobalDecorator = storyFn => (
 addDecorator(GlobalDecorator);
 addDecorator(withKnobs);
 
+const newViewports = {
+	kindleFire2: {
+		name: "Kindle Fire 2",
+		styles: {
+			width: "600px",
+			height: "963px"
+		}
+	},
+	kindleFireHD: {
+		name: "Kindle Fire HD",
+		styles: {
+			width: "533px",
+			height: "801px"
+		}
+	}
+};
+
 // Set Figma add-on to show panel in right side
 setOptions({
 	downPanelInRight: true
@@ -47,3 +65,12 @@ global.__PATH_PREFIX__ = "";
 window.___navigate = pathname => {
 	action("NavigateTo:")(pathname);
 };
+
+addParameters({
+	viewport: {
+		viewports: {
+			...INITIAL_VIEWPORTS,
+			...newViewports
+		}
+	}
+});
