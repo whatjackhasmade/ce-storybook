@@ -11,11 +11,12 @@ export const StyledArchive = styled.section`
 
     @media ${device.xs} {
       display: grid;
-      grid-gap: 30px;
+      grid-gap: 32px;
       grid-template-columns: repeat(2, 1fr);
     }
 
     @media ${device.md} {
+      grid-gap: 40px;
       grid-row-gap: 48px;
       grid-template-columns: repeat(3, 1fr);
     }

@@ -41,8 +41,20 @@ export const StyledArchiveItem = styled.div`
     transition: 1s transform ease;
   }
 
+  p:first-of-type {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: 16px;
+  }
+
   .archive-item__image {
     overflow: hidden;
+  }
+
+  .archive-item__price {
+    margin-bottom: 16px;
   }
 `
 
