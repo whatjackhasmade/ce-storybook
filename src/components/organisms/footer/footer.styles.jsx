@@ -1,238 +1,265 @@
-import styled from "styled-components";
-import { device } from "../../particles/mediaQueries";
-import buttonReset from "../../atoms/button/button.reset";
+import styled from "styled-components"
+import { device } from "../../particles/mediaQueries"
+import buttonReset from "../../atoms/button/button.reset"
 
 export const StyledFooter = styled.footer`
-	margin-left: calc(-50vw + 50%);
-	margin-right: calc(-50vw + 50%);
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
 
-	background-color: ${props => props.theme.grey800};
-	color: ${props => props.theme.white};
+  background-color: ${props => props.theme.grey800};
+  color: ${props => props.theme.white};
 
-	a {
-		color: ${props => props.theme.grey300};
-		font-size: 18px;
-		line-height: 140%;
-		text-decoration: none;
-		transition: 0.2s color ease;
+  a {
+    color: ${props => props.theme.grey300};
+    font-size: 18px;
+    line-height: 140%;
+    text-decoration: none;
+    transition: 0.2s color ease;
 
-		&:active,
-		&:focus,
-		&:hover {
-			color: ${props => props.theme.white};
+    &:active,
+    &:focus,
+    &:hover {
+      color: ${props => props.theme.white};
 
-			&:after {
-				display: none;
-			}
+      &:after {
+        display: none;
+      }
 
-			svg {
-				fill: ${props => props.theme.grey200};
-			}
-		}
-	}
+      svg {
+        fill: ${props => props.theme.grey200};
+      }
+    }
+  }
 
-	a[aria-current="page"] {
-		color: ${props => props.theme.white};
+  a[aria-current="page"] {
+    color: ${props => props.theme.white};
 
-		&:after {
-			display: none;
-		}
-	}
+    &:after {
+      display: none;
+    }
+  }
 
-	button {
-		min-width: auto;
-	}
+  button {
+    min-width: auto;
+  }
 
-	button[type="submit"] {
-		${buttonReset}
+  button[type="submit"] {
+    ${buttonReset}
 
-		margin-top: 0;
-		padding-left: 8px;
-		padding-right: 8px;
+    margin-top: 0;
+    padding-left: 8px;
+    padding-right: 8px;
 
-		color: ${props => props.theme.grey200};
-		transition: 0.2s color ease;
+    color: ${props => props.theme.grey200};
+    transition: 0.2s color ease;
 
-		&:active,
-		&:focus,
-		&:hover {
-			color: ${props => props.theme.white};
+    &:active,
+    &:focus,
+    &:hover {
+      color: ${props => props.theme.white};
 
-			outline: 1px dotted ${props => props.theme.blue};
-		}
-	}
+      outline: 1px dotted ${props => props.theme.blue};
+    }
+  }
 
-	form {
-		display: flex;
-		margin-top: 16px;
+  form {
+    display: flex;
+    margin-top: 16px;
 
-		border-bottom: 2px solid ${props => props.theme.white};
-	}
+    border-bottom: 2px solid ${props => props.theme.white};
+    background-color: ${props => props.theme.grey800};
+    color: ${props => props.theme.white};
+    transition: 0.2s background-color ease, 0.2s color ease;
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		margin: 0 0 8px;
-	}
+    input {
+      color: inherit;
+    }
+  }
 
-	input[type="email"] {
-		padding-left: 0;
-		padding-top: 16px;
-		padding-bottom: 16px;
-		width: 100%;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 8px;
+  }
 
-		background-color: transparent;
-		border: none;
-		color: ${props => props.theme.white};
-		font-size: 18px;
-		font-weight: 400;
-		line-height: 140%;
+  input[type="email"] {
+    padding-left: 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    width: 100%;
 
-		&::placeholder {
-			color: ${props => props.theme.white};
-			font-size: 18px;
-			font-weight: 400;
-			line-height: 140%;
-		}
-	}
+    background-color: transparent;
+    border: none;
+    color: ${props => props.theme.white};
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
 
-	svg {
-		max-width: 20px;
+    &::placeholder {
+      color: ${props => props.theme.white};
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+  }
 
-		fill: ${props => props.theme.white};
-		transition: 0.2s fill ease;
-	}
+  svg {
+    max-width: 20px;
 
-	.footer__contents {
-		display: flex;
-		flex-direction: column;
-		margin: 0 auto;
-		max-width: 1440px;
-		padding: 48px 30px 30px;
+    fill: ${props => props.theme.white};
+    transition: 0.2s fill ease;
+  }
 
-		@media ${device.md} {
-			flex-direction: row;
-			flex-wrap: wrap;
-		}
-	}
+  .form--submitted {
+    cursor: default;
 
-	.footer__copyright {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		margin: 48px auto 0;
-		width: 100%;
+    background-color: ${props => props.theme.white};
+    color: ${props => props.theme.grey800};
+    transition: 0.2s background-color ease, 0.2s color ease;
 
-		@media ${device.md} {
-			flex-direction: row;
-		}
+    input {
+      color: inherit;
+    }
 
-		* {
-			margin: 0;
-		}
+    input[disabled] {
+      cursor: default;
+    }
 
-		a {
-			padding: 16px 0;
-			position: relative;
+    input[type="email"] {
+      padding-left: 12px;
+    }
+  }
 
-			color: ${props => props.theme.white};
+  .footer__contents {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 48px 30px 30px;
 
-			@media ${device.md} {
-				margin-left: 12px;
-				padding: 16px;
+    @media ${device.md} {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
 
-				&::before {
-					border-radius: 50%;
-					content: "";
-					display: block;
-					height: 8px;
-					left: -2px;
-					position: absolute;
-					top: 50%;
-					width: 8px;
+  .footer__copyright {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 48px auto 0;
+    width: 100%;
 
-					background-color: ${props => props.theme.grey500};
-					transform: translateY(-50%);
-				}
-			}
-		}
-	}
+    @media ${device.md} {
+      flex-direction: row;
+    }
 
-	.footer__navigation {
-		a {
-			font-weight: 400;
-		}
+    * {
+      margin: 0;
+    }
 
-		a + a {
-			margin-left: 0;
-			margin-top: 16px;
-		}
+    a {
+      padding: 16px 0;
+      position: relative;
 
-		nav {
-			align-items: flex-start;
-			flex-direction: column;
-			margin-top: 16px;
-			padding: 0;
-		}
-	}
+      color: ${props => props.theme.white};
 
-	.footer__navigation + .footer__navigation {
-		margin-top: 40px;
-		padding-top: 40px;
+      @media ${device.md} {
+        margin-left: 12px;
+        padding: 16px;
 
-		border-top: 1px solid ${props => props.theme.grey600};
+        &::before {
+          border-radius: 50%;
+          content: "";
+          display: block;
+          height: 8px;
+          left: -2px;
+          position: absolute;
+          top: 50%;
+          width: 8px;
 
-		@media ${device.sm} {
-			margin-left: 64px;
-			margin-top: 0;
-			padding-top: 0;
+          background-color: ${props => props.theme.grey500};
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
 
-			border-top: none;
-		}
-	}
+  .footer__navigation {
+    a {
+      font-weight: 400;
+    }
 
-	.footer__newsletter {
-		margin-top: 48px;
-		padding-top: 48px;
+    a + a {
+      margin-left: 0;
+      margin-top: 16px;
+    }
 
-		border-top: 1px solid ${props => props.theme.grey600};
+    nav {
+      align-items: flex-start;
+      flex-direction: column;
+      margin-top: 16px;
+      padding: 0;
+    }
+  }
 
-		@media ${device.md} {
-			margin-left: auto;
-			margin-top: 0;
-			max-width: 320px;
-			padding-top: 0;
+  .footer__navigation + .footer__navigation {
+    margin-top: 40px;
+    padding-top: 40px;
 
-			border-top: none;
-		}
+    border-top: 1px solid ${props => props.theme.grey600};
 
-		p {
-			color: ${props => props.theme.grey300};
-			font-size: 18px;
-			font-weight: 300;
-			line-height: 140%;
-		}
-	}
+    @media ${device.sm} {
+      margin-left: 64px;
+      margin-top: 0;
+      padding-top: 0;
 
-	.footer__social {
-		margin: 24px auto 16px;
+      border-top: none;
+    }
+  }
 
-		a + a {
-			margin-left: 16px;
-		}
-	}
+  .footer__newsletter {
+    margin-top: 48px;
+    padding-top: 48px;
 
-	.footer__wrapper {
-		display: flex;
-		flex-direction: column;
+    border-top: 1px solid ${props => props.theme.grey600};
 
-		@media ${device.sm} {
-			flex-direction: row;
-		}
-	}
-`;
+    @media ${device.md} {
+      margin-left: auto;
+      margin-top: 0;
+      max-width: 320px;
+      padding-top: 0;
 
-export default StyledFooter;
+      border-top: none;
+    }
+
+    p {
+      color: ${props => props.theme.grey300};
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 140%;
+    }
+  }
+
+  .footer__social {
+    margin: 24px auto 16px;
+
+    a + a {
+      margin-left: 16px;
+    }
+  }
+
+  .footer__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @media ${device.sm} {
+      flex-direction: row;
+    }
+  }
+`
+
+export default StyledFooter
