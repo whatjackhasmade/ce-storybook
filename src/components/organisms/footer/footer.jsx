@@ -61,7 +61,13 @@ const Footer = ({ navigation }) => {
 
 				<nav className="footer__copyright">
 					<p>Copyright &copy; Celtic Elements 2020</p>
-					<a href="https://whatjackhasmade.co.uk">Website by Jack Pritchard</a>
+					<a
+						href="https://whatjackhasmade.co.uk"
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						Website by Jack Pritchard
+					</a>
 				</nav>
 			</div>
 		</StyledFooter>
