@@ -24,11 +24,16 @@ export function calculateTotalCost(items) {
   }
 
   const total = filteredItems.reduce(reducer, 0)
-  const totalFormatted = new Intl.NumberFormat("en-GB", {
+  return formatMoney(total)
+}
+
+export function formatMoney(value) {
+  const valueFormatted = new Intl.NumberFormat("en-GB", {
     style: "currency",
     currency: "GBP",
-  }).format(total)
-  return totalFormatted
+  }).format(value)
+
+  return valueFormatted
 }
 
 export function hexToRGB(hex) {

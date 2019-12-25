@@ -9,9 +9,11 @@ const { arrayOf, number, shape, string } = PropTypes
 
 const Archive = ({ items }) => (
   <StyledArchive className="archive">
-    {items.map(item => (
-      <ArchiveItem {...item} />
-    ))}
+    <div className="archive__contents">
+      {items.map(item => (
+        <ArchiveItem {...item} />
+      ))}
+    </div>
   </StyledArchive>
 )
 

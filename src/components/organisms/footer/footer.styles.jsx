@@ -137,7 +137,7 @@ export const StyledFooter = styled.footer`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: ${props => props.theme.gridMax};
     padding: 48px 30px 30px;
 
     @media ${device.md} {
