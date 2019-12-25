@@ -17,6 +17,7 @@
 		"apollo-client": "^2.6.8",
 		"babel-loader": "^8.0.6",
 		"cypress": "^3.8.0",
+		"faker": "^4.1.0",
 		"gatsby-image": "^2.2.37",
 		"gatsby-link": "^2.2.27",
 		"graphql": "^14.5.8",
