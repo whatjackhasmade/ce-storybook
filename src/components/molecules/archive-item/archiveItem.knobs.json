@@ -1,0 +1,22 @@
+{
+	"image": {
+		"default": "https://source.unsplash.com/HOs5ZoXuG18/400x300",
+		"group": "Content",
+		"label": "Image"
+	},
+	"price": {
+		"default": 80.0,
+		"group": "Content",
+		"label": "Price"
+	},
+	"slug": {
+		"default": "title",
+		"group": "Content",
+		"label": "Slug"
+	},
+	"title": {
+		"default": "Title",
+		"group": "Content",
+		"label": "Title"
+	}
+}

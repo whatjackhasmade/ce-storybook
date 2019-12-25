@@ -6,3 +6,5 @@ import "@storybook/addon-options/register";
 import "storybook-addon-figma/register";
 // Register the Viewport addon
 import "@storybook/addon-viewport/register";
+// Register the Console addon
+import "@storybook/addon-console";
