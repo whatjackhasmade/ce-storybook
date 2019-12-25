@@ -1,7 +1,11 @@
 {
-	"baseUrl": "http://localhost:6006/?path=/story/",
-	"env": {},
-	"port": 9991,
-	"integrationFolder": "src/components",
-	"testFiles": "**/*.test.*"
+  "baseUrl": "http://localhost:6006/?path=/story/",
+  "env": {
+    "GATSBY_GRAPHQL_API": "https://celticwordpress.co.uk/graphql",
+    "GATSBY_EXPRESS_DOMAIN": "https://ce-express.herokuapp.com",
+    "GRAPHQL_API": "https://celticwordpress.co.uk/graphql"
+  },
+  "port": 9991,
+  "integrationFolder": "src/components",
+  "testFiles": "**/*.test.*"
 }
