@@ -55,8 +55,6 @@ export const StyledSlider = styled.section`
 
   .slider__current,
   .slick-slide {
-    min-height: 80vh;
-    padding: 30px;
     position: relative;
     width: 100%;
 
@@ -78,19 +76,34 @@ export const StyledSlider = styled.section`
 
   .slider__current__content,
   .slider__item__content {
+    align-items: center;
+    display: flex;
+    min-height: 400px;
     margin: 0 auto;
-    max-width: 80%;
+    padding: 30px;
     position: relative;
     z-index: 2;
+
+    @media ${device.md} {
+      max-width: 80%;
+      min-height: 80vh;
+      padding: 0;
+    }
   }
 
   .slider__footer {
-    display: flex;
+    @media ${device.md} {
+      display: flex;
+    }
   }
 
   .slider__options {
-    display: flex;
+    display: none;
     width: 100%;
+
+    @media ${device.md} {
+      display: flex;
+    }
   }
 
   .slider__option {
@@ -118,7 +131,10 @@ export const StyledSlider = styled.section`
 
   .slider__pagination {
     display: block;
-    min-width: 200px;
+
+    @media ${device.md} {
+      min-width: 200px;
+    }
 
     button {
       border-radius: 12px;
