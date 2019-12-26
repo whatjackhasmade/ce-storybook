@@ -11,14 +11,13 @@ import Intro from "../../molecules/intro/intro"
 
 const { array, node, object, string } = PropTypes
 
-const Related = props => {
-  const { cta, items, subtitle, text, title } = props
+const Related = ({ intro, items }) => {
   if (!items) return null
   if (!items.length) return null
   return (
     <StyledRelated className="related">
       <div className="related__contents">
-        <Intro {...props} />
+        <Intro {...intro} />
         <div className="related__items">
           {items.map(item => (
             <RelatedItem {...item} />

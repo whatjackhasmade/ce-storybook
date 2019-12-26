@@ -1,14 +1,14 @@
 import React from "react"
 import { array, object, text } from "@storybook/addon-knobs"
 import { WithFigma } from "storybook-addon-figma"
-import Related from "./related"
+import Carousel from "./carousel"
 
-import knobData from "./related.knobs.json"
+import knobData from "./carousel.knobs.json"
 const { items, intro } = knobData
 
-export const postsRelated = () => (
-  <WithFigma url="https://www.figma.com/file/uihfnI2u5KSj2LuAVZR7lt/Celtic-Elements?node-id=969%3A521">
-    <Related
+export const productCarousel = () => (
+  <WithFigma url="https://www.figma.com/file/uihfnI2u5KSj2LuAVZR7lt/Celtic-Elements?node-id=926%3A992">
+    <Carousel
       intro={{
         cta: object(intro.cta.label, intro.cta.default, intro.cta.group),
         subtitle: text(
@@ -25,6 +25,6 @@ export const postsRelated = () => (
 )
 
 export default {
-  component: Related,
-  title: "Related",
+  component: Carousel,
+  title: "Caoursel",
 }
