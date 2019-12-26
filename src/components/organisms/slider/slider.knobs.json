@@ -1,0 +1,28 @@
+{
+  "items": {
+    "default": [
+      {
+        "image": "https://source.unsplash.com/HOs5ZoXuG18/400x300",
+        "title": "Beauty Sleep in a Box"
+      },
+      {
+        "image": "https://source.unsplash.com/HOs5ZoXuG18/400x300",
+        "title": "Beauty Sleep in a Box"
+      },
+      {
+        "image": "https://source.unsplash.com/HOs5ZoXuG18/400x300",
+        "title": "Beauty Sleep in a Box"
+      },
+      {
+        "image": "https://source.unsplash.com/HOs5ZoXuG18/400x300",
+        "title": "Beauty Sleep in a Box"
+      },
+      {
+        "image": "https://source.unsplash.com/HOs5ZoXuG18/400x300",
+        "title": "Beauty Sleep in a Box"
+      }
+    ],
+    "group": "Content",
+    "label": "Slider Items"
+  }
+}
