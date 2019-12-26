@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const LinkStyles = `
 	align-items: center;
@@ -35,14 +35,21 @@ const LinkStyles = `
 			transform: scaleX(1);
 			transform-origin: left center;
 		}
+
+		svg {
+			transform: translateX(4px);
+		}
 	}
 
 	svg {
 		display: block;
 		height: 8px;
 		margin-left: 8px;
+
+		transform: translateX(0px);
+		transition: 0.2s transform ease;
 	}
-`;
+`
 
 export const StyledCTA = styled.a`
 	${LinkStyles}
@@ -51,20 +58,20 @@ export const StyledCTA = styled.a`
 	svg {
 		stroke: currentColor;
 	}
-`;
+`
 
 export const StyledCTASpan = styled(StyledCTA).attrs({ as: "span" })`
-	text-decoration: none;
+  text-decoration: none;
 
-	&[aria-current="page"],
-	&:active,
-	&:focus,
-	&:hover {
-		&:after {
-			display: none;
-		}
-	}
-`;
+  &[aria-current="page"],
+  &:active,
+  &:focus,
+  &:hover {
+    &:after {
+      display: none;
+    }
+  }
+`
 
 export const StyledCTAWrapper = styled.span`
 	a {
@@ -75,6 +82,6 @@ export const StyledCTAWrapper = styled.span`
 			stroke: currentColor;
 		}
 	}
-`;
+`
 
-export default StyledCTA;
+export default StyledCTA
