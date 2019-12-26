@@ -7,25 +7,18 @@ import StyledRelated from "./related.styles"
 import CTA from "../../atoms/cta/cta"
 import Link from "../../atoms/link/link"
 
+import Intro from "../../molecules/intro/intro"
+
 const { array, node, object, string } = PropTypes
 
-const Related = ({ cta, intro, items, subtitle, title }) => {
+const Related = props => {
+  const { cta, items, subtitle, text, title } = props
   if (!items) return null
   if (!items.length) return null
-
   return (
     <StyledRelated className="related">
       <div className="related__contents">
-        <header className="related__header">
-          {subtitle && <h3 className="related__subtitle">{subtitle}</h3>}
-          {title && <h2 className="related__title">{title}</h2>}
-          {intro && <p className="related__intro">{intro}</p>}
-          {cta && (
-            <Link href={cta.href} target={cta.target}>
-              <CTA>{cta.label}</CTA>
-            </Link>
-          )}
-        </header>
+        <Intro {...props} />
         <div className="related__items">
           {items.map(item => (
             <RelatedItem {...item} />

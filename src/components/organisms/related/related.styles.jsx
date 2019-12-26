@@ -15,12 +15,6 @@ export const StyledRelated = styled.section`
     max-width: ${props => props.theme.gridMax};
   }
 
-  .related__header {
-    margin-bottom: 56px;
-
-    text-align: center;
-  }
-
   .related__items {
     @media ${device.xs} {
       display: grid;
@@ -33,35 +27,6 @@ export const StyledRelated = styled.section`
       grid-row-gap: 48px;
       grid-template-columns: repeat(3, 1fr);
     }
-  }
-
-  .related__intro {
-    margin: 0 auto 16px;
-    max-width: 424px;
-
-    color: ${props => props.theme.grey600};
-    font-weight: bold;
-    letter-spacing: -0.05em;
-  }
-
-  .related__subtitle {
-    margin: 0 auto 32px;
-
-    /* Secondary-500 */
-    color: #54aac5;
-    font-size: 14px;
-    letter-spacing: 0.19em;
-    line-height: 140%;
-    text-transform: uppercase;
-  }
-
-  .related__title {
-    margin: 0 auto 24px;
-
-    color: ${props => props.theme.grey900};
-    font-size: 36px;
-    letter-spacing: -0.05em;
-    line-height: 110%;
   }
 
   .related-item {

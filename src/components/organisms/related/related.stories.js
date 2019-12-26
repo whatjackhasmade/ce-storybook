@@ -11,8 +11,8 @@ export const postsRelated = () => (
     <Related
       cta={object(cta.label, cta.default, cta.group)}
       items={array(items.label, items.default, items.group)}
-      intro={text(intro.label, intro.default, intro.group)}
       subtitle={text(subtitle.label, subtitle.default, subtitle.group)}
+      text={text(intro.label, intro.default, intro.group)}
       title={text(title.label, title.default, title.group)}
     />
   </WithFigma>
