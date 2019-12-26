@@ -36,7 +36,7 @@ const settings = {
       },
     },
     {
-      breakpoint: breakpoints.sm,
+      breakpoint: breakpoints.xs,
       slidesToShow: 1,
     },
   ],
@@ -46,16 +46,13 @@ const Carousel = ({ intro, items }) => {
   if (!items) return null
   if (!items.length) return null
 
+  if (items.length < 5)
+    items = [...items, ...items, ...items, ...items, ...items]
+
   return (
     <SyledCarousel className="carousel">
       <Intro {...intro} />
       <Slider className="carousel__slider" {...settings}>
-        {items.map(item => (
-          <CarouselItem {...item} />
-        ))}
-        {items.map(item => (
-          <CarouselItem {...item} />
-        ))}
         {items.map(item => (
           <CarouselItem {...item} />
         ))}
