@@ -39,14 +39,14 @@ Related.defaultProps = {
 
 const RelatedItem = ({ category, description, image, slug, title }) => (
   <div className="related-item">
-    {image && (
+    {image && slug && (
       <Link href={`/${slug}`}>
         <div className="related-item__image">
           <img src={image} alt={title} />
         </div>
       </Link>
     )}
-    {category && (
+    {category && category.href && category.label && (
       <h4 className="related-item__subtitle">
         <Link href={category.href}>{category.label}</Link>
       </h4>

@@ -38,15 +38,15 @@
   "intro": {
     "cta": {
       "default": {
-        "href": "/posts",
-        "label": "View all posts",
+        "href": "/shop",
+        "label": "View all products",
         "target": null
       },
       "group": "Content",
       "label": "Header Call to Action"
     },
     "subtitle": {
-      "default": "Related posts",
+      "default": "Our products",
       "group": "Content",
       "label": "Subtitle"
     },
@@ -56,7 +56,7 @@
       "label": "Intro"
     },
     "title": {
-      "default": "Continue reading our beauty insights",
+      "default": "Premium, handcrafted care",
       "group": "Content",
       "label": "Title"
     }

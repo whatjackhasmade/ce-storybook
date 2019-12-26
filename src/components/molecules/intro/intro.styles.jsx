@@ -3,7 +3,6 @@ import { device } from "../../particles/mediaQueries"
 
 export const StyledIntro = styled.section`
   margin-bottom: 56px;
-  padding: 30px 0;
   width: 100%;
 
   text-align: center;
