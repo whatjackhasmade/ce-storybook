@@ -1,16 +1,16 @@
-import { createGlobalStyle } from "styled-components";
-import "normalize.css/normalize.css";
+import { createGlobalStyle } from "styled-components"
+import "normalize.css/normalize.css"
 
-import device from "./mediaQueries";
-import Fonts from "./fonts";
+import device from "./mediaQueries"
+import Fonts from "./fonts"
 
 const GlobalStyle = createGlobalStyle`
 	@font-face {
 		font-family: 'Linto';
 		src: url(${Fonts.LintoBrownLightEOT}); /* IE9 Compat Modes */
 		src: url(${
-			Fonts.LintoBrownLightEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
+      Fonts.LintoBrownLightEOTIE
+    }) format('embedded-opentype'), /* IE6-IE8 */
 			url(${Fonts.LintoBrownLightWOFF2}) format('woff2'), /* Super Modern Browsers */
 			url(${Fonts.LintoBrownLightWOFF}) format('woff'), /* Pretty Modern Browsers */
 			url(${Fonts.LintoBrownLightTTF})  format('truetype');
@@ -22,11 +22,11 @@ const GlobalStyle = createGlobalStyle`
 		font-family: 'Linto';
 		src: url(${Fonts.LintoBrownRegularEOT}); /* IE9 Compat Modes */
 		src: url(${
-			Fonts.LintoBrownRegularEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
+      Fonts.LintoBrownRegularEOTIE
+    }) format('embedded-opentype'), /* IE6-IE8 */
 			url(${
-				Fonts.LintoBrownRegularWOFF2
-			}) format('woff2'), /* Super Modern Browsers */
+        Fonts.LintoBrownRegularWOFF2
+      }) format('woff2'), /* Super Modern Browsers */
 			url(${Fonts.LintoBrownRegularWOFF}) format('woff'), /* Pretty Modern Browsers */
 			url(${Fonts.LintoBrownRegularTTF})  format('truetype');
 		font-style: normal;
@@ -37,8 +37,8 @@ const GlobalStyle = createGlobalStyle`
 		font-family: 'Linto';
 		src: url(${Fonts.LintoBrownBoldEOT}); /* IE9 Compat Modes */
 		src: url(${
-			Fonts.LintoBrownBoldEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
+      Fonts.LintoBrownBoldEOTIE
+    }) format('embedded-opentype'), /* IE6-IE8 */
 			url(${Fonts.LintoBrownBoldWOFF2}) format('woff2'), /* Super Modern Browsers */
 			url(${Fonts.LintoBrownBoldWOFF}) format('woff'), /* Pretty Modern Browsers */
 			url(${Fonts.LintoBrownBoldTTF})  format('truetype');
@@ -106,10 +106,12 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		scroll-behavior: smooth;
+		overflow-y: scroll;
 
+		background-color: ${props => props.theme.white};
 		font-size: 1.6rem;
 		line-height: 1.5;
+		scroll-behavior: smooth;
 	}
 
 	main {
@@ -404,6 +406,6 @@ const GlobalStyle = createGlobalStyle`
 		width: 1px;
 		}
 	}
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle
