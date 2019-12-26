@@ -53,7 +53,8 @@ export const StyledSlider = styled.section`
     background-color: ${props => props.theme.black};
   }
 
-  .slider__current {
+  .slider__current,
+  .slick-slide {
     min-height: 80vh;
     padding: 30px;
     position: relative;
@@ -75,7 +76,8 @@ export const StyledSlider = styled.section`
     }
   }
 
-  .slider__current__content {
+  .slider__current__content,
+  .slider__item__content {
     margin: 0 auto;
     max-width: 80%;
     position: relative;
@@ -84,6 +86,11 @@ export const StyledSlider = styled.section`
 
   .slider__footer {
     display: flex;
+  }
+
+  .slider__options {
+    display: flex;
+    width: 100%;
   }
 
   .slider__option {
@@ -100,10 +107,19 @@ export const StyledSlider = styled.section`
       width: 100%;
 
       object-fit: cover;
+      opacity: 1;
+      transition: 0.2s opacity ease;
     }
   }
 
+  .slider__option--active {
+    opacity: 0.3;
+  }
+
   .slider__pagination {
+    display: block;
+    min-width: 200px;
+
     button {
       border-radius: 12px;
       height: 2px;
