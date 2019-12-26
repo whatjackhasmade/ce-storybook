@@ -47,7 +47,7 @@ const Slider = ({ items, variant }) => {
   return (
     <StyledSlider className="slider">
       {items.length > 1 ? (
-        <SlickSlider ref={slideRef} {...settings}>
+        <SlickSlider className="slider__carousel" ref={slideRef} {...settings}>
           {items.map(item => (
             <SliderItem {...item} />
           ))}
