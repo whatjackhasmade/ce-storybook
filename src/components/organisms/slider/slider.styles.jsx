@@ -7,32 +7,50 @@ export const StyledSlider = styled.section`
   margin-right: calc(-50vw + 50%);
   width: 100%;
 
-  .slider__controls {
-    padding: 30px;
+  button {
+    ${buttonReset}
+  }
 
-    background-color: ${props => props.theme.black};
-
+  .slider__arrows {
     button {
-      border-radius: 12px;
-      height: 4px;
-      min-height: 0px;
-      padding: 0;
-      width: 24px;
-
-      background-color: ${props => props.theme.grey600};
-      transition: 0.2s background-color ease;
-
-      + button {
-        margin-left: 8px;
-      }
-
       &:active,
       &:focus,
       &:hover,
       &.active {
-        background-color: ${props => props.theme.white};
+        svg {
+          stroke: ${props => props.theme.grey200};
+        }
+      }
+
+      &:focus {
+        outline: 1px dotted ${props => props.theme.white};
+        outline-offset: 4px;
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      + button {
+        margin-left: 8px;
+
+        transform: rotate(180deg);
       }
     }
+
+    svg {
+      display: block;
+      height: 24px;
+
+      stroke: ${props => props.theme.white};
+      transition: 0.2s stroke ease;
+    }
+  }
+
+  .slider__controls {
+    padding: 40px;
+
+    background-color: ${props => props.theme.black};
   }
 
   .slider__current {
@@ -66,15 +84,9 @@ export const StyledSlider = styled.section`
 
   .slider__footer {
     display: flex;
-
-    nav {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   .slider__option {
-    ${buttonReset}
     position: relative;
     width: 100%;
     height: 100%;
@@ -88,6 +100,39 @@ export const StyledSlider = styled.section`
       width: 100%;
 
       object-fit: cover;
+    }
+  }
+
+  .slider__pagination {
+    button {
+      border-radius: 12px;
+      height: 2px;
+      min-height: 0px;
+      padding: 0;
+      width: 24px;
+
+      background-color: ${props => props.theme.grey600};
+      transition: 0.2s background-color ease;
+
+      + button {
+        margin-left: 8px;
+      }
+
+      &:active,
+      &:focus,
+      &:hover,
+      &.active {
+        background-color: ${props => props.theme.white};
+      }
+
+      &:focus {
+        outline: 1px dotted ${props => props.theme.white};
+        outline-offset: 4px;
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
     }
   }
 `
