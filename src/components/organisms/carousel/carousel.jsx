@@ -46,8 +46,11 @@ const Carousel = ({ intro, items }) => {
   if (!items) return null
   if (!items.length) return null
 
-  if (items.length < 5)
-    items = [...items, ...items, ...items, ...items, ...items]
+  if (items.length < 3 && items.length < 5) {
+    items = [...items, ...items, ...items]
+  } else {
+    items = [...items, ...items]
+  }
 
   return (
     <SyledCarousel className="carousel">
