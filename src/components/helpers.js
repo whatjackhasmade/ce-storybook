@@ -36,6 +36,12 @@ export function formatMoney(value) {
   return valueFormatted
 }
 
+export function generateID(type) {
+  const timestamp = Date.now()
+  if (!type) return timestamp
+  return type + `-${timestamp}`
+}
+
 export function hexToRGB(hex) {
   if (!hex) return "0,0,0"
 
