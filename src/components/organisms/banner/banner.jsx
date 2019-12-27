@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 
 import StyledBanner from "./banner.styles"
 
-import ParseHTML from "../../particles/parseHTML"
 import Button from "../../atoms/button/button"
 
 const { shape, string } = PropTypes

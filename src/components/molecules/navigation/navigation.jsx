@@ -28,7 +28,7 @@ const Navigation = ({ items }) => {
     <StyledNavigation className="navigation">
       {items.map(item => {
         const { icon, label, target, url } = item
-        const relativeUrl = url.replace(/^(?:\/\/|[^\/]+)*\//, "")
+        const relativeUrl = url.replace(/^(?:\/\/|[^]+)*\//, "")
         return (
           <Link
             className={icon ? `link--icon` : null}

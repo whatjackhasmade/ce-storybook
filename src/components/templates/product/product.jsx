@@ -31,7 +31,7 @@ const ProductTemplate = props => {
 
   return (
     <StyledProduct>
-      <img src={image.mediaItemUrl} />
+      <img alt="Product" src={image.mediaItemUrl} />
       <div>
         {productId}
         {/* <Img fluid={pageContext.imageFile.childImageSharp.fluid} /> */}

@@ -23,8 +23,10 @@ const ErrorMessage = ({ isDeveloperConcern = true, message }) => {
   return (
     <StyledError className="error">
       <p>
-        <strong>😔 Something went wrong</strong>:
-        {message && <span className="error__mesage"> {message}</span>}
+        <strong>
+          <span role="img">😔</span> Something went wrong
+        </strong>
+        :{message && <span className="error__mesage"> {message}</span>}
       </p>
       {isDeveloperConcern && (
         <CTA>

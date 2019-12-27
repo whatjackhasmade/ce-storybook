@@ -50,7 +50,7 @@ export const StyledHeader = styled.header`
   display: flex;
   min-height: 124px;
   left: ${props => (props.variant ? `0` : undefined)};
-  padding: ${props => (props.variant ? `30px` : `30px 0`)};
+  padding: 30px;
   position: ${props => headerPosition(props)};
   top: ${props => (props.variant ? `0` : undefined)};
   width: 100%;

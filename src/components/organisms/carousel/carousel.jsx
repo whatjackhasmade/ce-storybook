@@ -13,7 +13,7 @@ import Link from "../../atoms/link/link"
 
 import Intro from "../../molecules/intro/intro"
 
-const { array, node, object, string } = PropTypes
+const { array } = PropTypes
 
 const settings = {
   centerMode: true,

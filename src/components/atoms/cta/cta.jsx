@@ -1,49 +1,49 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "gatsby-link";
-import { isInternal } from "../../helpers";
+import React from "react"
+import PropTypes from "prop-types"
+import Link from "gatsby-link"
+import { isInternal } from "../../helpers"
 
-import StyledCTA, { StyledCTASpan, StyledCTAWrapper } from "./cta.styles";
+import StyledCTA, { StyledCTASpan, StyledCTAWrapper } from "./cta.styles"
 
-import IconArrowRight from "../../../assets/images/icons/arrow-right.svg";
+import IconArrowRight from "../../../assets/images/icons/arrow-right.svg"
 
 const CTA = props => {
-	const { children, href, target } = props;
+  const { children, href } = props
 
-	if (!href)
-		return (
-			<StyledCTASpan {...props} className="cta">
-				{children} <IconArrowRight />
-			</StyledCTASpan>
-		);
+  if (!href)
+    return (
+      <StyledCTASpan {...props} className="cta">
+        {children} <IconArrowRight />
+      </StyledCTASpan>
+    )
 
-	if (!isInternal(href)) {
-		return (
-			<StyledCTA className="cta" {...props}>
-				{children} <IconArrowRight />
-			</StyledCTA>
-		);
-	}
+  if (!isInternal(href)) {
+    return (
+      <StyledCTA className="cta" {...props}>
+        {children} <IconArrowRight />
+      </StyledCTA>
+    )
+  }
 
-	return (
-		<StyledCTAWrapper className="cta-wrapper">
-			<Link {...props} className="cta" to={href}>
-				{children} <IconArrowRight />
-			</Link>
-		</StyledCTAWrapper>
-	);
-};
+  return (
+    <StyledCTAWrapper className="cta-wrapper">
+      <Link {...props} className="cta" to={href}>
+        {children} <IconArrowRight />
+      </Link>
+    </StyledCTAWrapper>
+  )
+}
 
 // Expected prop values
 CTA.propTypes = {
-	children: PropTypes.node.isRequired,
-	href: PropTypes.string,
-	target: PropTypes.string
-};
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string,
+  target: PropTypes.string,
+}
 
 // Default prop values
 CTA.defaultProps = {
-	children: "CTA text"
-};
+  children: "CTA text",
+}
 
-export default CTA;
+export default CTA

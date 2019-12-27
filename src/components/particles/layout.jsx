@@ -1,5 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
+
+import SEO from "../particles/seo"
+
 import Cart from "../organisms/cart/cart"
 import Footer from "../organisms/footer/footer"
 import Header from "../organisms/header/header"
@@ -7,10 +10,11 @@ import Header from "../organisms/header/header"
 const { bool, node } = PropTypes
 
 const Layout = props => {
-  const { cart, children, footer, gatsbyContext, header } = props
+  const { cart, children, footer, gatsbyContext, header, seo } = props
 
   return (
     <React.Fragment>
+      {seo && <SEO data={seo} />}
       {/* Start of visual page components */}
       <div className="wrapper">
         {header && (
