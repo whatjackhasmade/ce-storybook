@@ -16,10 +16,11 @@ export const LOGIN_USER_MUTATION = gql`
       authToken
       user {
         id
+        isJwtAuthSecretRevoked
+        jwtAuthExpiration
+        jwtAuthToken
         name
       }
     }
   }
 `
-
-export default LOGIN_USER_MUTATION
