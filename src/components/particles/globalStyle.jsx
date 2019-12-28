@@ -137,6 +137,8 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	.wrapper {
+		overflow: hidden;
+
 		@supports (display: flex) {
 			display: flex;
 			flex-direction: column;
