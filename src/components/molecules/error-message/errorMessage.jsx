@@ -1,9 +1,16 @@
 import React, { useState } from "react"
 import { string } from "prop-types"
+import he from "he"
 
 import StyledError from "./errorMessage.styles"
 
 import CTA from "../../atoms/cta/cta"
+
+const cleanText = string =>
+  he
+    .decode(string)
+    .replace(/<\/?[^>]+(>|$)/g, "")
+    .replace("ERROR: ", "")
 
 const ErrorMessage = ({ isDeveloperConcern = true, message }) => {
   const [isReported, setReported] = useState(false)
@@ -26,7 +33,10 @@ const ErrorMessage = ({ isDeveloperConcern = true, message }) => {
         <strong>
           <span role="img">😔</span> Something went wrong
         </strong>
-        :{message && <span className="error__mesage"> {message}</span>}
+        :
+        {message && (
+          <span className="error__mesage"> {cleanText(message)}</span>
+        )}
       </p>
       {isDeveloperConcern && (
         <CTA>
