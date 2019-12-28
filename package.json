@@ -1,65 +1,65 @@
 {
-	"name": "ce-storybook",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"dependencies": {
-		"@babel/core": "^7.7.7",
-		"@storybook/addon-actions": "^5.2.8",
-		"@storybook/addon-knobs": "^5.2.6",
-		"@storybook/addon-links": "^5.2.8",
-		"@storybook/addon-options": "^5.2.8",
-		"@storybook/addon-viewport": "^5.2.8",
-		"@storybook/addons": "^5.2.8",
-		"@storybook/react": "^5.2.8",
-		"@testing-library/cypress": "^5.0.2",
-		"apollo-boost": "^0.4.7",
-		"apollo-client": "^2.6.8",
-		"babel-loader": "^8.0.6",
-		"cypress": "^3.8.0",
-		"faker": "^4.1.0",
-		"formik": "^2.0.8",
-		"gatsby-image": "^2.2.37",
-		"gatsby-link": "^2.2.27",
-		"graphql": "^14.5.8",
-		"html-react-parser": "^0.10.0",
-		"normalize.css": "^8.0.1",
-		"react-apollo": "^3.1.3",
-		"react-helmet": "^5.2.1",
-		"react-slick": "^0.25.2",
-		"react-toastify": "^5.4.1",
-		"slick-carousel": "^1.8.1",
-		"start-server-and-test": "^1.10.6",
-		"storybook-addon-figma": "^0.1.0",
-		"styled-components": "^4.4.1",
-		"unfetch": "^4.1.0"
-	},
-	"scripts": {
-		"build": "npm run build-storybook",
-		"build-storybook": "build-storybook",
-		"ci:manual": "start-server-and-test dev http://localhost:6006/?path=/story/ cypress:open",
-		"ci:test": "start-server-and-test dev http://localhost:6006/?path=/story/ cypress:run",
-		"cypress:run": "cypress run",
-		"cypress:open": "cypress open",
-		"postinstall": "git pull --recurse-submodules || true",
-		"d": "npm run storybook",
-		"dev": "npm run storybook",
-		"develop": "npm run storybook",
-		"start": "npm run storybook",
-		"storybook": "start-storybook -p 6006",
-		"test": "npm run ci:manual"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/whatjackhasmade/ce-storybook.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/whatjackhasmade/ce-storybook/issues"
-	},
-	"homepage": "https://github.com/whatjackhasmade/ce-storybook#readme",
-	"browerslist": [
-		"last 2 versions"
-	]
+  "name": "ce-storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/core": "^7.7.7",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-knobs": "^5.2.6",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addon-options": "^5.2.8",
+    "@storybook/addon-viewport": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
+    "@testing-library/cypress": "^5.0.2",
+    "apollo-boost": "^0.4.7",
+    "apollo-client": "^2.6.8",
+    "babel-loader": "^8.0.6",
+    "cypress": "^3.8.0",
+    "faker": "^4.1.0",
+    "formik": "^2.0.8",
+    "gatsby-image": "^2.2.37",
+    "gatsby-link": "^2.2.27",
+    "graphql": "^14.5.8",
+    "html-react-parser": "^0.10.0",
+    "normalize.css": "^8.0.1",
+    "react-apollo": "^3.1.3",
+    "react-helmet": "^5.2.1",
+    "react-slick": "^0.25.2",
+    "react-toastify": "^5.4.1",
+    "slick-carousel": "^1.8.1",
+    "start-server-and-test": "^1.10.6",
+    "storybook-addon-figma": "^0.1.0",
+    "styled-components": "^4.4.1",
+    "unfetch": "^4.1.0"
+  },
+  "scripts": {
+    "build": "npm run build-storybook",
+    "build-storybook": "build-storybook",
+    "ci:manual": "start-server-and-test dev http://localhost:6006/?path=/story/ cypress:open",
+    "ci:test": "start-server-and-test dev http://localhost:6006/?path=/story/ cypress:run",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
+    "postinstall": "git pull --recurse-submodules || true",
+    "d": "npm run storybook",
+    "dev": "npm run storybook",
+    "develop": "npm run storybook",
+    "start": "npm run storybook",
+    "storybook": "start-storybook -p 6006",
+    "test": "npm run ci:manual"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whatjackhasmade/ce-storybook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whatjackhasmade/ce-storybook/issues"
+  },
+  "homepage": "https://github.com/whatjackhasmade/ce-storybook#readme",
+  "browerslist": [
+    "last 2 versions"
+  ]
 }

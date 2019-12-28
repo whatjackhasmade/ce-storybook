@@ -1,23 +1,23 @@
 {
-	"navItems": {
-		"default": [
-			{
-				"label": "Homepage",
-				"target": null,
-				"url": "#"
-			},
-			{
-				"label": "About us",
-				"target": null,
-				"url": "#"
-			},
-			{
-				"label": "Contact",
-				"target": null,
-				"url": "#"
-			}
-		],
-		"group": "Content",
-		"label": "Navigation items"
-	}
+  "navItems": {
+    "default": [
+      {
+        "label": "Homepage",
+        "target": null,
+        "url": "#"
+      },
+      {
+        "label": "About us",
+        "target": null,
+        "url": "#"
+      },
+      {
+        "label": "Contact",
+        "target": null,
+        "url": "#"
+      }
+    ],
+    "group": "Content",
+    "label": "Navigation items"
+  }
 }
