@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 
 import StyledAccordion from "./accordion.styles"
 
+import IconArrowLeft from "../../../assets/images/icons/arrow-left.svg"
+
 const { node, string } = PropTypes
 
 const Accordion = ({ children, title }) => {
@@ -15,8 +17,13 @@ const Accordion = ({ children, title }) => {
 
   return (
     <StyledAccordion className="accordion" isOpen={isOpen}>
-      <button onClick={toggleAccordion}>
+      <button
+        className="accordion__toggle"
+        onClick={toggleAccordion}
+        title={`View ${title} contents`}
+      >
         <h3 className="accordion__title">{title}</h3>
+        <IconArrowLeft />
       </button>
       <div className="accordion__contents">{children}</div>
     </StyledAccordion>

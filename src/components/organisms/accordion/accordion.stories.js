@@ -12,7 +12,16 @@ export const standardAccordion = () => (
       "https://www.figma.com/file/uihfnI2u5KSj2LuAVZR7lt/Celtic-Elements?node-id=967%3A32"
     }
   >
-    <Accordion title={text(title.label, title.default, title.group)} />
+    <Accordion title={text(title.label, title.default, title.group)}>
+      <form
+        onSubmit={e => {
+          e.preventDefault()
+        }}
+      >
+        <label htmlFor="form-field">Input Label</label>
+        <input id="form-field" name="form-field" type="text"></input>
+      </form>
+    </Accordion>
   </WithFigma>
 )
 
