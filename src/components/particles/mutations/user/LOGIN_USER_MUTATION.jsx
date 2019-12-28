@@ -24,3 +24,5 @@ export const LOGIN_USER_MUTATION = gql`
     }
   }
 `
+
+export default LOGIN_USER_MUTATION
