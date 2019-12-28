@@ -20,6 +20,11 @@ export const StyledAccordion = styled.section`
     border-top: 1px solid ${props => props.theme.offWhite};
   }
 
+  .accordion__title {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
   .accordion__toggle {
     ${ButtonReset}
 
@@ -45,7 +50,7 @@ export const StyledAccordion = styled.section`
 
     svg {
       display: block;
-      height: 32px;
+      height: 24px;
       margin-left: auto;
 
       stroke: ${props => props.theme.grey400};
