@@ -4,8 +4,8 @@ import he from "he"
 import Slider from "react-slick"
 import { breakpoints } from "../../particles/mediaQueries"
 
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import "../../../assets/lib/slick/slick.css"
+import "../../../assets/lib/slick/slick-theme.css"
 
 import SyledCarousel from "./carousel.styles"
 
