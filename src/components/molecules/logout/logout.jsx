@@ -20,7 +20,7 @@ const Logout = ({ title }) => {
 
   return (
     <StyledLogout className="navigation">
-      <h4>{title}:</h4>
+      {title && <h4>{title}:</h4>}
       <Button onClick={logoutUser}>Logout</Button>
     </StyledLogout>
   )

@@ -19,8 +19,11 @@ const Footer = ({ navigation }) => (
       <div className="footer__wrapper">
         {navigation &&
           navigation.length &&
-          navigation.map(({ items, title }) => (
-            <div className="footer__navigation">
+          navigation.map(({ items, title }, i) => (
+            <div
+              className="footer__navigation"
+              key={title ? `footer-nav-${title}` : `footer-nav-${i}`}
+            >
               {title && <h4 className="footer__heading">{title}</h4>}
               {items && items.length && <Navigation items={items} />}
             </div>

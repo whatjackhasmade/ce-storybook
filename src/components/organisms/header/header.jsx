@@ -30,7 +30,9 @@ const Header = props => {
       </button>
       {navigation &&
         navigation.length &&
-        navigation.map(({ items }) => <Navigation items={items} />)}
+        navigation.map(({ items }, i) => (
+          <Navigation key={`header-nav-${i}`} items={items} />
+        ))}
       <Link href="/">
         <img
           alt="Celtic Elements Logo"

@@ -26,13 +26,14 @@ const Navigation = ({ items }) => {
 
   return (
     <StyledNavigation className="navigation">
-      {items.map(item => {
+      {items.map((item, i) => {
         const { icon, label, target, url } = item
         const relativeUrl = url.replace(/^(?:\/\/|[^]+)*\//, "")
         return (
           <Link
             className={icon ? `link--icon` : null}
-            href={relativeUrl}
+            href={`/${relativeUrl}`}
+            key={`navigation-item-${relativeUrl}-${i}`}
             target={target}
             title={icon ? label : undefined}
           >
