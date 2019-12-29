@@ -17,6 +17,7 @@ const Logout = ({ title }) => {
   const logoutUser = e => {
     e.preventDefault()
     localStorage.removeItem("authToken")
+    localStorage.removeItem("refreshToken")
     navigate("/")
   }
 

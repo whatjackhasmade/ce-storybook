@@ -5,50 +5,35 @@ import { GRAPHQL_API } from "../../../../config"
 import CREATE_CUSTOMER_MUTATION from "../mutations/user/REFRESH_AUTHTOKEN_MUTATION"
 
 export default async (uri, options) => {
-  const refreshToken = localStorage.getItem("refreshToken")
-
   const initialRequest = await fetch(uri, options)
-
   const authTokenHasExpired = initialRequest.status === 403
 
-  if (authTokenHasExpired) {
-    console.log("authToken has expired, try getting a new one")
+  if (!authTokenHasExpired) return initialRequest
 
-    const client = new ApolloClient({
-      fetch,
-      uri: GRAPHQL_API,
-    })
+  console.log("authToken has expired, try getting a new one")
+  const refreshToken = localStorage.getItem("refreshToken")
 
-    const { data } = await client.mutate({
-      mutation: CREATE_CUSTOMER_MUTATION,
-      variables: {
-        refreshToken,
-      },
-    })
+  const refreshClient = new ApolloClient({
+    fetch,
+    uri: GRAPHQL_API,
+  })
 
-    if (
-      !data ||
-      !data.refreshJwtAuthToken ||
-      !data.refreshJwtAuthToken.authToken
-    ) {
-      // TODO: clear everything about the user
-      // and send them to home screen
-      console.error("Could not update the authToken #1")
-      return initialRequest
-    }
+  const { data } = await refreshClient.mutate({
+    mutation: CREATE_CUSTOMER_MUTATION,
+    variables: {
+      refreshToken,
+    },
+  })
+  const { refreshJwtAuthToken } = data
+  const { authToken } = refreshJwtAuthToken
 
-    const { refreshJwtAuthToken } = data
-    const { authToken } = refreshJwtAuthToken
-
-    options.headers.authorization = `Bearer ${authToken}`
-    console.log("Fetch with new authToken", authToken)
-
-    localStorage.setItem("authToken", authToken)
-
-    return fetch(uri, options).catch(res => {
-      console.error("Could not update the authToken #2")
-    })
+  if (!authToken) {
+    // TODO: clear everything about the user and send them to home screen
+    console.error("Could not update the authToken #1")
+    return initialRequest
   }
 
+  options.headers.authorization = `Bearer ${authToken}`
+  localStorage.setItem("authToken", authToken)
   return initialRequest
 }
