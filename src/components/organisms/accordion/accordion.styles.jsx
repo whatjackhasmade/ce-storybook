@@ -15,9 +15,13 @@ export const StyledAccordion = styled.section`
   .accordion__contents {
     display: ${props => (props.isOpen === true ? `block` : `none`)};
     margin-bottom: 30px;
-    padding: 0 30px;
+    padding: 0 16px;
 
     border-top: 1px solid ${props => props.theme.offWhite};
+
+    @media ${device.md} {
+      padding: 0 30px;
+    }
   }
 
   .accordion__title {
@@ -30,10 +34,14 @@ export const StyledAccordion = styled.section`
 
     align-items: center;
     display: flex;
-    padding: 16px 30px;
+    padding: 16px;
     width: 100%;
 
     background-color: ${props => props.theme.white};
+
+    @media ${device.md} {
+      padding: 16px 30px;
+    }
 
     &:focus {
       outline: 1px dotted ${props => props.theme.black};

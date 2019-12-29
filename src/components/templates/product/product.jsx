@@ -1,5 +1,5 @@
 import React from "react"
-import Img from "gatsby-image/withIEPolyfill"
+// import Img from "gatsby-image/withIEPolyfill"
 
 import StyledProduct from "./product.styles"
 
@@ -20,7 +20,7 @@ const ProductWrapper = props => (
 
 const ProductTemplate = props => {
   const { pageContext } = props
-  const { banner, carousel, description, image, productId, name } = pageContext
+  const { banner, carousel, description, image, name } = pageContext
 
   const inCart = false
   const updateCart = e => e.preventDefault()

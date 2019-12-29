@@ -33,7 +33,10 @@ const ErrorMessage = ({ isDeveloperConcern = true, message, title }) => {
         ) : (
           <>
             <strong>
-              <span role="img">😔</span> Something went wrong
+              <span aria-label="Upset emoji face" role="img">
+                😔
+              </span>{" "}
+              Something went wrong
             </strong>
             :
           </>

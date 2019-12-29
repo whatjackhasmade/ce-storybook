@@ -2,10 +2,14 @@ import styled from "styled-components"
 import { device } from "../../particles/mediaQueries"
 
 export const StyledIntro = styled.section`
-  margin-bottom: 56px;
+  margin-bottom: 48px;
   width: 100%;
 
   text-align: center;
+
+  @media ${device.md} {
+    margin-bottom: 56px;
+  }
 
   .intro__contents {
     margin: 0 auto;
