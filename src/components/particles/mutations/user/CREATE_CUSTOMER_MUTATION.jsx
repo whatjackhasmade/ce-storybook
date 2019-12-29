@@ -23,6 +23,7 @@ export const CREATE_CUSTOMER_MUTATION = gql`
       customer {
         email
         jwtAuthToken
+        jwtRefreshToken
       }
     }
   }
