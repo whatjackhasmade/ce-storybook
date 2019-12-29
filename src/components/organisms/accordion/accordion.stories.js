@@ -32,5 +32,5 @@ standardAccordion.story = {
 export default {
   component: Accordion,
   decorators: [withDesign],
-  title: "Accordion",
+  title: "Organisms/Accordion",
 }

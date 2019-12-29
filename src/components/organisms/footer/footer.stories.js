@@ -25,5 +25,5 @@ standardFooter.story = {
 export default {
   component: Footer,
   decorators: [withDesign],
-  title: "Footer",
+  title: "Organisms/Footer",
 }

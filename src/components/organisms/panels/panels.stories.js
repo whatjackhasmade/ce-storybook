@@ -23,5 +23,5 @@ standardPanels.story = {
 export default {
   component: Panels,
   decorators: [withDesign],
-  title: "Panels",
+  title: "Organisms/Panels",
 }

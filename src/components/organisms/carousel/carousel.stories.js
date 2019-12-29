@@ -35,5 +35,5 @@ productCarousel.story = {
 export default {
   component: Carousel,
   decorators: [withDesign],
-  title: "Caoursel",
+  title: "Organisms/Caoursel",
 }

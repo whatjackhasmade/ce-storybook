@@ -33,5 +33,5 @@ standardBanner.story = {
 export default {
   component: Banner,
   decorators: [withDesign],
-  title: "Banner",
+  title: "Organisms/Banner",
 }

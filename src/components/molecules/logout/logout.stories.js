@@ -11,5 +11,5 @@ export const basicNavigation = () => (
 
 export default {
   component: Logout,
-  title: "Logout",
+  title: "Molecules/Logout",
 }

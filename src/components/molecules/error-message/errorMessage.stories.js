@@ -11,5 +11,5 @@ export const basicError = () => (
 
 export default {
   component: ErrorMessage,
-  title: "Error",
+  title: "Molecules/Error",
 }

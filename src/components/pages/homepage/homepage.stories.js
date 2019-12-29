@@ -62,5 +62,5 @@ homepageExample.story = {
 export default {
   component: Homepage,
   decorators: [withDesign],
-  title: "Homepage",
+  title: "Pages/Homepage",
 }

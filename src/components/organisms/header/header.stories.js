@@ -59,5 +59,5 @@ fixedLightHeader.story = {
 export default {
   component: Header,
   decorators: [withDesign],
-  title: "Header",
+  title: "Organisms/Header",
 }

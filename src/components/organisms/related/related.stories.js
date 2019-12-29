@@ -35,5 +35,5 @@ postsRelated.story = {
 export default {
   component: Related,
   decorators: [withDesign],
-  title: "Related",
+  title: "Organisms/Related",
 }

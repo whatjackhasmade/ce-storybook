@@ -25,5 +25,5 @@ standardCart.story = {
 export default {
   component: Cart,
   decorators: [withDesign],
-  title: "Cart",
+  title: "Organisms/Cart",
 }

@@ -54,5 +54,5 @@ export const linkedButton = () => <Button href="/route">Link to route</Button>
 export default {
   component: Button,
   decorators: [withDesign],
-  title: "Button",
+  title: "Atoms/Button",
 }

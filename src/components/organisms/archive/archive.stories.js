@@ -25,5 +25,5 @@ productArchive.story = {
 export default {
   component: Archive,
   decorators: [withDesign],
-  title: "Archive",
+  title: "Organisms/Archive",
 }

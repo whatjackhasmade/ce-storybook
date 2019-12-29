@@ -11,5 +11,5 @@ export const basicNavigation = () => (
 
 export default {
   component: Navigation,
-  title: "Navigation",
+  title: "Molecules/Navigation",
 }

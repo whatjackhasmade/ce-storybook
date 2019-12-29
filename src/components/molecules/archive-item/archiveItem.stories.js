@@ -28,5 +28,5 @@ productArchive.story = {
 export default {
   component: ArchiveItem,
   decorators: [withDesign],
-  title: "Archive Item",
+  title: "Molecules/Archive Item",
 }

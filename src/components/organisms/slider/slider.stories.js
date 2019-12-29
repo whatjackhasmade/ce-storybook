@@ -26,5 +26,5 @@ heroSlider.story = {
 export default {
   component: Slider,
   decorators: [withDesign],
-  title: "Slider",
+  title: "Organisms/Slider",
 }
