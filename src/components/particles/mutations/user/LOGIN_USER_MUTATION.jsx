@@ -14,11 +14,9 @@ export const LOGIN_USER_MUTATION = gql`
       }
     ) {
       authToken
+      refreshToken
       user {
         id
-        isJwtAuthSecretRevoked
-        jwtAuthExpiration
-        jwtAuthToken
         name
       }
     }

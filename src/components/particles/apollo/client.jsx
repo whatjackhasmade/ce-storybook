@@ -1,8 +1,8 @@
 import ApolloClient from "apollo-boost"
-import fetch from "unfetch"
+import refreshFetch from "./refreshFetch"
 
 export const client = new ApolloClient({
-  fetch,
+  fetch: refreshFetch,
   request: operation => {
     const token = localStorage.getItem("authToken")
     operation.setContext({
