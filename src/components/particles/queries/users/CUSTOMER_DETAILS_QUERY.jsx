@@ -15,10 +15,6 @@ export const CUSTOMER_DETAILS_QUERY = gql`
       id
       isPayingCustomer
       isVatExempt
-      jwtAuthExpiration
-      jwtAuthToken
-      jwtRefreshToken
-      jwtUserSecret
       lastName
       lastOrder {
         billing {

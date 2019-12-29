@@ -1,5 +1,6 @@
 import React from "react"
 import { string } from "prop-types"
+import { navigate } from "gatsby"
 
 import StyledLogout from "./logout.styles"
 
@@ -16,6 +17,7 @@ const Logout = ({ title }) => {
   const logoutUser = e => {
     e.preventDefault()
     localStorage.removeItem("authToken")
+    navigate("/")
   }
 
   return (
