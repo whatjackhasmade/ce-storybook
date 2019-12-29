@@ -39,6 +39,7 @@ const ProductTemplate = props => {
     collection,
     description,
     image,
+    price,
     productId,
     name,
   } = pageContext
@@ -71,6 +72,7 @@ const ProductTemplate = props => {
               )}
             </nav>
             {name && <h1>{name}</h1>}
+            {price && <h2 className="h4">{price}</h2>}
             <div className="product__description">
               {description && ParseHTML(description)}
             </div>

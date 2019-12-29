@@ -63,4 +63,8 @@ ErrorMessage.propTypes = {
   title: string,
 }
 
+ErrorMessage.defaultProps = {
+  isDeveloperConcern: true,
+}
+
 export default ErrorMessage

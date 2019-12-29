@@ -254,12 +254,19 @@ const GlobalStyle = createGlobalStyle`
 	main {
 		ol,
 		ul {
-			margin: 48px 0;
+			margin: 24px 0;
+		}
+	}
+
+	main article {
+		ol,
+		ul {
+			margin: 32px 0;
 		}
 
 		li {
 			font-size: 16px;
-			font-weight: 300;
+			font-weight: 400;
 			line-height: 30px;
 
 			+ li {
@@ -269,7 +276,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	ol {
-		padding-left: 48px;
+		padding-left: 24px;
 
 		counter-reset: list-counter;
 		list-style: none;
@@ -283,11 +290,10 @@ const GlobalStyle = createGlobalStyle`
 
 			counter-increment: list-counter;
 			font-size: 16px;
-			font-weight: 300;
 			line-height: 30px;
 
 			+ li {
-				margin-top: 24px;
+				margin-top: 12px;
 			}
 
 			&::before {
@@ -297,14 +303,11 @@ const GlobalStyle = createGlobalStyle`
 
 				color: ${props => props.theme.primary};
 				content: counter(list-counter) ". ";
-				font-family: ${props => props.theme.fontSecondary};
-				font-size: 32px;
 				font-style: normal;
 				font-weight: bold;
-				line-height: 48px;
 
 				transform: translateX(-110%);
-				transform: translateX(calc(-100% - 24px));
+				transform: translateX(calc(-100% - 12px));
 			}
 		}
 	}

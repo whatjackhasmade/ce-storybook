@@ -25,7 +25,8 @@ Archive.propTypes = {
       image: shape({
         mediaItemUrl: string.isRequired,
       }),
-      price: number.isRequired,
+      price: string.isRequired,
+      shortDescription: string,
       slug: string.isRequired,
       title: string.isRequired,
     })

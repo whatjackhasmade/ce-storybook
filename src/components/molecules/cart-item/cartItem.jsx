@@ -1,33 +1,30 @@
-import React, { useContext } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 
 import IconMinus from "../../../assets/images/icons/minus.svg"
 import IconPlus from "../../../assets/images/icons/plus.svg"
 
-import ApplicationContext from "../../particles/context/applicationContext"
-
-const { number, string } = PropTypes
+const { number, shape, string } = PropTypes
 
 const CartItem = product => {
   const { image, price, quantity, title } = product
-  const { dispatch } = useContext(ApplicationContext)
-
-  const priceFormatted = new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-  }).format(price)
 
   const updateCart = (e, action) => {
     e.preventDefault()
-    dispatch({ key: null, type: action, value: product })
   }
 
   return (
     <div className="cart__product product">
-      <img alt={`Product ${title}`} className="product__image" src={image} />
+      {image && image.mediaItemUrl && (
+        <img
+          alt={`Product ${title}`}
+          className="product__image"
+          src={image.mediaItemUrl}
+        />
+      )}
       <div className="product__meta">
         <h3 className="product__title">{title}</h3>
-        <span className="product__price">{priceFormatted}</span>
+        <span className="product__price">{price}</span>
       </div>
       <div className="product__actions">
         <button
@@ -53,8 +50,10 @@ export default CartItem
 
 // Expected prop values
 CartItem.propTypes = {
-  image: string.isRequired,
-  price: number.isRequired,
+  image: shape({
+    mediaItemUrl: string.isRequired,
+  }),
+  price: string.isRequired,
   quantity: number.isRequired,
   slug: string.isRequired,
   title: string.isRequired,

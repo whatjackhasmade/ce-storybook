@@ -86,6 +86,11 @@ export const StyledCart = styled.div`
     margin-top: 16px;
   }
 
+  .cart__total {
+    margin-left: 24px;
+    margin-top: 1px;
+  }
+
   .product__meta {
     display: flex;
     flex-direction: column;

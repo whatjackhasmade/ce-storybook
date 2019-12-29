@@ -8,7 +8,14 @@ export const CURRENT_CART_QUERY = gql`
           product {
             id
             productId
+            description
+            image {
+              mediaItemUrl
+            }
+            purchasable
             title: name
+            shortDescription
+            slug
           }
           subtotal
           total
