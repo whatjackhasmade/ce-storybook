@@ -96,9 +96,7 @@ const GlobalDecorator = storyFn => (
     <ApplicationState>
       <ThemeProvider theme={ThemeDefault}>
         <GlobalStyle />
-        <Layout cart={false} footer={false} header={false}>
-          {storyFn()}
-        </Layout>
+        {storyFn()}
       </ThemeProvider>
     </ApplicationState>
   </ApolloWrapper>
