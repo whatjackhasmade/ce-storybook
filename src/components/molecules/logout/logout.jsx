@@ -9,10 +9,7 @@ import Button from "../../atoms/button/button"
 const Logout = ({ title }) => {
   const authToken = localStorage.getItem("authToken")
 
-  if (!authToken) {
-    console.log("Not currently logged in, skipping logout component")
-    return null
-  }
+  if (!authToken) return null
 
   const logoutUser = e => {
     e.preventDefault()
