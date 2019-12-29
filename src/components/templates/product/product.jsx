@@ -1,10 +1,14 @@
 import React from "react"
+import { useMutation } from "@apollo/react-hooks"
 // import Img from "gatsby-image/withIEPolyfill"
+import { generateID } from "../../helpers"
 
 import StyledProduct from "./product.styles"
 
 import Layout from "../../particles/layout"
 import ParseHTML from "../../particles/parseHTML"
+
+import ADD_TO_CART_MUTATION from "../../particles/mutations/cart/ADD_TO_CART_MUTATION"
 
 import Button from "../../atoms/button/button"
 import Link from "../../atoms/link/link"
@@ -19,11 +23,40 @@ const ProductWrapper = props => (
 )
 
 const ProductTemplate = props => {
+  const [addToCart, { data, error, loading }] = useMutation(
+    ADD_TO_CART_MUTATION
+  )
+
+  // Debugging changes 🕵🏻‍♂️
+  console.log({ data })
+  console.log({ error })
+  console.log({ loading })
+
   const { pageContext } = props
-  const { banner, carousel, collection, description, image, name } = pageContext
+  const {
+    banner,
+    carousel,
+    collection,
+    description,
+    image,
+    productId,
+    name,
+  } = pageContext
 
   const inCart = false
-  const updateCart = e => e.preventDefault()
+  const updateCart = e => {
+    e.preventDefault()
+
+    const variables = {
+      clientMutationId: generateID("add-to-cart"),
+      productId,
+      quantity: 1,
+    }
+
+    addToCart({
+      variables,
+    })
+  }
 
   return (
     <StyledProduct>

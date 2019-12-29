@@ -2,9 +2,9 @@ import gql from "graphql-tag"
 
 export const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION(
-    $clientMutationId: ID!
-    $productId: Integer!
-    $quantity: Integer
+    $clientMutationId: String!
+    $productId: Int!
+    $quantity: Int!
   ) {
     addToCart(
       input: {
@@ -13,10 +13,11 @@ export const ADD_TO_CART_MUTATION = gql`
         quantity: $quantity
       }
     ) {
-      cartItem {
-        key
-      }
       clientMutationId
+      cartItem {
+        quantity
+        total
+      }
     }
   }
 `
