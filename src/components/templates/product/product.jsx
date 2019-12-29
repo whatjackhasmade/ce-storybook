@@ -20,7 +20,7 @@ const ProductWrapper = props => (
 
 const ProductTemplate = props => {
   const { pageContext } = props
-  const { banner, carousel, description, image, name } = pageContext
+  const { banner, carousel, collection, description, image, name } = pageContext
 
   const inCart = false
   const updateCart = e => e.preventDefault()
@@ -32,8 +32,10 @@ const ProductTemplate = props => {
         <header className="product__header">
           <div className="product__header__content">
             <nav>
-              <Link href="/">Products</Link>
-              <Link href="/">Collection name</Link>
+              <Link href="/shop">Products</Link>
+              {collection && (
+                <Link href={collection.url}>{collection.label}</Link>
+              )}
             </nav>
             {name && <h1>{name}</h1>}
             <div className="product__description">

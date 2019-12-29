@@ -20,6 +20,11 @@ const Archive = ({ items }) => (
 Archive.propTypes = {
   items: arrayOf(
     shape({
+      description: string,
+      id: string,
+      image: shape({
+        mediaItemUrl: string.isRequired,
+      }),
       price: number.isRequired,
       slug: string.isRequired,
       title: string.isRequired,

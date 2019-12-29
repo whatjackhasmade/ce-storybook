@@ -60,8 +60,8 @@ export const StyledProduct = styled.div`
   .product__image {
     grid-column: 7 / 13;
     margin-right: -30px;
+    height: 100%;
     min-height: 500px;
-    height: 75vh;
     position: relative;
     width: 100%;
 
@@ -78,6 +78,7 @@ export const StyledProduct = styled.div`
 
   .product__intro {
     display: grid;
+    grid-auto-rows: 1fr;
     grid-template-columns: repeat(12, 1fr);
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);

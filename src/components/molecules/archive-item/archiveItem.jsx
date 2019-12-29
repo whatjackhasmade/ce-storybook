@@ -6,7 +6,7 @@ import StyledArchiveItem from "./archiveItem.styles"
 
 import Link from "../../atoms/link/link"
 
-import ParseHTML from "../../particles/parseHTML"
+import ParseParagraphs from "../../particles/parseParagraphs"
 import CTA from "../../atoms/cta/cta"
 
 const { number, string } = PropTypes
@@ -15,12 +15,14 @@ const ArchiveItem = ({ description, id, image, price, slug, title }) => (
   <StyledArchiveItem className="archive-item" key={id}>
     <Link href={`/${slug}`}>
       <div className="archive-item__image">
-        <img src={image} alt={title} />
+        <img src={image.mediaItemUrl} alt={title} />
       </div>
       <h2 className="h4">{title}</h2>
       <span className="archive-item__price">{formatMoney(price)}</span>
       {description && (
-        <p className="archive-item__description">{ParseHTML(description)}</p>
+        <p className="archive-item__description">
+          {ParseParagraphs(description)}
+        </p>
       )}
       <footer className="archive-item__footer">
         <CTA>View Product</CTA>

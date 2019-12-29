@@ -37,6 +37,13 @@ export const StyledArchiveItem = styled.div`
   }
 
   img {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
     transform: scale(1);
     transition: 1s transform ease;
   }
@@ -50,7 +57,11 @@ export const StyledArchiveItem = styled.div`
   }
 
   .archive-item__image {
+    height: 0;
+    padding-top: 100%;
+    position: relative;
     overflow: hidden;
+    width: 100%;
   }
 
   .archive-item__price {
