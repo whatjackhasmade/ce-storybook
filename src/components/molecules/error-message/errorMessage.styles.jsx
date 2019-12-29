@@ -20,6 +20,10 @@ export const StyledError = styled.div`
   .cta {
     margin-top: 16px;
   }
+
+  & + label {
+    margin-top: 48px;
+  }
 `
 
 export default StyledError

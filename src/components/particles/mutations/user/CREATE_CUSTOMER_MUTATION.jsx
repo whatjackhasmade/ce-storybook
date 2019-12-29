@@ -8,7 +8,7 @@ export const CREATE_CUSTOMER_MUTATION = gql`
     $lastName: String
     $password: String!
   ) {
-    registerUser(
+    registerCustomer(
       input: {
         clientMutationId: $clientMutationId
         email: $email
@@ -20,7 +20,7 @@ export const CREATE_CUSTOMER_MUTATION = gql`
       }
     ) {
       clientMutationId
-      user {
+      customer {
         email
         jwtAuthToken
       }

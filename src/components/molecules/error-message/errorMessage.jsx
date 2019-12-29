@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { string } from "prop-types"
+import { string, bool } from "prop-types"
 import he from "he"
 
 import StyledError from "./errorMessage.styles"
@@ -12,13 +12,11 @@ const cleanText = string =>
     .replace(/<\/?[^>]+(>|$)/g, "")
     .replace("ERROR: ", "")
 
-const ErrorMessage = ({ isDeveloperConcern = true, message }) => {
+const ErrorMessage = ({ isDeveloperConcern = true, message, title }) => {
   const [isReported, setReported] = useState(false)
 
   if (!message) return null
   if (isReported) return null
-
-  isDeveloperConcern = true
 
   const reportError = e => {
     e.preventDefault()
@@ -30,10 +28,16 @@ const ErrorMessage = ({ isDeveloperConcern = true, message }) => {
   return (
     <StyledError className="error">
       <p>
-        <strong>
-          <span role="img">😔</span> Something went wrong
-        </strong>
-        :
+        {title ? (
+          title
+        ) : (
+          <>
+            <strong>
+              <span role="img">😔</span> Something went wrong
+            </strong>
+            :
+          </>
+        )}
         {message && (
           <span className="error__mesage"> {cleanText(message)}</span>
         )}
@@ -51,7 +55,9 @@ const ErrorMessage = ({ isDeveloperConcern = true, message }) => {
 
 // Expected prop values
 ErrorMessage.propTypes = {
+  isDeveloperConcern: bool.isRequired,
   message: string.isRequired,
+  title: string,
 }
 
 export default ErrorMessage
