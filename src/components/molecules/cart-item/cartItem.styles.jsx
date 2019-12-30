@@ -2,16 +2,27 @@ import styled from "styled-components"
 import { hexToRGB, shadeColour } from "../../helpers.js"
 
 export const StyledCartItem = styled.div`
-  button {
-    height: 100%;
-    padding: 8px;
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 
-    background-color: ${props => props.theme.grey500};
+  .product__actions {
+    button {
+      height: 100%;
+      padding: 8px;
 
-    svg {
-      width: 16px;
+      background-color: ${props => props.theme.grey500};
 
-      stroke: ${props => props.theme.white};
+      svg {
+        width: 16px;
+
+        stroke: ${props => props.theme.white};
+      }
     }
   }
 

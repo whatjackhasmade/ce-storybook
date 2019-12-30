@@ -24,11 +24,12 @@ const CartItem = node => {
     UPDATE_QUANTITY_MUTATION
   )
 
-  const updateQuantity = (e, action) => {
+  const updateQuantity = (e, { action, inputQuantity }) => {
     e.preventDefault()
 
-    if (!action) return
-    if (action !== "increase" && action !== "decrease") return
+    if (!action && !inputQuantity) return
+    if (action !== "set" && action !== "increase" && action !== "decrease")
+      return
 
     let clientMutationId = ""
     let newQuantity = quantity
@@ -41,6 +42,10 @@ const CartItem = node => {
       case "decrease":
         clientMutationId = generateID("remove-from-cart")
         newQuantity = quantity - 1
+        break
+      case "set":
+        clientMutationId = generateID("set=quantity-cart")
+        newQuantity = inputQuantity ? inputQuantity : quantity
         break
       default:
         break
@@ -62,6 +67,13 @@ const CartItem = node => {
     })
   }
 
+  const onQuantityScroll = e => {
+    e.preventDefault()
+    const { value } = e.target
+    if (!value) return
+    updateQuantity(e, { action: "set", inputQuantity: value })
+  }
+
   return (
     <StyledCartItem className="cart__product product">
       {image && image.mediaItemUrl && (
@@ -80,18 +92,22 @@ const CartItem = node => {
         <button
           className="product__decrease"
           disabled={loading || quantity < 1}
-          onClick={e => updateQuantity(e, "decrease")}
+          onClick={e => updateQuantity(e, { action: "decrease" })}
         >
           <span className="hide">Reduce quantity for {title}</span>
           <IconMinus />
         </button>
-        <span className="product__quantity" disabled={loading}>
-          {quantity}
-        </span>
+        <input
+          className="product__quantity"
+          disabled={loading}
+          onChange={onQuantityScroll}
+          type="number"
+          value={quantity}
+        />
         <button
           className="product__increase"
           disabled={loading}
-          onClick={e => updateQuantity(e, "increase")}
+          onClick={e => updateQuantity(e, { action: "increase" })}
         >
           <span className="hide">Increase quantity for {title}</span>
           <IconPlus />
