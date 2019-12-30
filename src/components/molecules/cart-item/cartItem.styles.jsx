@@ -2,6 +2,9 @@ import styled from "styled-components"
 import { hexToRGB, shadeColour } from "../../helpers.js"
 
 export const StyledCartItem = styled.div`
+  display: flex;
+  width: 100%;
+
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -12,6 +15,9 @@ export const StyledCartItem = styled.div`
   }
 
   .product__actions {
+    display: flex;
+    margin-left: auto;
+
     button {
       height: 100%;
       padding: 8px;
@@ -24,16 +30,23 @@ export const StyledCartItem = styled.div`
         stroke: ${props => props.theme.white};
       }
     }
+
+    input {
+      max-width: 40px;
+    }
   }
 
   .product__image {
-    max-width: 80px;
+    max-height: 64px;
+    max-width: 64px;
+
+    object-fit: cover;
   }
 
   .product__meta {
     display: flex;
     flex-direction: column;
-    margin: 0 24px 0 12px;
+    margin: 0 40px 0 24px;
   }
 
   .product__quantity {
@@ -44,6 +57,27 @@ export const StyledCartItem = styled.div`
 
     font-size: 24px;
     font-weight: bold;
+  }
+
+  .product__title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    /* Grey-900 */
+    color: #0d0d0d;
+    font-size: 20px;
+    letter-spacing: -0.05em;
+  }
+
+  .product__subtotal {
+    /* Grey-700 */
+    color: #3d4852;
+    font-size: 16px;
+    letter-spacing: -0.05em;
+  }
+
+  & + .product {
+    margin-top: 24px;
   }
 `
 

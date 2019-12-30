@@ -19,6 +19,12 @@ export const StyledCarousel = styled.section`
     margin: 12px 0 0;
   }
 
+  .carousel__item__image {
+    img {
+      width: 100%;
+    }
+  }
+
   .carousel__item__title {
     margin-bottom: 12px;
     margin-top: 12px;
@@ -73,6 +79,10 @@ export const StyledCarousel = styled.section`
   .slick-slide {
     opacity: 0.4;
     transition: 0.4s opacity ease;
+  }
+
+  .slick-track {
+    cursor: grab;
   }
 
   .slick-active {

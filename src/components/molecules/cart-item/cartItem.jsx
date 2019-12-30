@@ -12,13 +12,15 @@ import CURRENT_CART_QUERY from "../../particles/queries/cart/CURRENT_CART_QUERY"
 
 import UPDATE_QUANTITY_MUTATION from "../../particles/mutations/cart/UPDATE_QUANTITY_MUTATION"
 
+import Link from "../../atoms/link/link"
+
 import ErrorMessage from "../../molecules/error-message/errorMessage"
 
 const { number, shape, string } = PropTypes
 
 const CartItem = node => {
-  const { cartKey, product, quantity } = node
-  const { image, price, title } = product
+  const { cartKey, product, quantity, subtotal } = node
+  const { image, price, slug, title } = product
 
   const [updateCartQuantity, { data, error, loading }] = useMutation(
     UPDATE_QUANTITY_MUTATION
@@ -51,6 +53,14 @@ const CartItem = node => {
         break
     }
 
+    if (
+      newQuantity === 0 &&
+      !window.confirm(
+        `Are you sure you want to remove ${title} from your cart?`
+      )
+    )
+      return
+
     const variables = {
       clientMutationId,
       items: [
@@ -75,7 +85,7 @@ const CartItem = node => {
   }
 
   return (
-    <StyledCartItem className="cart__product product">
+    <StyledCartItem className="product cart__product">
       {image && image.mediaItemUrl && (
         <img
           alt={`Product ${title}`}
@@ -84,8 +94,10 @@ const CartItem = node => {
         />
       )}
       <div className="product__meta">
-        <h3 className="product__title">{title}</h3>
-        <span className="product__price">{price}</span>
+        <Link href={`/${slug}`}>
+          <h3 className="product__title">{title}</h3>
+        </Link>
+        {subtotal && <span className="product__subtotal">{subtotal}</span>}
       </div>
       {error && <ErrorMessage message={error.message} />}
       <div className="product__actions">

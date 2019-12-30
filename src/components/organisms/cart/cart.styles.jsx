@@ -24,13 +24,6 @@ export const StyledCart = styled.div`
     font-size: 20px;
   }
 
-  h3 {
-    margin: 0;
-    margin-bottom: 8px;
-
-    font-size: 16px;
-  }
-
   .cart__actions {
     display: flex;
     flex-direction: column;

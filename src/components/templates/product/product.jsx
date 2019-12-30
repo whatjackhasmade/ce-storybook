@@ -10,6 +10,8 @@ import ParseHTML from "../../particles/parseHTML"
 
 import ADD_TO_CART_MUTATION from "../../particles/mutations/cart/ADD_TO_CART_MUTATION"
 
+import CURRENT_CART_QUERY from "../../particles/queries/cart/CURRENT_CART_QUERY"
+
 import Button from "../../atoms/button/button"
 import Link from "../../atoms/link/link"
 
@@ -55,6 +57,7 @@ const ProductTemplate = props => {
     }
 
     addToCart({
+      refetchQueries: [{ query: CURRENT_CART_QUERY }],
       variables,
     })
   }

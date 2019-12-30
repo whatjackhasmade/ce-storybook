@@ -39,8 +39,23 @@ const Cart = ({ items }) => {
 const FullCart = ({ items, setOpen }) => {
   const { data, error, loading } = useQuery(CURRENT_CART_QUERY)
 
+  const handleClick = e => {
+    // To avoid get wrong class name, use this.
+    // But if the default context menu come up, without this is OK.
+    e.stopPropagation()
+    const modalClicked = e.target.classList.contains("cart")
+    if (modalClicked) setOpen(false)
+  }
+
+  const cartHasContents =
+    data &&
+    data.cart &&
+    data.cart.contents &&
+    data.cart.contents.nodes &&
+    data.cart.contents.nodes.length > 0
+
   return (
-    <StyledCart className="cart">
+    <StyledCart className="cart" onClick={handleClick}>
       <aside className="cart__aside">
         <header className="cart__header">
           <h2 className="cart__heading">Your Cart</h2>
@@ -62,26 +77,24 @@ const FullCart = ({ items, setOpen }) => {
 					support for when the application context is unavailable but items are provided.
 				*/}
         <div className="cart__products">
-          {data &&
-            data.cart &&
-            data.cart.contents &&
-            data.cart.contents.nodes &&
-            data.cart.contents.nodes.length &&
+          {cartHasContents &&
             data.cart.contents.nodes.map(product => <CartItem {...product} />)}
           {!data &&
             items &&
-            items.length &&
+            items.length > 0 &&
             items.map(product => <CartItem {...product} />)}
         </div>
         <div className="cart__actions">
           {/* If no items are available, disable the checkout option */}
-          <Button
-            className="cart__checkout"
-            disabled={error || loading}
-            href="/checkout"
-          >
-            Continue to checkout
-          </Button>
+          {cartHasContents && (
+            <Button
+              className="cart__checkout"
+              disabled={error || loading}
+              href="/checkout"
+            >
+              Continue to checkout
+            </Button>
+          )}
           <Button
             className="cart__return"
             disabled={error || loading}

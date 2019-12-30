@@ -19,9 +19,15 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
   responsive: [
+    {
+      breakpoint: breakpoints.xl,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
     {
       breakpoint: breakpoints.lg,
       settings: {
@@ -65,20 +71,24 @@ const Carousel = ({ intro, items }) => {
 
 const CarouselItem = ({ category, description, image, slug, title }) => (
   <div className="carousel__item">
-    <Link href={`/${slug}`}>
-      {image && slug && (
+    {image && slug && (
+      <Link href={`/${slug}`}>
         <div className="carousel__item__image">
           <img src={image} alt={title} />
         </div>
-      )}
-      {category && category.label && (
-        <h4 className="carousel__item__subtitle">{category.label}</h4>
-      )}
-      {title && <h3 className="carousel__item__title">{title}</h3>}
-      {description && (
-        <p className="carousel__item__description">{he.decode(description)}</p>
-      )}
-    </Link>
+      </Link>
+    )}
+    {category && category.label && (
+      <h4 className="carousel__item__subtitle">{category.label}</h4>
+    )}
+    {title && (
+      <Link href={`/${slug}`}>
+        <h3 className="carousel__item__title">{title}</h3>
+      </Link>
+    )}
+    {description && (
+      <p className="carousel__item__description">{he.decode(description)}</p>
+    )}
   </div>
 )
 
