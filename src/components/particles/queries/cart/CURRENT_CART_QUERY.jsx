@@ -5,7 +5,7 @@ export const CURRENT_CART_QUERY = gql`
     cart {
       contents {
         nodes {
-          key
+          cartKey: key
           product {
             id
             productId
@@ -23,6 +23,7 @@ export const CURRENT_CART_QUERY = gql`
           total
         }
       }
+      discountTotal
       total
     }
   }

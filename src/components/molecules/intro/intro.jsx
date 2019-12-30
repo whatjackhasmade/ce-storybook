@@ -29,8 +29,8 @@ Intro.propTypes = {
     label: string.isRequired,
     target: string,
   }),
-  intro: string.isRequired,
   subtitle: string.isRequired,
+  text: string.isRequired,
   title: string.isRequired,
 }
 

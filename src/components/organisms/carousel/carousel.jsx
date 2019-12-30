@@ -1,7 +1,8 @@
 import React from "react"
-import PropTypes from "prop-types"
+import PropTypes, { array, shape, string } from "prop-types"
 import he from "he"
 import Slider from "react-slick"
+import { generateID } from "../../helpers"
 import { breakpoints } from "../../particles/mediaQueries"
 
 import "../../../assets/lib/slick/slick.css"
@@ -12,8 +13,6 @@ import SyledCarousel from "./carousel.styles"
 import Link from "../../atoms/link/link"
 
 import Intro from "../../molecules/intro/intro"
-
-const { array } = PropTypes
 
 const settings = {
   centerMode: true,
@@ -54,10 +53,10 @@ const Carousel = ({ intro, items }) => {
 
   return (
     <SyledCarousel className="carousel">
-      <Intro {...intro} />
+      {intro && <Intro {...intro} />}
       <Slider className="carousel__slider" {...settings}>
         {items.map(item => (
-          <CarouselItem {...item} />
+          <CarouselItem key={generateID("carousel-item")} {...item} />
         ))}
       </Slider>
     </SyledCarousel>
@@ -85,6 +84,16 @@ const CarouselItem = ({ category, description, image, slug, title }) => (
 
 // Expected prop values
 Carousel.propTypes = {
+  intro: shape({
+    cta: shape({
+      href: string.isRequired,
+      label: string.isRequired,
+      target: string,
+    }),
+    subtitle: string.isRequired,
+    text: string.isRequired,
+    title: string.isRequired,
+  }),
   items: array.isRequired,
 }
 

@@ -24,6 +24,8 @@ const AnchorLink = ({ children, className, disabled, href, rel, target }) => {
       </a>
     )
 
+  href = href.startsWith("/") ? href : `/` + href
+
   // Otherwise, use the Gatsby Link component
   return (
     <Link className={className} to={href}>

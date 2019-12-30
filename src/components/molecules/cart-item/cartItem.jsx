@@ -8,6 +8,8 @@ import StyledCartItem from "./cartItem.styles"
 import IconMinus from "../../../assets/images/icons/minus.svg"
 import IconPlus from "../../../assets/images/icons/plus.svg"
 
+import CURRENT_CART_QUERY from "../../particles/queries/cart/CURRENT_CART_QUERY"
+
 import UPDATE_QUANTITY_MUTATION from "../../particles/mutations/cart/UPDATE_QUANTITY_MUTATION"
 
 import ErrorMessage from "../../molecules/error-message/errorMessage"
@@ -15,8 +17,50 @@ import ErrorMessage from "../../molecules/error-message/errorMessage"
 const { number, shape, string } = PropTypes
 
 const CartItem = node => {
-  const { key, product, quantity } = node
-  const { image, price, productId, title } = product
+  const { cartKey, product, quantity } = node
+  const { image, price, title } = product
+
+  const [updateCartQuantity, { data, error, loading }] = useMutation(
+    UPDATE_QUANTITY_MUTATION
+  )
+
+  const updateQuantity = (e, action) => {
+    e.preventDefault()
+
+    if (!action) return
+    if (action !== "increase" && action !== "decrease") return
+
+    let clientMutationId = ""
+    let newQuantity = quantity
+
+    switch (action) {
+      case "increase":
+        clientMutationId = generateID("add-to-cart")
+        newQuantity = quantity + 1
+        break
+      case "decrease":
+        clientMutationId = generateID("remove-from-cart")
+        newQuantity = quantity - 1
+        break
+      default:
+        break
+    }
+
+    const variables = {
+      clientMutationId,
+      items: [
+        {
+          key: cartKey,
+          quantity: newQuantity,
+        },
+      ],
+    }
+
+    updateCartQuantity({
+      refetchQueries: [{ query: CURRENT_CART_QUERY }],
+      variables,
+    })
+  }
 
   return (
     <StyledCartItem className="cart__product product">
@@ -31,85 +75,29 @@ const CartItem = node => {
         <h3 className="product__title">{title}</h3>
         <span className="product__price">{price}</span>
       </div>
-      {}
+      {error && <ErrorMessage message={error.message} />}
       <div className="product__actions">
-        <CartItemRemove key={key} quantity={quantity} title={title} />
-        <span className="product__quantity">{quantity}</span>
-        <CartItemAdd key={key} quantity={quantity} title={title} />
+        <button
+          className="product__decrease"
+          disabled={loading || quantity < 1}
+          onClick={e => updateQuantity(e, "decrease")}
+        >
+          <span className="hide">Reduce quantity for {title}</span>
+          <IconMinus />
+        </button>
+        <span className="product__quantity" disabled={loading}>
+          {quantity}
+        </span>
+        <button
+          className="product__increase"
+          disabled={loading}
+          onClick={e => updateQuantity(e, "increase")}
+        >
+          <span className="hide">Increase quantity for {title}</span>
+          <IconPlus />
+        </button>
       </div>
     </StyledCartItem>
-  )
-}
-
-const CartItemRemove = ({ key, quantity, title }) => {
-  console.log(key)
-
-  const [removeFromCart, { data, error, loading }] = useMutation(
-    UPDATE_QUANTITY_MUTATION
-  )
-
-  const variables = {
-    clientMutationId: generateID("remove-from-cart"),
-    items: [
-      {
-        key,
-        quantity: quantity - 1,
-      },
-    ],
-  }
-
-  const decrease = e => {
-    e.preventDefault()
-    removeFromCart({ variables })
-  }
-
-  return (
-    <>
-      {error && <ErrorMessage message={error.message} />}
-      <button
-        className="product__decrease"
-        disabled={loading || quantity < 1}
-        onClick={decrease}
-      >
-        <span className="hide">Reduce quantity for {title}</span>
-        <IconMinus />
-      </button>
-    </>
-  )
-}
-
-const CartItemAdd = ({ key, quantity, title }) => {
-  const [addToCart, { data, error, loading }] = useMutation(
-    UPDATE_QUANTITY_MUTATION
-  )
-
-  const variables = {
-    clientMutationId: generateID("add-to-cart"),
-    items: [
-      {
-        key,
-        quantity: quantity + 1,
-      },
-    ],
-  }
-
-  const increase = e => {
-    e.preventDefault()
-    addToCart({ variables })
-  }
-
-  return (
-    <>
-      {error && <ErrorMessage message={error.message} />}
-      <button
-        className="product__increase"
-        disabled={loading}
-        onClick={increase}
-      >
-        <span className="hide">Increase quantity for {title}</span>
-        <IconPlus />
-      </button>
-    </>
   )
 }
 
