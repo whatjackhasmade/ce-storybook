@@ -5,6 +5,7 @@ export const CURRENT_CART_QUERY = gql`
     cart {
       contents {
         nodes {
+          key
           product {
             id
             productId
@@ -17,6 +18,7 @@ export const CURRENT_CART_QUERY = gql`
             shortDescription
             slug
           }
+          quantity
           subtotal
           total
         }
