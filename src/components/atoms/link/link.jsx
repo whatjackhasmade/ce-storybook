@@ -8,6 +8,8 @@ const { bool, node, string } = PropTypes
 const AnchorLink = ({ children, className, disabled, href, rel, target }) => {
   if (!children) return null
   if (!href) return null
+  href = href.replace(process.env.GATSBY_DOMAIN, "")
+  href = href.replace(process.env.GATSBY_WORDPRESS_API, "")
 
   // If the URL isn't internal, return an anchor tag
   if (!isInternal(href))

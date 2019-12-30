@@ -24,7 +24,9 @@ const Icons = {
 }
 
 const Button = props => {
-  const { children, href, icon, onClick } = props
+  const { children, icon, onClick } = props
+  let { href } = props
+  href = href === "#" ? "/" : href
 
   if (!href)
     return (
@@ -43,6 +45,7 @@ const Button = props => {
     )
   }
 
+  href = href.startsWith("/") ? href : "/" + href
   return (
     <StyledLinkWrapper {...props}>
       <Link {...props} className="button" to={href}>
