@@ -232,9 +232,13 @@ export const StyledSliderItem = styled.div`
     margin: 0;
 
     color: inherit;
-    font-size: 72px;
+    font-size: 48px;
     letter-spacing: -0.05em;
     line-height: 110%;
+
+    @media ${device.md} {
+      font-size: 72px;
+    }
   }
 
   h2 + span {
@@ -255,7 +259,7 @@ export const StyledSliderItem = styled.div`
     justify-content: center;
     min-height: 400px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 64px 30px;
     position: relative;
     z-index: 2;
 

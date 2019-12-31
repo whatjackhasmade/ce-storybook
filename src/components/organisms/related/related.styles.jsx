@@ -57,6 +57,14 @@ export const StyledRelated = styled.section`
       letter-spacing: -0.05em;
       line-height: 140%;
     }
+
+    & + .related-item {
+      margin-top: 64px;
+
+      @media ${device.md} {
+        margin-top: 0;
+      }
+    }
   }
 
   .related-item__image {

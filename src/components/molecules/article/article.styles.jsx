@@ -159,9 +159,14 @@ export const StyledArticle = styled.article`
 
   p {
     color: ${props => props.theme.grey800};
-    font-size: 24px;
+    font-size: 18px;
     letter-spacing: -0.05em;
     line-height: 140%;
+
+    @media ${device.md} {
+      font-size: 24px;
+      letter-spacing: -0.05em;
+    }
   }
 
   .wp-block-image {
