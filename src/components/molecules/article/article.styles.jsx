@@ -3,7 +3,6 @@ import { device } from "../../particles/mediaQueries"
 
 export const StyledArticle = styled.article`
   /* Advanced vertical rhythym based off of https://medium.com/@sebastian.eberlein/advanced-vertical-margins-4ac69f032f79 */
-  max-width: 800px;
   margin: 64px auto;
 
   font-size: 2rem;
@@ -76,6 +75,10 @@ export const StyledArticle = styled.article`
 
   li + li {
     margin-top: 8px;
+  }
+
+  > * {
+    max-width: 1000px;
   }
 
   > * + * {
