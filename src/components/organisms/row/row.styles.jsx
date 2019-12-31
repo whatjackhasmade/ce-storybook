@@ -4,7 +4,6 @@ import { device } from "../../particles/mediaQueries"
 export const StyleRow = styled.div`
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  width: 100%;
   overflow: hidden;
   padding: 64px 30px;
 
