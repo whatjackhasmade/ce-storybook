@@ -114,7 +114,7 @@ const ProductActions = ({ currentId, updateCart }) => {
       data.cart.contents.nodes.length > 0 &&
       data.cart.contents.nodes.some(p => p.product.productId === currentId)
     setInCart(checkCart)
-  }, [data, error, loading])
+  }, [currentId, data, error, loading])
 
   if (!inCart) return <Button onClick={updateCart}>Add to Cart</Button>
   return <Button href="/checkout">View cart</Button>

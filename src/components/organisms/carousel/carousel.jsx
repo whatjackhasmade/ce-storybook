@@ -1,6 +1,5 @@
 import React from "react"
-import PropTypes, { array, shape, string } from "prop-types"
-import he from "he"
+import { array, shape, string } from "prop-types"
 import Slider from "react-slick"
 import { generateID } from "../../helpers"
 import { breakpoints } from "../../particles/mediaQueries"

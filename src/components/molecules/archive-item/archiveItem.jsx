@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { formatMoney } from "../../helpers"
 
 import StyledArchiveItem from "./archiveItem.styles"
 
@@ -9,7 +8,7 @@ import Link from "../../atoms/link/link"
 import ParseParagraphs from "../../particles/parseParagraphs"
 import CTA from "../../atoms/cta/cta"
 
-const { number, shape, string } = PropTypes
+const { shape, string } = PropTypes
 
 const ArchiveItem = ({
   description,

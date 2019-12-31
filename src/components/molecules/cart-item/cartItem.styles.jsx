@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { hexToRGB, shadeColour } from "../../helpers.js"
 
 export const StyledCartItem = styled.div`
   display: flex;

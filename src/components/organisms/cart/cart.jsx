@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useQuery } from "@apollo/react-hooks"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledCart, { StyledCartToggle } from "./cart.styles.jsx"
 
@@ -12,8 +12,6 @@ import Button from "../../atoms/button/button"
 
 import CartItem from "../../molecules/cart-item/cartItem"
 import ErrorMessage from "../../molecules/error-message/errorMessage"
-
-const { arrayOf, number, shape, string } = PropTypes
 
 const Cart = ({ items }) => {
   const [isOpen, setOpen] = useState(false)
@@ -62,7 +60,7 @@ const FullCart = ({ items, setOpen }) => {
           {data && data.cart && data.cart.total && (
             <span className="cart__total">
               {data.cart.total}
-              {Number(data.cart.total.replace(/[^0-9\.]+/g, "")) > 100 &&
+              {Number(data.cart.total.replace(/[^0-9]+/g, "")) > 100 &&
                 ` + Free P&P`}
             </span>
           )}

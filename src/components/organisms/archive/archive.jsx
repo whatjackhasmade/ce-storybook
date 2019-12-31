@@ -5,7 +5,7 @@ import StyledArchive from "./archive.styles"
 
 import ArchiveItem from "../../molecules/archive-item/archiveItem"
 
-const { arrayOf, number, shape, string } = PropTypes
+const { arrayOf, shape, string } = PropTypes
 
 const Archive = ({ items }) => (
   <StyledArchive className="archive">

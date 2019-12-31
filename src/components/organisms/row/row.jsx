@@ -1,5 +1,6 @@
-import React, { useRef } from "react"
+import React from "react"
 import { useInView } from "react-intersection-observer"
+import { bool, shape, string } from "prop-types"
 
 import StyledRow from "./row.styles"
 
@@ -8,7 +9,7 @@ import ParseHTML from "../../particles/parseHTML"
 import CTA from "../../atoms/cta/cta"
 
 const Row = ({ cta, description, image, reverse, subtitle, title }) => {
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0,
     triggerOnce: true,
@@ -48,6 +49,21 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
       </div>
     </StyledRow>
   )
+}
+
+Row.propTypes = {
+  cta: shape({
+    label: string.isRequired,
+    url: string.isRequired,
+  }),
+  description: string,
+  image: shape({
+    altText: string,
+    mediaItemUrl: string.isRequired,
+  }),
+  reverse: bool,
+  subtitle: string,
+  title: string,
 }
 
 export default Row

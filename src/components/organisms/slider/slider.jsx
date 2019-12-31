@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import PropTypes, { arrayOf, shape, string, bool } from "prop-types"
+import { arrayOf, shape, string, bool } from "prop-types"
 import SlickSlider from "react-slick"
 
 import "../../../assets/lib/slick/slick.css"
@@ -123,7 +123,7 @@ const SliderItem = ({ cta, description, image, light = false, title }) => (
       {description && ParseHTML(description)}
       {cta && <Button href={cta.url}>{cta.label}</Button>}
     </div>
-    <img src={image} />
+    <img alt={image.altText} src={image.mediaItemUrl} />
   </StyledSliderItem>
 )
 
@@ -136,7 +136,7 @@ const SliderOption = ({ index, image, onControlClick, slideIndex }) => (
     }
     onClick={e => onControlClick(e, index)}
   >
-    <img src={image} />
+    <img alt={image.altText} src={image.mediaItemUrl} />
   </button>
 )
 

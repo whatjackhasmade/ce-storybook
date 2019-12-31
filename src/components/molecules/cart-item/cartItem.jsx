@@ -20,9 +20,9 @@ const { number, shape, string } = PropTypes
 
 const CartItem = node => {
   const { cartKey, product, quantity, subtotal } = node
-  const { image, price, slug, title } = product
+  const { image, slug, title } = product
 
-  const [updateCartQuantity, { data, error, loading }] = useMutation(
+  const [updateCartQuantity, { error, loading }] = useMutation(
     UPDATE_QUANTITY_MUTATION
   )
 

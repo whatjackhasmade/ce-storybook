@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { array, object, string } from "prop-types"
 import he from "he"
 
 import StyledRelated from "./related.styles"
@@ -8,8 +8,6 @@ import CTA from "../../atoms/cta/cta"
 import Link from "../../atoms/link/link"
 
 import Intro from "../../molecules/intro/intro"
-
-const { array, node, object, string } = PropTypes
 
 const Related = ({ intro, items }) => {
   if (!items) return null
