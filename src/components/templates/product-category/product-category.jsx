@@ -16,6 +16,8 @@ const ProductCategoryWrapper = props => (
 )
 
 const ProductCategoryTemplate = ({ pageContext }) => {
+  if (!pageContext) return null
+
   const { description, image, products, title } = pageContext
 
   return (
@@ -27,13 +29,15 @@ const ProductCategoryTemplate = ({ pageContext }) => {
           src={image.mediaItemUrl}
         />
       )}
-      <h1 className="category__title">{title}</h1>
+      {title && <h1 className="category__title">{title}</h1>}
       {description && (
         <div className="category__description">{ParseHTML(description)}</div>
       )}
-      <section className="category__products">
-        <Archive items={products.nodes} />
-      </section>
+      {products && products.nodes && (
+        <section className="category__products">
+          <Archive items={products.nodes} />
+        </section>
+      )}
     </StyledProductCategory>
   )
 }

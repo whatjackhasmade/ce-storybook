@@ -1,0 +1,43 @@
+{
+  "cta": {
+    "default": {
+      "label": "Read about the world spa nomination",
+      "url": "/more"
+    },
+    "group": "Content",
+    "label": "Call to action"
+  },
+  "description": {
+    "default": "<p>Clare Pritchard, founder of Celtic Elements has accepted several beauty awards and is a finalist in The World Spa Awards 2020.</p>",
+    "group": "Content",
+    "label": "Text content"
+  },
+  "image": {
+    "default": {
+      "altText": "Clare Pritchard in her spa",
+      "mediaItemUrl": "https://source.unsplash.com/VDihQhOiOkI/960x1200"
+    },
+    "group": "Content",
+    "label": "Image"
+  },
+  "subtitle": {
+    "default": "Our awards",
+    "group": "Content",
+    "label": "Subtitle"
+  },
+  "title": {
+    "default": "Award winning team",
+    "group": "Content",
+    "label": "Title"
+  },
+  "reverse": {
+    "default": true,
+    "group": "Variation",
+    "label": "Reverse content"
+  },
+  "standard": {
+    "default": false,
+    "group": "Variation",
+    "label": "Reverse content"
+  }
+}

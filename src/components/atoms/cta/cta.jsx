@@ -8,18 +8,19 @@ import StyledCTA, { StyledCTASpan, StyledCTAWrapper } from "./cta.styles"
 import IconArrowRight from "../../../assets/images/icons/arrow-right.svg"
 
 const CTA = props => {
-  const { children, href } = props
+  const { children, className, href } = props
+  const ctaClass = className ? "cta " + className : "cta"
 
   if (!href)
     return (
-      <StyledCTASpan {...props} className="cta">
+      <StyledCTASpan {...props} className={ctaClass}>
         {children} <IconArrowRight />
       </StyledCTASpan>
     )
 
   if (!isInternal(href)) {
     return (
-      <StyledCTA className="cta" {...props}>
+      <StyledCTA className={ctaClass} {...props}>
         {children} <IconArrowRight />
       </StyledCTA>
     )
@@ -27,7 +28,7 @@ const CTA = props => {
 
   return (
     <StyledCTAWrapper className="cta-wrapper">
-      <Link {...props} className="cta" to={href}>
+      <Link {...props} className={ctaClass} to={href}>
         {children} <IconArrowRight />
       </Link>
     </StyledCTAWrapper>

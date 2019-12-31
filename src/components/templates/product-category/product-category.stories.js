@@ -17,7 +17,7 @@ export const productCategory = () => (
   />
 )
 
-productExample.story = {
+productCategory.story = {
   parameters: {
     design: {
       type: "figma",
