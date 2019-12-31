@@ -21,6 +21,12 @@ const ProductCategoryTemplate = ({ pageContext }) => {
   return (
     <StyledProductCategory>
       <HR full={true} mt="0px" />
+      {image && image.mediaItemUrl && (
+        <img
+          alt={image.altText ? image.altText : title}
+          src={image.mediaItemUrl}
+        />
+      )}
       <h1 className="category__title">{title}</h1>
       {description && (
         <div className="category__description">{ParseHTML(description)}</div>

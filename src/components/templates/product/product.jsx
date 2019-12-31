@@ -39,7 +39,6 @@ const ProductTemplate = props => {
   const {
     banner,
     carousel,
-    collection,
     description,
     image,
     price,
@@ -48,7 +47,6 @@ const ProductTemplate = props => {
     name,
   } = pageContext
 
-  const inCart = false
   const updateCart = e => {
     e.preventDefault()
 

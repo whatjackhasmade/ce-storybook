@@ -4,19 +4,19 @@ import { shadeColour } from "../../helpers"
 
 const buttonBackground = props => {
   // Fallback value if we can't get access to props
-  if (!props || !props.theme || !props.theme.primary) return "#4E2ECD"
+  if (!props || !props.theme || !props.theme.primary600) return "#4E2ECD"
 
   // If a background value is specified, use that instead of theme
   if (props.background) return props.background
 
   // If no variant is specified, return the primary colour in our theme
-  if (!props.variant) return props.theme.primary
+  if (!props.variant) return props.theme.primary600
 
   // Dynamically determine the background colour based on props
   let colour
   switch (props.variant) {
     case "primary":
-      colour = props.theme.primary
+      colour = props.theme.primary600
       break
     case "secondary":
       colour = props.theme.secondary
@@ -25,7 +25,7 @@ const buttonBackground = props => {
       colour = props.theme.offWhite
       break
     default:
-      colour = props.theme.primary
+      colour = props.theme.primary600
       break
   }
 

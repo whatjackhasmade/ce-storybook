@@ -5,10 +5,67 @@ import buttonReset from "../../atoms/button/button.reset"
 export const StyledSlider = styled.section`
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  width: 100%;
+  width: 100vw;
 
   button {
     ${buttonReset}
+  }
+
+  .slick-slide {
+    align-items: center;
+    display: flex;
+    height: auto;
+    justify-content: center;
+
+    > div {
+      height: 100%;
+    }
+
+    img,
+    picture {
+      transform: scale(1);
+    }
+  }
+
+  .slick-track {
+    display: flex;
+
+    cursor: grab;
+  }
+
+  .slick-active {
+    img,
+    picture {
+      animation-name: zoomIn;
+      animation-delay: 1s;
+      animation-duration: 8s;
+      animation-direction: forwards;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  .slick-slide {
+    position: relative;
+    width: 100%;
+
+    background-color: ${props => props.theme.grey700};
+    color: inherit;
+
+    img,
+    picture {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+
+      object-fit: cover;
+    }
+  }
+
+  .slider {
+    width: 100%;
   }
 
   .slider__arrows {
@@ -53,44 +110,6 @@ export const StyledSlider = styled.section`
     background-color: ${props => props.theme.black};
   }
 
-  .slider__current,
-  .slick-slide {
-    position: relative;
-    width: 100%;
-
-    background-color: ${props => props.theme.grey700};
-    color: ${props => props.theme.white};
-
-    img,
-    picture {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 1;
-
-      object-fit: cover;
-    }
-  }
-
-  .slider__current__content,
-  .slider__item__content {
-    align-items: center;
-    display: flex;
-    min-height: 400px;
-    margin: 0 auto;
-    padding: 30px;
-    position: relative;
-    z-index: 2;
-
-    @media ${device.md} {
-      max-width: 80%;
-      min-height: 80vh;
-      padding: 0;
-    }
-  }
-
   .slider__footer {
     @media ${device.md} {
       display: flex;
@@ -118,15 +137,43 @@ export const StyledSlider = styled.section`
       position: absolute;
       top: 0;
       width: 100%;
+      z-index: 2;
 
       object-fit: cover;
       opacity: 1;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 3;
+
+      background-color: ${props => props.theme.primary};
+      opacity: 0;
+      pointer-events: none;
       transition: 0.2s opacity ease;
+    }
+
+    &:focus {
+      img {
+        outline: 1px dotted ${props => props.theme.black};
+      }
+
+      &:before {
+        opacity: 0.3;
+      }
     }
   }
 
   .slider__option--active {
-    opacity: 0.3;
+    &:before {
+      opacity: 0.3;
+    }
   }
 
   .slider__pagination {
@@ -165,6 +212,73 @@ export const StyledSlider = styled.section`
       &:focus:not(:focus-visible) {
         outline: none;
       }
+    }
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+`
+
+export const StyledSliderItem = styled.div`
+  color: ${props => (props.light ? props.theme.white : props.theme.black)};
+
+  h2 {
+    margin: 0;
+
+    color: inherit;
+    font-size: 72px;
+    letter-spacing: -0.05em;
+    line-height: 110%;
+  }
+
+  h2 + span {
+    margin-top: 32px;
+  }
+
+  p {
+    color: inherit;
+    font-size: 18px;
+    letter-spacing: -0.05em;
+    line-height: 140%;
+  }
+
+  .slider__item__content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+
+    > * {
+      max-width: 540px;
+    }
+
+    p {
+      margin: 16px 0;
+    }
+
+    p:first-of-type {
+      margin-top: 24px;
+    }
+
+    p:last-of-type {
+      margin-bottom: 24px;
+    }
+
+    @media ${device.md} {
+      max-width: 80%;
+      min-height: 80vh;
+      padding: 0;
     }
   }
 `
