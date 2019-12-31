@@ -7,8 +7,8 @@ import ParseHTML from "../../particles/parseHTML"
 
 import CTA from "../../atoms/cta/cta"
 
-const Row = ({ cta, description, image, subtitle, title }) => (
-  <StyledRow>
+const Row = ({ cta, description, image, reverse, subtitle, title }) => (
+  <StyledRow reverse={reverse}>
     <div className="row__contents">
       <div class="row__column">
         {subtitle && <h3 className="row__subtitle">{subtitle}</h3>}

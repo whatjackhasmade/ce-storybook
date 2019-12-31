@@ -46,6 +46,16 @@ standardRow.story = {
   },
 }
 
+reverseRow.story = {
+  parameters: {
+    design: {
+      type: "figma",
+      url:
+        "https://www.figma.com/file/uihfnI2u5KSj2LuAVZR7lt/Celtic-Elements?node-id=2321%3A29",
+    },
+  },
+}
+
 export default {
   component: Row,
   decorators: [withDesign],

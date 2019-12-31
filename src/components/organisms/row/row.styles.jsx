@@ -6,26 +6,42 @@ export const StyleRow = styled.div`
   margin-right: calc(-50vw + 50%);
   width: 100%;
   overflow: hidden;
-  padding: 96px 0;
+  padding: 64px 30px;
 
   background-color: ${props => props.theme.grey100};
 
+  @media ${device.md} {
+    padding: 96px 0;
+  }
+
   .row__contents {
     align-items: center;
-    display: grid;
     grid-column-gap: 30px;
+    grid-row: 1fr;
     grid-template-columns: repeat(12, 1fr);
     margin: 0 auto;
-    max-width: ${props => props.theme.gridMax};
+    max-width: 560px;
     width: 100%;
+
+    @media ${device.md} {
+      display: grid;
+      max-width: ${props => props.theme.gridMax};
+    }
   }
 
   .row__column {
-    grid-column: 2 / 6;
+    grid-column: ${props => (props.reverse ? `8 / 12` : `2 / 6`)};
+    grid-row: 1;
   }
 
   .row__column + .row__column {
-    grid-column: 7 / 12;
+    grid-column: ${props => (props.reverse ? `2 / 7` : `7 / 12`)};
+    grid-row: 1;
+    margin-top: 48px;
+
+    @media ${device.md} {
+      margin-top: 0;
+    }
   }
 
   .row__cta {
