@@ -1,13 +1,11 @@
 import React from "react"
-import PropTypes from "prop-types"
+import PropTypes, { bool, node } from "prop-types"
 
 import SEO from "../particles/seo"
 
 import Cart from "../organisms/cart/cart"
 import Footer from "../organisms/footer/footer"
 import Header from "../organisms/header/header"
-
-const { bool, node } = PropTypes
 
 const Layout = props => {
   const {
