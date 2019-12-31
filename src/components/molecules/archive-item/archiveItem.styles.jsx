@@ -30,6 +30,7 @@ export const StyledArchiveItem = styled.div`
   > a {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   footer {
@@ -44,6 +45,7 @@ export const StyledArchiveItem = styled.div`
     top: 0;
     width: 100%;
 
+    object-fit: cover;
     transform: scale(1);
     transition: 1s transform ease;
   }
@@ -58,7 +60,7 @@ export const StyledArchiveItem = styled.div`
 
   .archive-item__image {
     height: 0;
-    padding-top: 100%;
+    padding-top: 62.5%;
     position: relative;
     overflow: hidden;
     width: 100%;

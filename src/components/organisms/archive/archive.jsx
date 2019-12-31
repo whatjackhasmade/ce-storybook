@@ -11,7 +11,7 @@ const Archive = ({ items }) => (
   <StyledArchive className="archive">
     <div className="archive__contents">
       {items.map(item => (
-        <ArchiveItem {...item} />
+        <ArchiveItem key={item.id} {...item} />
       ))}
     </div>
   </StyledArchive>
@@ -21,6 +21,9 @@ Archive.propTypes = {
   items: arrayOf(
     shape({
       description: string,
+      featuredImage: shape({
+        mediaItemUrl: string.isRequired,
+      }),
       id: string,
       image: shape({
         mediaItemUrl: string.isRequired,

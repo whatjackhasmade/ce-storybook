@@ -99,7 +99,15 @@ export const StyledButton = styled.button`
 `
 
 export const StyledLinkWrapper = styled(StyledButton).attrs({ as: "span" })`
+  padding: 0;
+
   a {
+    display: block;
+    padding: 16px;
+    width: 100%;
+
+    color: ${props => buttonColour(props)} !important;
+    font-weight: 700 !important;
     text-decoration: none;
   }
 `

@@ -13,6 +13,7 @@ const { number, shape, string } = PropTypes
 
 const ArchiveItem = ({
   description,
+  featuredImage,
   id,
   image,
   price,
@@ -27,15 +28,17 @@ const ArchiveItem = ({
           <img src={image.mediaItemUrl} alt={title} />
         </div>
       )}
+      {featuredImage && featuredImage.mediaItemUrl && (
+        <div className="archive-item__image">
+          <img src={featuredImage.mediaItemUrl} alt={title} />
+        </div>
+      )}
       {title && <h2 className="h4">{title}</h2>}
       {price && <span className="archive-item__price">{price}</span>}
-      {(description || shortDescription) && (
-        <p className="archive-item__description">
-          {shortDescription
-            ? ParseParagraphs(shortDescription)
-            : ParseParagraphs(description)}
-        </p>
-      )}
+      {(description || shortDescription) &&
+        (shortDescription
+          ? ParseParagraphs(shortDescription)
+          : ParseParagraphs(description))}
       <footer className="archive-item__footer">
         <CTA>View Product</CTA>
       </footer>
@@ -45,6 +48,9 @@ const ArchiveItem = ({
 
 ArchiveItem.propTypes = {
   description: string,
+  featuredImage: shape({
+    mediaItemUrl: string.isRequired,
+  }),
   id: string,
   image: shape({
     mediaItemUrl: string.isRequired,

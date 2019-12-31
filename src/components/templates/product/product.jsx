@@ -1,5 +1,5 @@
-import React from "react"
-import { useMutation } from "@apollo/react-hooks"
+import React, { useEffect, useState } from "react"
+import { useMutation, useQuery } from "@apollo/react-hooks"
 // import Img from "gatsby-image/withIEPolyfill"
 import { generateID } from "../../helpers"
 
@@ -64,8 +64,6 @@ const ProductTemplate = props => {
     })
   }
 
-  console.log(productCategories.nodes.length)
-
   return (
     <StyledProduct>
       <HR full={true} mb="0px" mt="0px" />
@@ -90,15 +88,7 @@ const ProductTemplate = props => {
             <div className="product__description">
               {description && ParseHTML(description)}
             </div>
-            {!inCart && <Button onClick={updateCart}>Add to Cart</Button>}
-            {inCart && (
-              <>
-                <Link href="/checkout">View cart</Link>
-                <Button onClick={updateCart} variant="tertiary">
-                  Decrease quantity
-                </Button>
-              </>
-            )}
+            <ProductActions currentId={productId} updateCart={updateCart} />
           </div>
         </header>
         <div className="product__image">
@@ -111,6 +101,25 @@ const ProductTemplate = props => {
       {carousel && <Carousel {...carousel} />}
     </StyledProduct>
   )
+}
+
+const ProductActions = ({ currentId, updateCart }) => {
+  const [inCart, setInCart] = useState(false)
+  const { data, error, loading } = useQuery(CURRENT_CART_QUERY)
+
+  useEffect(() => {
+    const checkCart =
+      data &&
+      data.cart &&
+      data.cart.contents &&
+      data.cart.contents.nodes &&
+      data.cart.contents.nodes.length > 0 &&
+      data.cart.contents.nodes.some(p => p.product.productId === currentId)
+    setInCart(checkCart)
+  }, [data, error, loading])
+
+  if (!inCart) return <Button onClick={updateCart}>Add to Cart</Button>
+  return <Button href="/checkout">View cart</Button>
 }
 
 export default ProductWrapper
