@@ -11,6 +11,7 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
   const [ref, inView, entry] = useInView({
     /* Optional options */
     threshold: 0,
+    triggerOnce: true,
   })
 
   return (
