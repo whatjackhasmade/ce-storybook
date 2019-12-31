@@ -32,10 +32,10 @@ const headerPosition = props => {
   let position
   switch (props.variant) {
     case "fixedLight":
-      position = "fixed"
+      position = "absolute"
       break
     case "fixedDark":
-      position = "fixed"
+      position = "absolute"
       break
     default:
       position = "relative"
@@ -54,6 +54,7 @@ export const StyledHeader = styled.header`
   position: ${props => headerPosition(props)};
   top: ${props => (props.variant ? `0` : undefined)};
   width: 100%;
+  z-index: 9;
 
   color: ${props => headerColour(props)};
 

@@ -10,7 +10,15 @@ import Header from "../organisms/header/header"
 const { bool, node } = PropTypes
 
 const Layout = props => {
-  const { cart, children, footer, gatsbyContext, header, seo } = props
+  const {
+    cart,
+    children,
+    footer,
+    gatsbyContext,
+    header,
+    headerVariant,
+    seo,
+  } = props
 
   return (
     <React.Fragment>
@@ -18,7 +26,10 @@ const Layout = props => {
       {/* Start of visual page components */}
       <div className="wrapper">
         {header && (
-          <Header navigation={gatsbyContext && gatsbyContext.headerMenu} />
+          <Header
+            navigation={gatsbyContext && gatsbyContext.headerMenu}
+            variant={headerVariant}
+          />
         )}
         {children && (
           <main>

@@ -9,6 +9,7 @@ export const StyledCart = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
 
   background-color: ${props => `rgba(${hexToRGB(props.theme.grey800)}, 0.8)`};
   opacity: 0;
