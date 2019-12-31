@@ -80,6 +80,10 @@ export const StyleRow = styled.div`
       width: 100%;
 
       object-fit: cover;
+      opacity: ${props => (props.inView ? 1 : 0)};
+      transform: ${props =>
+        !props.inView ? `translateX(-50px)` : `translateX(0)`};
+      transition: 0.6s opacity ease, 0.6s transform ease;
     }
   }
 
@@ -91,6 +95,13 @@ export const StyleRow = styled.div`
     letter-spacing: 0.19em;
     line-height: 140%;
     text-transform: uppercase;
+  }
+
+  .row__text {
+    opacity: ${props => (props.inView ? 1 : 0)};
+    transform: ${props =>
+      !props.inView ? `translateX(50px)` : `translateX(0)`};
+    transition: 0.6s opacity ease, 0.6s transform ease;
   }
 
   .row__title {
