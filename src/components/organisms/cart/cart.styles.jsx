@@ -97,6 +97,7 @@ export const StyledCartToggle = styled.nav`
   bottom: 32px;
   position: fixed;
   right: 32px;
+  z-index: 10;
 
   button {
     align-items: center;

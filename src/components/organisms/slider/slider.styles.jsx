@@ -105,7 +105,7 @@ export const StyledSlider = styled.section`
   }
 
   .slider__controls {
-    padding: 40px;
+    padding: 56px 40px;
 
     background-color: ${props => props.theme.black};
   }
