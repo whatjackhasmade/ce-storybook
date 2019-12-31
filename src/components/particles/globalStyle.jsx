@@ -199,6 +199,7 @@ const GlobalStyle = createGlobalStyle`
 
 		font-size: 32px;
 		font-weight: 700;
+		letter-spacing: -0.05em;
 		line-height: 1.1;
 
 		@media ${device.lg} {
@@ -249,6 +250,13 @@ const GlobalStyle = createGlobalStyle`
 		@media ${device.lg} {
 			font-size: 18px;
 		}
+	}
+
+	hr {
+		height: 0;
+		margin: 32px 0;
+
+		border-top: 1px solid ${props => props.theme.grey200};
 	}
 
 	main {

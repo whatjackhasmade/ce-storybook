@@ -8,7 +8,9 @@ import { breakpoints } from "../../particles/mediaQueries"
 import "../../../assets/lib/slick/slick.css"
 import "../../../assets/lib/slick/slick-theme.css"
 
-import SyledCarousel from "./carousel.styles"
+import SyledCarousel, { SyledCarouselItem } from "./carousel.styles"
+
+import ParseParagraphs from "../../particles/parseParagraphs"
 
 import Link from "../../atoms/link/link"
 
@@ -21,6 +23,7 @@ const settings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
+  swipeToSlide: true,
   responsive: [
     {
       breakpoint: breakpoints.xl,
@@ -47,7 +50,7 @@ const settings = {
   ],
 }
 
-const Carousel = ({ intro, items }) => {
+const Carousel = ({ intro, items, type }) => {
   if (!items) return null
   if (!items.length) return null
 
@@ -58,26 +61,50 @@ const Carousel = ({ intro, items }) => {
   }
 
   return (
-    <SyledCarousel className="carousel">
+    <SyledCarousel className="carousel" type={type}>
       {intro && <Intro {...intro} />}
       <Slider className="carousel__slider" {...settings}>
-        {items.map(item => (
-          <CarouselItem key={generateID("carousel-item")} {...item} />
+        {items.map((item, index) => (
+          <CarouselItem
+            key={generateID("carousel-item")}
+            {...item}
+            index={index}
+            type={type}
+          />
         ))}
       </Slider>
     </SyledCarousel>
   )
 }
 
-const CarouselItem = ({ category, description, image, slug, title }) => (
-  <div className="carousel__item">
-    {image && slug && (
+const CarouselItem = ({
+  category,
+  description,
+  image,
+  index,
+  productCategories,
+  shortDescription,
+  slug,
+  title,
+  type,
+}) => (
+  <SyledCarouselItem className="carousel__item" index={index} type={type}>
+    {image && image.mediaItemUrl && slug && (
       <Link href={`/${slug}`}>
         <div className="carousel__item__image">
-          <img src={image} alt={title} />
+          <img src={image.mediaItemUrl} alt={title} />
         </div>
       </Link>
     )}
+    {productCategories &&
+      productCategories.nodes &&
+      productCategories.nodes.length > 0 && (
+        <Link href={`/product-category/${productCategories.nodes[0].slug}`}>
+          <h4 className="carousel__item__subtitle">
+            {productCategories.nodes[0].title}
+          </h4>
+        </Link>
+      )}
     {category && category.label && (
       <h4 className="carousel__item__subtitle">{category.label}</h4>
     )}
@@ -86,10 +113,14 @@ const CarouselItem = ({ category, description, image, slug, title }) => (
         <h3 className="carousel__item__title">{title}</h3>
       </Link>
     )}
-    {description && (
-      <p className="carousel__item__description">{he.decode(description)}</p>
+    {(description || shortDescription) && (
+      <div className="carousel__item__description">
+        {shortDescription
+          ? ParseParagraphs(shortDescription)
+          : ParseParagraphs(description)}
+      </div>
     )}
-  </div>
+  </SyledCarouselItem>
 )
 
 // Expected prop values
@@ -105,10 +136,12 @@ Carousel.propTypes = {
     title: string.isRequired,
   }),
   items: array.isRequired,
+  type: string.isRequired,
 }
 
 Carousel.defaultProps = {
   items: [],
+  type: "standard",
 }
 
 export default Carousel
