@@ -28,9 +28,7 @@ const ProductWrapper = props => (
 )
 
 const ProductTemplate = props => {
-  const [addToCart, { data, error, loading }] = useMutation(
-    ADD_TO_CART_MUTATION
-  )
+  const [addToCart] = useMutation(ADD_TO_CART_MUTATION)
 
   const authToken = localStorage.getItem("authToken")
 

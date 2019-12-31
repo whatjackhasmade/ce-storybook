@@ -4,26 +4,14 @@ import { navigate } from "gatsby"
 
 import StyledLogout from "./logout.styles"
 
-import refetchQueriesByName from "../../particles/apollo/refetchQueriesByName"
-
-import CURRENT_CART_QUERY from "../../particles/queries/cart/CURRENT_CART_QUERY"
-import CUSTOMER_DETAILS_QUERY from "../../particles/queries/users/CUSTOMER_DETAILS_QUERY"
-import USER_DETAILS_QUERY from "../../particles/queries/users/USER_DETAILS_QUERY"
-
 import Button from "../../atoms/button/button"
 
 const Logout = ({ title }) => {
   const authToken = localStorage.getItem("authToken")
-
   if (!authToken) return null
 
-  const logoutUser = e => {
+  const logoutUser = async e => {
     e.preventDefault()
-    refetchQueriesByName([
-      "CURRENT_CART_QUERY",
-      "CUSTOMER_DETAILS_QUERY",
-      "USER_DETAILS_QUERY",
-    ])
     localStorage.removeItem("authToken")
     localStorage.removeItem("refreshToken")
     navigate("/")
