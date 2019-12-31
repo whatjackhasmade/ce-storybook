@@ -15,7 +15,11 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
   })
 
   return (
-    <StyledRow inView={inView} ref={ref} reverse={reverse}>
+    <StyledRow
+      className={inView ? `row row--inview` : `row`}
+      ref={ref}
+      reverse={reverse}
+    >
       <div className="row__contents">
         <div class="row__column">
           <div class="row__text">

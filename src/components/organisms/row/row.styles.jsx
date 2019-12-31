@@ -79,9 +79,8 @@ export const StyleRow = styled.div`
       width: 100%;
 
       object-fit: cover;
-      opacity: ${props => (props.inView ? 1 : 0)};
-      transform: ${props =>
-        !props.inView ? `translateX(-50px)` : `translateX(0)`};
+      opacity: 0;
+      transform: translateX(-50px);
       transition: 0.6s opacity ease, 0.6s transform ease;
     }
   }
@@ -97,9 +96,8 @@ export const StyleRow = styled.div`
   }
 
   .row__text {
-    opacity: ${props => (props.inView ? 1 : 0)};
-    transform: ${props =>
-      !props.inView ? `translateX(50px)` : `translateX(0)`};
+    opacity: 0;
+    transform: translateX(50px);
     transition: 0.6s opacity ease, 0.6s transform ease;
   }
 
@@ -110,6 +108,20 @@ export const StyleRow = styled.div`
     font-size: 36px;
     letter-spacing: -0.05em;
     line-height: 110%;
+  }
+
+  .row--inview {
+    .row__image {
+      img {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .row__text {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 `
 
