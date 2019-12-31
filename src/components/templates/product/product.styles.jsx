@@ -3,8 +3,6 @@ import styled from "styled-components"
 export const StyledProduct = styled.div`
   width: 100%;
 
-  border-top: 1px solid ${props => props.theme.grey200};
-
   h1 {
     margin-top: 0;
 

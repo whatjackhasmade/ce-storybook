@@ -14,6 +14,7 @@ import CURRENT_CART_QUERY from "../../particles/queries/cart/CURRENT_CART_QUERY"
 
 import Button from "../../atoms/button/button"
 import Link from "../../atoms/link/link"
+import HR from "../../atoms/hr/hr"
 
 import Banner from "../../organisms/banner/banner"
 import Carousel from "../../organisms/carousel/carousel"
@@ -42,6 +43,7 @@ const ProductTemplate = props => {
     description,
     image,
     price,
+    productCategories,
     productId,
     name,
   } = pageContext
@@ -62,17 +64,26 @@ const ProductTemplate = props => {
     })
   }
 
+  console.log(productCategories.nodes.length)
+
   return (
     <StyledProduct>
+      <HR full={true} mb="0px" mt="0px" />
       <section className="product__intro">
         {/* <Img fluid={pageContext.imageFile.childImageSharp.fluid} /> */}
         <header className="product__header">
           <div className="product__header__content">
             <nav>
               <Link href="/shop">Products</Link>
-              {collection && (
-                <Link href={collection.url}>{collection.label}</Link>
-              )}
+              {productCategories &&
+                productCategories.nodes &&
+                productCategories.nodes.length > 0 && (
+                  <Link
+                    href={`/product-category/${productCategories.nodes[0].slug}`}
+                  >
+                    {productCategories.nodes[0].title}
+                  </Link>
+                )}
             </nav>
             {name && <h1>{name}</h1>}
             {price && <h2 className="h4">{price}</h2>}
