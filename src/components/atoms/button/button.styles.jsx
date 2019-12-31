@@ -66,7 +66,7 @@ export const StyledButton = styled.button`
   display: inline-flex;
   justify-content: center;
   min-width: 208px;
-  padding: 16px;
+  padding: 16px 24px;
 
   background-color: ${props => buttonBackground(props)};
   color: ${props => buttonColour(props)};
@@ -103,7 +103,7 @@ export const StyledLinkWrapper = styled(StyledButton).attrs({ as: "span" })`
 
   a {
     display: block;
-    padding: 16px;
+    padding: 16px 24px;
     width: 100%;
 
     color: ${props => buttonColour(props)} !important;
