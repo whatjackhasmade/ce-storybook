@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { number, shape, string } from "prop-types"
 import { useMutation } from "@apollo/react-hooks"
 import { generateID } from "../../helpers"
 
@@ -15,8 +15,6 @@ import UPDATE_QUANTITY_MUTATION from "../../particles/mutations/cart/UPDATE_QUAN
 import Link from "../../atoms/link/link"
 
 import ErrorMessage from "../../molecules/error-message/errorMessage"
-
-const { number, shape, string } = PropTypes
 
 const CartItem = node => {
   const { cartKey, product, quantity, subtotal } = node

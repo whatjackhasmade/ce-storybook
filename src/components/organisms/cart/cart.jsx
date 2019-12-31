@@ -16,6 +16,9 @@ import ErrorMessage from "../../molecules/error-message/errorMessage"
 const Cart = ({ items }) => {
   const [isOpen, setOpen] = useState(false)
 
+  const authToken = localStorage.getItem("authToken")
+  if (!authToken) return null
+
   if (!isOpen) {
     return (
       <StyledCartToggle>

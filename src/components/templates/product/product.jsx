@@ -16,6 +16,8 @@ import Button from "../../atoms/button/button"
 import Link from "../../atoms/link/link"
 import HR from "../../atoms/hr/hr"
 
+import SignIn from "../../molecules/signin/signin"
+
 import Banner from "../../organisms/banner/banner"
 import Carousel from "../../organisms/carousel/carousel"
 
@@ -30,10 +32,7 @@ const ProductTemplate = props => {
     ADD_TO_CART_MUTATION
   )
 
-  // Debugging changes 🕵🏻‍♂️
-  console.log({ data })
-  console.log({ error })
-  console.log({ loading })
+  const authToken = localStorage.getItem("authToken")
 
   const { pageContext } = props
   const {
@@ -86,7 +85,11 @@ const ProductTemplate = props => {
             <div className="product__description">
               {description && ParseHTML(description)}
             </div>
-            <ProductActions currentId={productId} updateCart={updateCart} />
+            {authToken ? (
+              <ProductActions currentId={productId} updateCart={updateCart} />
+            ) : (
+              <SignIn action="purchase this product" />
+            )}
           </div>
         </header>
         <div className="product__image">
