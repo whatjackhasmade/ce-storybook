@@ -110,7 +110,7 @@ export const StyleRow = styled.div`
     line-height: 110%;
   }
 
-  .row--inview {
+  &.row--inview {
     .row__image {
       img {
         opacity: 1;
