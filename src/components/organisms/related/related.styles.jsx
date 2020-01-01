@@ -80,8 +80,27 @@ export const StyledRelated = styled.section`
 
   .related-item__image {
     display: block;
+    height: 0;
     margin-bottom: 16px;
+    padding-top: 62.5%;
+    position: relative;
     overflow: hidden;
+    width: 100%;
+
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+    img {
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      object-fit: cover;
+      transform: scale(1);
+      transition: 1s transform ease;
+    }
 
     &:active,
     &:focus,
@@ -91,13 +110,6 @@ export const StyledRelated = styled.section`
         transform: ${props =>
           props.variant === "products" ? `scale(1.1)` : undefined};
       }
-    }
-
-    img {
-      display: block;
-
-      transform: scale(1);
-      transition: 1s transform ease;
     }
   }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useMutation, useQuery } from "@apollo/react-hooks"
 // import Img from "gatsby-image/withIEPolyfill"
-import { generateID } from "../../helpers"
+import { generateID, isEmptyObject } from "../../helpers"
 
 import StyledProduct from "./product.styles"
 
@@ -32,67 +32,16 @@ const banner = {
   title: "Creating a Positive Day",
 }
 
-const related = {
-  intro: {
-    cta: {
-      href: "/shop",
-      label: "Shop all products",
-      target: null,
-    },
-    subtitle: "Our products",
-    text:
-      "Multi Award Winning Spa Manager Clare Pritchard shares the story of Celtic Elements.",
-    title: "Premium, Handcrafted Care",
+const relatedIntro = {
+  cta: {
+    href: "/shop",
+    label: "Shop all products",
+    target: null,
   },
-  items: [
-    {
-      category: {
-        href: "/product-category/sets",
-        label: "Sets",
-      },
-      image: "https://source.unsplash.com/random/500x300",
-      slug: "perfect-day",
-      title: "Perfect Day",
-    },
-    {
-      category: {
-        href: "/product-category/sets",
-        label: "Sets",
-      },
-      image: "https://source.unsplash.com/random/500x300",
-      slug: "perfect-day",
-      title: "Perfect Day",
-    },
-    {
-      category: {
-        href: "/product-category/sets",
-        label: "Sets",
-      },
-      image: "https://source.unsplash.com/random/500x300",
-      slug: "perfect-day",
-      title: "Perfect Day",
-    },
-  ],
-}
-
-const data = {
+  subtitle: "Our products",
   text:
-    "<h2>Release the day</h2><p>Celtic Elements is a Welsh, Vegan, Wellness brand. We use Welsh natural ingredients from the hillsides & coast of Wales in our Skincare, Body care and Well being ranges.</p><p>We believe in using locally sourced products whist reducing our waste as much as possible and help our customers to do the same.</p>",
-  images: [
-    {
-      altText: "Clare Pritchard in her spa",
-      mediaItemUrl: "https://source.unsplash.com/07mSKrzKiRw/960x1200",
-    },
-    {
-      altText: "Clare Pritchard in her spa",
-      mediaItemUrl: "https://source.unsplash.com/xp_rGJz_Dyk/960x1200",
-    },
-    {
-      altText: "Clare Pritchard in her spa",
-      mediaItemUrl: "https://source.unsplash.com/IhHbCZY2IU0/960x1200",
-    },
-  ],
-  reverse: false,
+    "Multi Award Winning Spa Manager Clare Pritchard shares the story of Celtic Elements.",
+  title: "Premium, Handcrafted Care",
 }
 
 const ProductWrapper = props => (
@@ -102,20 +51,51 @@ const ProductWrapper = props => (
 )
 
 const ProductTemplate = props => {
-  const [addToCart] = useMutation(ADD_TO_CART_MUTATION)
-
-  const authToken = localStorage.getItem("authToken")
-
   const { pageContext } = props
-  const {
-    description,
-    image,
-    price,
-    productCategories,
-    productId,
-    name,
-  } = pageContext
+  const { productFields, related } = pageContext
 
+  const slicesExist = Object.keys(productFields).some(
+    (key, index) => !isEmptyObject(key)
+  )
+
+  const slices = Object.keys(productFields).filter(key => {
+    const empty = Object.keys(productFields[key]).every(k => {
+      return productFields[key][k] === null
+    })
+    return !empty
+  })
+
+  return (
+    <StyledProduct>
+      <HR full={true} mb="0px" mt="0px" />
+      <ProductIntro {...pageContext} />
+      {slicesExist &&
+        slices &&
+        slices.length > 0 &&
+        slices.map(slice => <SliceGrid {...productFields[slice]} />)}
+      {/* <SliceGrid {...data} /> */}
+      {banner && <Banner {...banner} />}
+      {related && (
+        <Related
+          intro={relatedIntro}
+          items={related.nodes}
+          variant="products"
+        />
+      )}
+    </StyledProduct>
+  )
+}
+
+const ProductIntro = ({
+  description,
+  image,
+  price,
+  productCategories,
+  productId,
+  name,
+}) => {
+  const [addToCart] = useMutation(ADD_TO_CART_MUTATION)
+  const authToken = localStorage.getItem("authToken")
   const updateCart = e => {
     e.preventDefault()
 
@@ -132,46 +112,40 @@ const ProductTemplate = props => {
   }
 
   return (
-    <StyledProduct>
-      <HR full={true} mb="0px" mt="0px" />
-      <section className="product__intro">
-        {/* <Img fluid={pageContext.imageFile.childImageSharp.fluid} /> */}
-        <header className="product__header">
-          <div className="product__header__content">
-            <nav>
-              <Link href="/shop">Products</Link>
-              {productCategories &&
-                productCategories.nodes &&
-                productCategories.nodes.length > 0 && (
-                  <Link
-                    href={`/product-category/${productCategories.nodes[0].slug}`}
-                  >
-                    {productCategories.nodes[0].title}
-                  </Link>
-                )}
-            </nav>
-            {name && <h1>{name}</h1>}
-            {price && <h2 className="h4">{price}</h2>}
-            <div className="product__description">
-              {description && ParseHTML(description)}
-            </div>
-            {authToken ? (
-              <ProductActions currentId={productId} updateCart={updateCart} />
-            ) : (
-              <SignIn action="purchase this product" />
-            )}
+    <section className="product__intro">
+      {/* <Img fluid={pageContext.imageFile.childImageSharp.fluid} /> */}
+      <header className="product__header">
+        <div className="product__header__content">
+          <nav>
+            <Link href="/shop">Products</Link>
+            {productCategories &&
+              productCategories.nodes &&
+              productCategories.nodes.length > 0 && (
+                <Link
+                  href={`/product-category/${productCategories.nodes[0].slug}`}
+                >
+                  {productCategories.nodes[0].title}
+                </Link>
+              )}
+          </nav>
+          {name && <h1>{name}</h1>}
+          {price && <h2 className="h4">{price}</h2>}
+          <div className="product__description">
+            {description && ParseHTML(description)}
           </div>
-        </header>
-        <div className="product__image">
-          {image && image.mediaItemUrl && (
-            <img alt="Product" src={image.mediaItemUrl} />
+          {authToken ? (
+            <ProductActions currentId={productId} updateCart={updateCart} />
+          ) : (
+            <SignIn action="purchase this product" />
           )}
         </div>
-      </section>
-      <SliceGrid {...data} />
-      {banner && <Banner {...banner} />}
-      {related && <Related {...related} variant="products" />}
-    </StyledProduct>
+      </header>
+      <div className="product__image">
+        {image && image.mediaItemUrl && (
+          <img alt="Product" src={image.mediaItemUrl} />
+        )}
+      </div>
+    </section>
   )
 }
 

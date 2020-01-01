@@ -1,6 +1,6 @@
 import React from "react"
 import { useInView } from "react-intersection-observer"
-import { bool, shape, string } from "prop-types"
+import { bool, shape, string, arrayOf } from "prop-types"
 import { generateID } from "../../helpers"
 
 import StyledSliceGrid from "./slice-grid.styles"
@@ -15,10 +15,13 @@ const SliceGrid = ({ images, reverse, text }) => {
     triggerOnce: true,
   })
 
+  const highOrderData = images.some(i => i.image)
+  if (highOrderData) images = images.map(i => i.image)
+
   return (
     <StyledSliceGrid
       className={inView ? `slice-grid slice-grid--inview` : `slice-grid`}
-      imageCount={images.length}
+      imageCount={images && images.length ? images.length : 0}
       ref={ref}
       reverse={reverse}
     >
@@ -54,9 +57,11 @@ const SliceGrid = ({ images, reverse, text }) => {
 }
 
 SliceGrid.propTypes = {
-  image: shape({
-    altText: string,
-    mediaItemUrl: string.isRequired,
+  images: arrayOf({
+    image: shape({
+      altText: string,
+      mediaItemUrl: string.isRequired,
+    }),
   }),
   reverse: bool,
   text: string,
