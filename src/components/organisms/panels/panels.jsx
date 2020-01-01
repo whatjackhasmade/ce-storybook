@@ -13,10 +13,10 @@ const Panels = ({ cta, items }) => {
     <StyledPanels className="panels">
       <div className="panels__contents">
         {items.map(({ content, link, title }) => (
-          <div className="panels__panel">
-            <h3>{title}</h3>
-            <p>{content}</p>
-            <CTA {...link}>{link.label}</CTA>
+          <div className="panels__panel" key={title}>
+            {title && <h3>{title}</h3>}
+            {content && <p>{content}</p>}
+            {link && <CTA {...link}>{link.label}</CTA>}
           </div>
         ))}
       </div>
@@ -44,7 +44,7 @@ Panels.propTypes = {
         label: string,
         target: string,
       }),
-      title: string,
+      title: string.isRequired,
     })
   ),
 }

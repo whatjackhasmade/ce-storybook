@@ -22,8 +22,8 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
       reverse={reverse}
     >
       <div className="row__contents">
-        <div class="row__column">
-          <div class="row__text">
+        <div className="row__column">
+          <div className="row__text">
             {subtitle && <h3 className="row__subtitle">{subtitle}</h3>}
             {title && <h2 className="row__title">{title}</h2>}
             {description && (
@@ -36,12 +36,12 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
             )}
           </div>
         </div>
-        <div class="row__column">
+        <div className="row__column">
           {image && image.mediaItemUrl && (
-            <div class="row__image">
+            <div className="row__image">
               <img
-                src={image.mediaItemUrl}
                 alt={image.altText ? image.altText : title}
+                src={image.mediaItemUrl}
               />
             </div>
           )}

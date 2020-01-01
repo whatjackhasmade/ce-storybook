@@ -9,8 +9,9 @@ export function formatMoney(value) {
 
 export function generateID(type) {
   const timestamp = Date.now()
-  if (!type) return timestamp
-  return type + `-${timestamp}`
+  const randomInt = Math.floor(Math.random() * 500000)
+  if (!type) return timestamp + "-" + randomInt
+  return type + `-${timestamp}-${randomInt}`
 }
 
 export function hexToRGB(hex) {

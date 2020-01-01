@@ -1,6 +1,7 @@
 import React from "react"
-import { array, object, shape, string } from "prop-types"
 import he from "he"
+import { array, object, shape, string } from "prop-types"
+import { generateID } from "../../helpers"
 
 import StyledRelated from "./related.styles"
 
@@ -18,7 +19,11 @@ const Related = ({ intro, items, variant }) => {
         <Intro {...intro} />
         <div className="related__items">
           {items.map(item => (
-            <RelatedItem {...item} variant={variant} />
+            <RelatedItem
+              {...item}
+              key={generateID("related-item")}
+              variant={variant}
+            />
           ))}
         </div>
       </div>

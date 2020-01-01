@@ -1,9 +1,15 @@
 import gql from "graphql-tag"
 
-export const CREATE_CUSTOMER_MUTATION = gql`
-  mutation REFRESH_AUTHTOKEN_MUTATION($refreshToken: String!) {
+export const REFRESH_AUTHTOKEN_MUTATION = gql`
+  mutation REFRESH_AUTHTOKEN_MUTATION(
+    $clientMutationId: String!
+    $jwtRefreshToken: String!
+  ) {
     refreshJwtAuthToken(
-      input: { clientMutationId: "UPDATEME", jwtRefreshToken: $refreshToken }
+      input: {
+        clientMutationId: $clientMutationId
+        jwtRefreshToken: $jwtRefreshToken
+      }
     ) {
       authToken
       clientMutationId
@@ -11,4 +17,4 @@ export const CREATE_CUSTOMER_MUTATION = gql`
   }
 `
 
-export default CREATE_CUSTOMER_MUTATION
+export default REFRESH_AUTHTOKEN_MUTATION

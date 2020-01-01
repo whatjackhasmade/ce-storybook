@@ -55,7 +55,7 @@ const Slider = ({ items, variant }) => {
             {...settings}
           >
             {items.map(item => (
-              <SliderItem {...item} />
+              <SliderItem key={`slider-item-${item.title}`} {...item} />
             ))}
           </SlickSlider>
         ) : (
@@ -109,7 +109,10 @@ Slider.propTypes = {
         url: string.isRequired,
       }),
       description: string,
-      image: string.isRequired,
+      image: shape({
+        altText: string,
+        mediaItemUrl: string.isRequired,
+      }),
       light: bool.isRequired,
       title: string,
     })

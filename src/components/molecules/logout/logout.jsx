@@ -8,7 +8,12 @@ import Button from "../../atoms/button/button"
 
 const Logout = ({ title }) => {
   const authToken = localStorage.getItem("authToken")
-  if (!authToken) return null
+  const refreshToken = localStorage.getItem("refreshToken")
+  if (!authToken || !refreshToken) {
+    localStorage.removeItem("authToken")
+    localStorage.removeItem("refreshToken")
+    return null
+  }
 
   const logoutUser = async e => {
     e.preventDefault()
