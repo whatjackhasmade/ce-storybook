@@ -126,9 +126,9 @@ const CarouselItem = ({
 Carousel.propTypes = {
   intro: shape({
     cta: shape({
-      href: string.isRequired,
-      label: string.isRequired,
       target: string,
+      title: string,
+      url: string,
     }),
     subtitle: string.isRequired,
     text: string.isRequired,

@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useQuery } from "@apollo/react-hooks"
 import { arrayOf, shape, string } from "prop-types"
+import { generateID } from "../../helpers"
 
 import StyledCart, { StyledCartToggle } from "./cart.styles.jsx"
 
@@ -79,11 +80,15 @@ const FullCart = ({ items, setOpen }) => {
 				*/}
         <div className="cart__products">
           {cartHasContents &&
-            data.cart.contents.nodes.map(product => <CartItem {...product} />)}
+            data.cart.contents.nodes.map(product => (
+              <CartItem key={generateID("cart-item")} {...product} />
+            ))}
           {!data &&
             items &&
             items.length > 0 &&
-            items.map(product => <CartItem {...product} />)}
+            items.map(product => (
+              <CartItem key={generateID("cart-item")} {...product} />
+            ))}
         </div>
         <div className="cart__actions">
           {/* If no items are available, disable the checkout option */}

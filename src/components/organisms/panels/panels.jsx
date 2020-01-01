@@ -16,27 +16,21 @@ const Panels = ({ cta, items }) => {
           <div className="panels__panel" key={title}>
             {title && <h3>{title}</h3>}
             {content && ParseHTML(content)}
-            {link &&
-              link.title &&
-              link.title !==
-                ""(
-                  <CTA {...link} href={link.url}>
-                    {link.title}
-                  </CTA>
-                )}
+            {link && link.title && link.title !== "" && (
+              <CTA {...link} href={link.url}>
+                {link.title}
+              </CTA>
+            )}
           </div>
         ))}
       </div>
-      {cta &&
-        cta.title &&
-        cta.title !==
-          ""(
-            <footer className="panels__footer">
-              <CTA {...cta} href={cta.url}>
-                {cta.title}
-              </CTA>
-            </footer>
-          )}
+      {cta && cta.title && cta.title !== "" && (
+        <footer className="panels__footer">
+          <CTA {...cta} href={cta.url}>
+            {cta.title}
+          </CTA>
+        </footer>
+      )}
     </StyledPanels>
   )
 }
@@ -45,16 +39,16 @@ const Panels = ({ cta, items }) => {
 Panels.propTypes = {
   cta: shape({
     target: string,
-    title: string.isRequired,
-    url: string.isRequired,
+    title: string,
+    url: string,
   }),
   items: arrayOf(
     shape({
       content: string,
       link: shape({
         target: string,
-        title: string.isRequired,
-        url: string.isRequired,
+        title: string,
+        url: string,
       }),
       title: string.isRequired,
     })

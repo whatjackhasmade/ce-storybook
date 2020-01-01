@@ -14,7 +14,7 @@ const Banner = props => {
       <div className="banner__contents">
         {title && <h2 className="banner__title">{title}</h2>}
         {content && <div className="banner__content">{ParseHTML(content)}</div>}
-        {cta && (
+        {cta && cta.title && cta.title !== "" && (
           <footer className="banner__footer">
             <Button href={cta.url} target={cta.target} variant="tertiary">
               {cta.title}
@@ -29,8 +29,8 @@ const Banner = props => {
 Banner.propTypes = {
   cta: shape({
     target: string,
-    title: string.isRequired,
-    url: string.isRequired,
+    title: string,
+    url: string,
   }),
   content: string.isRequired,
   title: string,

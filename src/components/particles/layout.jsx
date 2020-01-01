@@ -15,8 +15,10 @@ const Layout = props => {
     gatsbyContext,
     header,
     headerVariant,
-    seo,
+    pageContext,
   } = props
+
+  const { seo } = pageContext
 
   return (
     <React.Fragment>

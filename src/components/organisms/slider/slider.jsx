@@ -108,8 +108,8 @@ Slider.propTypes = {
     shape({
       cta: shape({
         target: string,
-        title: string.isRequired,
-        url: string.isRequired,
+        title: string,
+        url: string,
       }),
       description: string,
       image: shape({
@@ -127,7 +127,7 @@ const SliderItem = ({ cta, description, image, light = false, title }) => (
     <div className="slider__item__content">
       {title && <h2>{title}</h2>}
       {description && ParseHTML(description)}
-      {cta && (
+      {cta && cta.title && cta.title !== "" && (
         <Button href={cta.url} target={cta.target}>
           {cta.title}
         </Button>
