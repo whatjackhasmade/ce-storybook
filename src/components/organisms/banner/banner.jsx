@@ -5,21 +5,24 @@ import StyledBanner from "./banner.styles"
 
 import Button from "../../atoms/button/button"
 
-const Banner = (props, { content, cta, title } = props) => (
-  <StyledBanner {...props} className="banner">
-    <div className="banner__contents">
-      {title && <h2 className="banner__title">{title}</h2>}
-      <p className="banner__content">{content}</p>
-      {cta && (
-        <footer className="banner__footer">
-          <Button href={cta.href} target={cta.target} variant="tertiary">
-            {cta.label}
-          </Button>
-        </footer>
-      )}
-    </div>
-  </StyledBanner>
-)
+const Banner = props => {
+  const { content, cta, title } = props
+  return (
+    <StyledBanner {...props} className="banner">
+      <div className="banner__contents">
+        {title && <h2 className="banner__title">{title}</h2>}
+        <p className="banner__content">{content}</p>
+        {cta && (
+          <footer className="banner__footer">
+            <Button href={cta.href} target={cta.target} variant="tertiary">
+              {cta.label}
+            </Button>
+          </footer>
+        )}
+      </div>
+    </StyledBanner>
+  )
+}
 
 Banner.propTypes = {
   cta: shape({

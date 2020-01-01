@@ -9,8 +9,9 @@ import Link from "../../atoms/link/link"
 
 import Navigation from "../../molecules/navigation/navigation"
 
-const Header = (props, { navigation } = props) => {
+const Header = props => {
   const [isOpen, setOpen] = useState(false)
+  const { navigation } = props
 
   const toggleNavigation = e => {
     e.preventDefault()

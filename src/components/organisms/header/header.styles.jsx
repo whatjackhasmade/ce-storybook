@@ -173,6 +173,8 @@ export const StyledHeader = styled.header`
     @media ${device.md} {
       display: flex;
       left: unset;
+      margin: 0 auto;
+      max-width: 1920px;
       min-height: 124px;
       padding: 30px;
       position: relative;

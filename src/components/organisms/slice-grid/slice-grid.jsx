@@ -1,6 +1,7 @@
 import React from "react"
 import { useInView } from "react-intersection-observer"
 import { bool, shape, string } from "prop-types"
+import { generateID } from "../../helpers"
 
 import StyledSliceGrid from "./slice-grid.styles"
 
@@ -26,7 +27,10 @@ const SliceGrid = ({ images, reverse, text }) => {
           {images && images.length > 1 && (
             <div className="slice-grid__images">
               {images.map(({ altText, mediaItemUrl }) => (
-                <div className="slice-grid__image">
+                <div
+                  className="slice-grid__image"
+                  key={generateID("slice-grid__image")}
+                >
                   <img alt={altText ? altText : undefined} src={mediaItemUrl} />
                 </div>
               ))}

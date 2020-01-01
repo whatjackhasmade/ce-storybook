@@ -11,7 +11,7 @@ import ErrorMessage from "../../molecules/error-message/errorMessage"
 import Button from "../../atoms/button/button"
 
 const Payment = ({ children, cost }) => {
-  const [updateCartQuantity, { data, error, loading }] = useMutation(
+  const [updateCartQuantity, { error, loading }] = useMutation(
     CHECKOUT_CART_MUTATION,
     {
       refetchQueries: [{ query: CURRENT_CART_QUERY }],
@@ -29,10 +29,6 @@ const Payment = ({ children, cost }) => {
     e.preventDefault()
     await completedPayment()
   }
-
-  console.log({ data })
-  console.log({ error })
-  console.log({ loading })
 
   return (
     <>

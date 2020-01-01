@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
 import { arrayOf, shape, string, bool } from "prop-types"
 import SlickSlider from "react-slick"
+import { generateID } from "../../helpers"
 
 import "../../../assets/lib/slick/slick.css"
 import "../../../assets/lib/slick/slick-theme.css"
@@ -89,6 +90,7 @@ const Slider = ({ items, variant }) => {
                 <SliderOption
                   {...item}
                   index={index}
+                  key={generateID("slider-option")}
                   onControlClick={onControlClick}
                   slideIndex={slideIndex}
                 />
