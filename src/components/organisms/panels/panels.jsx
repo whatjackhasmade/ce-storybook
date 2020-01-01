@@ -3,6 +3,8 @@ import { arrayOf, shape, string } from "prop-types"
 
 import StyledPanels from "./panels.styles"
 
+import ParseHTML from "../../particles/parseHTML"
+
 import CTA from "../../atoms/cta/cta"
 
 const Panels = ({ cta, items }) => {
@@ -13,16 +15,28 @@ const Panels = ({ cta, items }) => {
         {items.map(({ content, link, title }) => (
           <div className="panels__panel" key={title}>
             {title && <h3>{title}</h3>}
-            {content && <p>{content}</p>}
-            {link && <CTA {...link}>{link.label}</CTA>}
+            {content && ParseHTML(content)}
+            {link &&
+              link.title &&
+              link.title !==
+                ""(
+                  <CTA {...link} href={link.url}>
+                    {link.title}
+                  </CTA>
+                )}
           </div>
         ))}
       </div>
-      {cta && (
-        <footer className="panels__footer">
-          <CTA {...cta}>{cta.label}</CTA>
-        </footer>
-      )}
+      {cta &&
+        cta.title &&
+        cta.title !==
+          ""(
+            <footer className="panels__footer">
+              <CTA {...cta} href={cta.url}>
+                {cta.title}
+              </CTA>
+            </footer>
+          )}
     </StyledPanels>
   )
 }
@@ -30,17 +44,17 @@ const Panels = ({ cta, items }) => {
 // Expected prop values
 Panels.propTypes = {
   cta: shape({
-    href: string,
-    label: string,
     target: string,
+    title: string.isRequired,
+    url: string.isRequired,
   }),
   items: arrayOf(
     shape({
       content: string,
       link: shape({
-        href: string,
-        label: string,
         target: string,
+        title: string.isRequired,
+        url: string.isRequired,
       }),
       title: string.isRequired,
     })

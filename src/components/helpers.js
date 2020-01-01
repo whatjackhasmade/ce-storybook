@@ -27,6 +27,11 @@ export function hexToRGB(hex) {
   return `${result[1].toString()}, ${result[2].toString()}, ${result[3].toString()}`
 }
 
+export function isEmptyObject(obj) {
+  if (!obj) return true
+  return Object.entries(obj).length === 0 && obj.constructor === Object
+}
+
 export function isInternal(url) {
   if (!url) return false
   if (url.startsWith("mailto:")) return false
