@@ -1,11 +1,9 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledArchive from "./archive.styles"
 
 import ArchiveItem from "../../molecules/archive-item/archiveItem"
-
-const { arrayOf, shape, string } = PropTypes
 
 const Archive = ({ items }) => (
   <StyledArchive className="archive">

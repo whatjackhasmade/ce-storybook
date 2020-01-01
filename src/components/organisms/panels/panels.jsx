@@ -1,11 +1,9 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledPanels from "./panels.styles"
 
 import CTA from "../../atoms/cta/cta"
-
-const { arrayOf, shape, string } = PropTypes
 
 const Panels = ({ cta, items }) => {
   if (!items || !items.length) return null

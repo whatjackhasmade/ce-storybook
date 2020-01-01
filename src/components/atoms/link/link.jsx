@@ -1,9 +1,7 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { bool, node, string } from "prop-types"
 import Link from "gatsby-link"
 import { isInternal } from "../../helpers"
-
-const { bool, node, string } = PropTypes
 
 const AnchorLink = ({ children, className, disabled, href, rel, target }) => {
   if (!children) return null

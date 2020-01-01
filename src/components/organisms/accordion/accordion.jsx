@@ -1,11 +1,9 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
+import { node, string } from "prop-types"
 
 import StyledAccordion from "./accordion.styles"
 
 import IconArrowLeft from "../../../assets/images/icons/arrow-left.svg"
-
-const { node, string } = PropTypes
 
 const Accordion = ({ children, title }) => {
   const [isOpen, setOpen] = useState(false)

@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { node, func, string } from "prop-types"
 import Link from "gatsby-link"
 import { isInternal } from "../../helpers"
 
@@ -58,12 +58,12 @@ const Button = props => {
 
 // Expected prop values
 Button.propTypes = {
-  background: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  href: PropTypes.string,
-  icon: PropTypes.string,
-  onClick: PropTypes.func,
-  variant: PropTypes.string,
+  background: string,
+  children: node.isRequired,
+  href: string,
+  icon: string,
+  onClick: func,
+  variant: string,
 }
 
 // Default prop values
@@ -86,7 +86,7 @@ const ButtonIcon = ({ icon }) => {
 
 // Button Icon component always expects on prop value for icon name
 ButtonIcon.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: string.isRequired,
 }
 
 export default Button

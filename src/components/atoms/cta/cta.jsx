@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { node, string } from "prop-types"
 import Link from "gatsby-link"
 import { isInternal } from "../../helpers"
 
@@ -37,9 +37,9 @@ const CTA = props => {
 
 // Expected prop values
 CTA.propTypes = {
-  children: PropTypes.node.isRequired,
-  href: PropTypes.string,
-  target: PropTypes.string,
+  children: node.isRequired,
+  href: string,
+  target: string,
 }
 
 // Default prop values

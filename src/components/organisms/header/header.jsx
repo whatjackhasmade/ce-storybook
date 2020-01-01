@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledHeader from "./header.styles"
 
@@ -8,8 +8,6 @@ import BrandLogo from "../../../assets/images/brand/logo.png"
 import Link from "../../atoms/link/link"
 
 import Navigation from "../../molecules/navigation/navigation"
-
-const { arrayOf, shape, string } = PropTypes
 
 const Header = props => {
   const { navigation } = props

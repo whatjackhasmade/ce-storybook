@@ -1,11 +1,9 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { shape, string } from "prop-types"
 
 import StyledBanner from "./banner.styles"
 
 import Button from "../../atoms/button/button"
-
-const { shape, string } = PropTypes
 
 const Banner = props => {
   const { content, cta, title } = props

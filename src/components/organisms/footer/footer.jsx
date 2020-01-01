@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledFooter from "./footer.styles"
 
@@ -10,8 +10,6 @@ import IconTwitter from "../../../assets/images/icons/brands/twitter.svg"
 
 import FooterNewsletter from "../../molecules/footer-newsletter/footerNewsletter"
 import Navigation from "../../molecules/navigation/navigation"
-
-const { arrayOf, shape, string } = PropTypes
 
 const Footer = ({ navigation }) => (
   <StyledFooter>
