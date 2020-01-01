@@ -1,6 +1,5 @@
 import React from "react"
 import { node, func, string } from "prop-types"
-import Link from "gatsby-link"
 import { isInternal } from "../../helpers"
 
 import StyledButton, {
@@ -13,6 +12,8 @@ import IconBag from "../../../assets/images/icons/shopping-bag.svg"
 import IconCart from "../../../assets/images/icons/shopping-cart.svg"
 import IconUser from "../../../assets/images/icons/user.svg"
 import IconX from "../../../assets/images/icons/x.svg"
+
+import Link from "../link/link"
 
 // Assign SVGs to object with named keys
 const Icons = {
@@ -48,7 +49,7 @@ const Button = props => {
   href = href.startsWith("/") ? href : "/" + href
   return (
     <StyledLinkWrapper {...props}>
-      <Link {...props} className="button" to={href}>
+      <Link {...props} className="button" href={href}>
         {icon && <ButtonIcon icon={icon} />}
         {children}
       </Link>

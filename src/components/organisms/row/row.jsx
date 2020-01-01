@@ -29,9 +29,9 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
             {description && (
               <div className="row__description">{ParseHTML(description)}</div>
             )}
-            {cta && cta.label && cta.url && (
+            {cta && cta.title && cta.url && (
               <CTA className="row__cta" href={cta.url}>
-                {cta.label}
+                {cta.title}
               </CTA>
             )}
           </div>
@@ -53,7 +53,7 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
 
 Row.propTypes = {
   cta: shape({
-    label: string.isRequired,
+    title: string.isRequired,
     url: string.isRequired,
   }),
   description: string,

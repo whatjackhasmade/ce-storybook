@@ -107,7 +107,8 @@ Slider.propTypes = {
   items: arrayOf(
     shape({
       cta: shape({
-        label: string.isRequired,
+        target: string,
+        title: string.isRequired,
         url: string.isRequired,
       }),
       description: string,
@@ -126,7 +127,11 @@ const SliderItem = ({ cta, description, image, light = false, title }) => (
     <div className="slider__item__content">
       {title && <h2>{title}</h2>}
       {description && ParseHTML(description)}
-      {cta && <Button href={cta.url}>{cta.label}</Button>}
+      {cta && (
+        <Button href={cta.url} target={cta.target}>
+          {cta.title}
+        </Button>
+      )}
     </div>
     <img alt={image.altText} src={image.mediaItemUrl} />
   </StyledSliderItem>
