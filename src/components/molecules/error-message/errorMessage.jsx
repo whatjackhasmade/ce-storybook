@@ -12,7 +12,7 @@ const cleanText = string =>
     .replace(/<\/?[^>]+(>|$)/g, "")
     .replace("ERROR: ", "")
 
-const ErrorMessage = ({ isDeveloperConcern = true, message, title }) => {
+const ErrorMessage = ({ isDeveloperConcern = false, message, title }) => {
   const [isReported, setReported] = useState(false)
 
   if (!message) return null
@@ -64,7 +64,7 @@ ErrorMessage.propTypes = {
 }
 
 ErrorMessage.defaultProps = {
-  isDeveloperConcern: true,
+  isDeveloperConcern: false,
 }
 
 export default ErrorMessage

@@ -23,8 +23,7 @@ const Icons = {
   user: IconUser,
 }
 
-const Button = props => {
-  const { children, icon, onClick } = props
+const Button = (props, { children, icon, onClick } = props) => {
   let { href } = props
   href = href === "#" ? "/" : href
 

@@ -16,8 +16,7 @@ import Link from "../../atoms/link/link"
 
 import ErrorMessage from "../../molecules/error-message/errorMessage"
 
-const CartItem = node => {
-  const { cartKey, product, quantity, subtotal } = node
+const CartItem = ({ cartKey, product, quantity, subtotal }) => {
   const { image, slug, title } = product
 
   const [updateCartQuantity, { error, loading }] = useMutation(

@@ -7,8 +7,7 @@ import StyledCTA, { StyledCTASpan, StyledCTAWrapper } from "./cta.styles"
 
 import IconArrowRight from "../../../assets/images/icons/arrow-right.svg"
 
-const CTA = props => {
-  const { children, className, href } = props
+const CTA = (props, { children, className, href } = props) => {
   const ctaClass = className ? "cta " + className : "cta"
 
   if (!href)
