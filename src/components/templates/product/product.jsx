@@ -20,6 +20,7 @@ import SignIn from "../../molecules/signin/signin"
 
 import Banner from "../../organisms/banner/banner"
 import Related from "../../organisms/related/related"
+import SliceGrid from "../../organisms/slice-grid/slice-grid"
 
 const banner = {
   content: "Creating a Positive Day",
@@ -72,6 +73,26 @@ const related = {
       title: "Perfect Day",
     },
   ],
+}
+
+const data = {
+  text:
+    "<h2>Release the day</h2><p>Celtic Elements is a Welsh, Vegan, Wellness brand. We use Welsh natural ingredients from the hillsides & coast of Wales in our Skincare, Body care and Well being ranges.</p><p>We believe in using locally sourced products whist reducing our waste as much as possible and help our customers to do the same.</p>",
+  images: [
+    {
+      altText: "Clare Pritchard in her spa",
+      mediaItemUrl: "https://source.unsplash.com/07mSKrzKiRw/960x1200",
+    },
+    {
+      altText: "Clare Pritchard in her spa",
+      mediaItemUrl: "https://source.unsplash.com/xp_rGJz_Dyk/960x1200",
+    },
+    {
+      altText: "Clare Pritchard in her spa",
+      mediaItemUrl: "https://source.unsplash.com/IhHbCZY2IU0/960x1200",
+    },
+  ],
+  reverse: false,
 }
 
 const ProductWrapper = props => (
@@ -147,6 +168,7 @@ const ProductTemplate = props => {
           )}
         </div>
       </section>
+      <SliceGrid {...data} />
       {banner && <Banner {...banner} />}
       {related && <Related {...related} variant="products" />}
     </StyledProduct>
