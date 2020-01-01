@@ -30,12 +30,23 @@ export const StyledRelated = styled.section`
   }
 
   .related-item {
+    padding: ${props => (props.variant === "products" ? `32px` : undefined)};
+
+    background-color: ${props =>
+      props.variant === "products" ? `#ecdcc6` : undefined};
+
+    &:nth-of-type(2n) {
+      background-color: ${props =>
+        props.variant === "products" ? props.theme.secondary200 : undefined};
+    }
+
     &:active,
     &:focus,
     &:focus-within,
     &:hover {
       img {
-        transform: scale(1.1);
+        transform: ${props =>
+          props.variant !== "products" ? `scale(1.1)` : undefined};
       }
     }
 
@@ -72,6 +83,16 @@ export const StyledRelated = styled.section`
     margin-bottom: 16px;
     overflow: hidden;
 
+    &:active,
+    &:focus,
+    &:focus-within,
+    &:hover {
+      img {
+        transform: ${props =>
+          props.variant === "products" ? `scale(1.1)` : undefined};
+      }
+    }
+
     img {
       display: block;
 
@@ -89,7 +110,7 @@ export const StyledRelated = styled.section`
   }
 
   .related-item__title {
-    margin-bottom: 18px;
+    margin-bottom: ${props => (props.variant !== "products" ? `18px` : `0`)};
 
     font-size: 24px;
   }

@@ -1,14 +1,14 @@
 import React from "react"
 
-import ParseHTML from "../particles/parseHTML"
-import Layout from "../particles/layout"
+import ParseHTML from "../../particles/parseHTML"
+import Layout from "../../particles/layout"
 
-import Link from "../atoms/link/link"
+import Link from "../../atoms/link/link"
 
-import Article from "../molecules/article/article"
+import Article from "../../molecules/article/article"
 
-import Banner from "../organisms/banner/banner"
-import Related from "../organisms/related/related"
+import Banner from "../../organisms/banner/banner"
+import Related from "../../organisms/related/related"
 
 const banner = {
   content: "Creating a Positive Day",

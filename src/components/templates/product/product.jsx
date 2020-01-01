@@ -19,7 +19,60 @@ import HR from "../../atoms/hr/hr"
 import SignIn from "../../molecules/signin/signin"
 
 import Banner from "../../organisms/banner/banner"
-import Carousel from "../../organisms/carousel/carousel"
+import Related from "../../organisms/related/related"
+
+const banner = {
+  content: "Creating a Positive Day",
+  cta: {
+    href: "#",
+    label: "Call to action",
+    target: null,
+  },
+  title: "Creating a Positive Day",
+}
+
+const related = {
+  intro: {
+    cta: {
+      href: "/shop",
+      label: "Shop all products",
+      target: null,
+    },
+    subtitle: "Our products",
+    text:
+      "Multi Award Winning Spa Manager Clare Pritchard shares the story of Celtic Elements.",
+    title: "Premium, Handcrafted Care",
+  },
+  items: [
+    {
+      category: {
+        href: "/product-category/sets",
+        label: "Sets",
+      },
+      image: "https://source.unsplash.com/random/500x300",
+      slug: "perfect-day",
+      title: "Perfect Day",
+    },
+    {
+      category: {
+        href: "/product-category/sets",
+        label: "Sets",
+      },
+      image: "https://source.unsplash.com/random/500x300",
+      slug: "perfect-day",
+      title: "Perfect Day",
+    },
+    {
+      category: {
+        href: "/product-category/sets",
+        label: "Sets",
+      },
+      image: "https://source.unsplash.com/random/500x300",
+      slug: "perfect-day",
+      title: "Perfect Day",
+    },
+  ],
+}
 
 const ProductWrapper = props => (
   <Layout {...props}>
@@ -34,8 +87,6 @@ const ProductTemplate = props => {
 
   const { pageContext } = props
   const {
-    banner,
-    carousel,
     description,
     image,
     price,
@@ -97,7 +148,7 @@ const ProductTemplate = props => {
         </div>
       </section>
       {banner && <Banner {...banner} />}
-      {carousel && <Carousel {...carousel} />}
+      {related && <Related {...related} variant="products" />}
     </StyledProduct>
   )
 }
