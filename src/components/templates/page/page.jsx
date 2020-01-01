@@ -1,10 +1,10 @@
 import React from "react"
 
-import Layout from "../particles/layout"
-import ParseHTML from "../particles/parseHTML"
+import Layout from "../../particles/layout"
+import ParseHTML from "../../particles/parseHTML"
 
-import Article from "../molecules/article/article"
-import ComponentParser from "../particles/componentParser"
+import Article from "../../molecules/article/article"
+import ComponentParser from "../../particles/componentParser"
 
 const PageTemplate = props => (
   <Layout {...props}>
