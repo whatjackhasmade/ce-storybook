@@ -58,7 +58,7 @@ const SEO = ({ data }) => {
   ]
 
   return (
-    <Helmet>
+    <Helmet defer={false}>
       {/* General tags */}
       <title>
         {opengraphTitle ? he.decode(opengraphTitle) : he.decode(title)}
