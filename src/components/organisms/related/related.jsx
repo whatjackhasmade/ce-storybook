@@ -1,5 +1,5 @@
 import React from "react"
-import { array, object, shape, string } from "prop-types"
+import { array, object, shape, string, arrayOf } from "prop-types"
 import { generateID } from "../../helpers"
 
 import StyledRelated from "./related.styles"
@@ -110,12 +110,13 @@ const RelatedItem = ({
 
 // Expected prop values
 RelatedItem.propTypes = {
-  category: object.isRequired,
+  category: object,
   description: string,
   image: shape({
     altText: string,
     mediaItemUrl: string.isRequired,
   }),
+  productCategories: object,
   shortDescription: string,
   title: string.isRequired,
 }

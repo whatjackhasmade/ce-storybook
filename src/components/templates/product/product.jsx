@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useMutation, useQuery } from "@apollo/react-hooks"
 // import Img from "gatsby-image/withIEPolyfill"
-import { generateID, isEmptyObject } from "../../helpers"
+import { generateID } from "../../helpers"
 
 import StyledProduct from "./product.styles"
 
@@ -22,16 +22,6 @@ import Banner from "../../organisms/banner/banner"
 import Related from "../../organisms/related/related"
 import SliceGrid from "../../organisms/slice-grid/slice-grid"
 
-const banner = {
-  content: "Creating a Positive Day",
-  cta: {
-    href: "#",
-    label: "Call to action",
-    target: null,
-  },
-  title: "Creating a Positive Day",
-}
-
 const relatedIntro = {
   cta: {
     href: "/shop",
@@ -51,30 +41,22 @@ const ProductWrapper = props => (
 )
 
 const ProductTemplate = props => {
-  const { pageContext } = props
+  const { gatsbyContext, pageContext } = props
   const { productFields, related } = pageContext
-
-  const slicesExist = Object.keys(productFields).some(
-    (key, index) => !isEmptyObject(key)
-  )
-
-  const slices = Object.keys(productFields).filter(key => {
-    const empty = Object.keys(productFields[key]).every(k => {
-      return productFields[key][k] === null
-    })
-    return !empty
-  })
+  const { globalFields } = gatsbyContext
+  const { enabledComponents } = productFields
 
   return (
     <StyledProduct>
       <HR full={true} mb="0px" mt="0px" />
       <ProductIntro {...pageContext} />
-      {slicesExist &&
-        slices &&
-        slices.length > 0 &&
-        slices.map(slice => <SliceGrid {...productFields[slice]} />)}
-      {/* <SliceGrid {...data} /> */}
-      {banner && <Banner {...banner} />}
+      {enabledComponents && (
+        <ProductContent
+          enabledComponents={enabledComponents}
+          productFields={productFields}
+          global={globalFields}
+        />
+      )}
       {related && (
         <Related
           intro={relatedIntro}
@@ -83,6 +65,41 @@ const ProductTemplate = props => {
         />
       )}
     </StyledProduct>
+  )
+}
+
+const ProductContent = ({ enabledComponents, productFields, globalFields }) => {
+  const enabledFields = Object.keys(productFields)
+    .filter(k => enabledComponents.includes(k))
+    .reduce((obj, key) => {
+      obj[key] = productFields[key]
+      return obj
+    }, {})
+
+  if (!enabledFields) return null
+
+  const slices = Object.keys(enabledFields)
+    .filter(k => k.startsWith("slice_"))
+    .map(item => enabledFields[item])
+
+  const { cta } = enabledFields
+
+  return (
+    <>
+      {slices &&
+        slices.length > 0 &&
+        slices.map(slice => (
+          <SliceGrid
+            {...slice}
+            key={generateID("slice-grid")}
+            images={slice.images.map(i => i.image)}
+          />
+        ))}
+      {cta && cta.useGlobalCta && globalFields && globalFields.ctaBanner && (
+        <Banner {...globalFields.ctaBanner} />
+      )}
+      {cta && !cta.useGlobalCta && cta.content && <Banner {...cta} />}
+    </>
   )
 }
 

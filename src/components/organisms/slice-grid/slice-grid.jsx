@@ -15,8 +15,7 @@ const SliceGrid = ({ images, reverse, text }) => {
     triggerOnce: true,
   })
 
-  const highOrderData = images.some(i => i.image)
-  if (highOrderData) images = images.map(i => i.image)
+  if (!images) return null
 
   return (
     <StyledSliceGrid

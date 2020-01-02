@@ -130,11 +130,13 @@ export default CartItem
 
 // Expected prop values
 CartItem.propTypes = {
-  image: shape({
-    mediaItemUrl: string.isRequired,
+  product: shape({
+    image: shape({
+      mediaItemUrl: string.isRequired,
+    }),
+    slug: string.isRequired,
+    title: string.isRequired,
   }),
-  price: string.isRequired,
   quantity: number.isRequired,
-  slug: string.isRequired,
-  title: string.isRequired,
+  subtotal: string.isRequired,
 }

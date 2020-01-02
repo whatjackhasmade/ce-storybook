@@ -1,5 +1,5 @@
 import React from "react"
-import { number } from "prop-types"
+import { node, number } from "prop-types"
 import { useMutation } from "@apollo/react-hooks"
 import { generateID } from "../../helpers"
 
@@ -41,7 +41,7 @@ const Payment = ({ children, cost }) => {
 }
 
 Payment.propTypes = {
-  children: Node,
+  children: node,
   total: number.isRequired,
 }
 

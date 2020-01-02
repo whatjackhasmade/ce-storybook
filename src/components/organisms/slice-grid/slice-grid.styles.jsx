@@ -9,6 +9,10 @@ export const StyledSliceGrid = styled.div`
 
   background-color: ${props => props.theme.grey100};
 
+  + .slice-grid {
+    background-color: ${props => props.theme.white};
+  }
+
   @media ${device.md} {
     padding: 96px 0;
   }
