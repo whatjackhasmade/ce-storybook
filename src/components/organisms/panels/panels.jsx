@@ -1,11 +1,11 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledPanels from "./panels.styles"
 
-import CTA from "../../atoms/cta/cta"
+import ParseHTML from "../../particles/parseHTML"
 
-const { arrayOf, shape, string } = PropTypes
+import CTA from "../../atoms/cta/cta"
 
 const Panels = ({ cta, items }) => {
   if (!items || !items.length) return null
@@ -13,16 +13,22 @@ const Panels = ({ cta, items }) => {
     <StyledPanels className="panels">
       <div className="panels__contents">
         {items.map(({ content, link, title }) => (
-          <div className="panels__panel">
-            <h3>{title}</h3>
-            <p>{content}</p>
-            <CTA {...link}>{link.label}</CTA>
+          <div className="panels__panel" key={title}>
+            {title && <h3>{title}</h3>}
+            {content && ParseHTML(content)}
+            {link && link.title && link.title !== "" && (
+              <CTA {...link} href={link.url}>
+                {link.title}
+              </CTA>
+            )}
           </div>
         ))}
       </div>
-      {cta && (
+      {cta && cta.title && cta.title !== "" && (
         <footer className="panels__footer">
-          <CTA {...cta}>{cta.label}</CTA>
+          <CTA {...cta} href={cta.url}>
+            {cta.title}
+          </CTA>
         </footer>
       )}
     </StyledPanels>
@@ -32,19 +38,19 @@ const Panels = ({ cta, items }) => {
 // Expected prop values
 Panels.propTypes = {
   cta: shape({
-    href: string,
-    label: string,
     target: string,
+    title: string,
+    url: string,
   }),
   items: arrayOf(
     shape({
       content: string,
       link: shape({
-        href: string,
-        label: string,
         target: string,
+        title: string,
+        url: string,
       }),
-      title: string,
+      title: string.isRequired,
     })
   ),
 }

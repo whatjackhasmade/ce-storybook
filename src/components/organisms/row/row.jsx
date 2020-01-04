@@ -1,5 +1,6 @@
-import React, { useRef } from "react"
+import React from "react"
 import { useInView } from "react-intersection-observer"
+import { bool, shape, string } from "prop-types"
 
 import StyledRow from "./row.styles"
 
@@ -8,7 +9,7 @@ import ParseHTML from "../../particles/parseHTML"
 import CTA from "../../atoms/cta/cta"
 
 const Row = ({ cta, description, image, reverse, subtitle, title }) => {
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0,
     triggerOnce: true,
@@ -21,26 +22,26 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
       reverse={reverse}
     >
       <div className="row__contents">
-        <div class="row__column">
-          <div class="row__text">
+        <div className="row__column">
+          <div className="row__text">
             {subtitle && <h3 className="row__subtitle">{subtitle}</h3>}
             {title && <h2 className="row__title">{title}</h2>}
             {description && (
               <div className="row__description">{ParseHTML(description)}</div>
             )}
-            {cta && cta.label && cta.url && (
+            {cta && cta.title && cta.title !== "" && (
               <CTA className="row__cta" href={cta.url}>
-                {cta.label}
+                {cta.title}
               </CTA>
             )}
           </div>
         </div>
-        <div class="row__column">
+        <div className="row__column">
           {image && image.mediaItemUrl && (
-            <div class="row__image">
+            <div className="row__image">
               <img
-                src={image.mediaItemUrl}
                 alt={image.altText ? image.altText : title}
+                src={image.mediaItemUrl}
               />
             </div>
           )}
@@ -48,6 +49,22 @@ const Row = ({ cta, description, image, reverse, subtitle, title }) => {
       </div>
     </StyledRow>
   )
+}
+
+Row.propTypes = {
+  cta: shape({
+    target: string,
+    title: string,
+    url: string,
+  }),
+  description: string,
+  image: shape({
+    altText: string,
+    mediaItemUrl: string.isRequired,
+  }),
+  reverse: bool,
+  subtitle: string,
+  title: string,
 }
 
 export default Row

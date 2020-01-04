@@ -3,10 +3,10 @@ import Helmet from "react-helmet"
 import he from "he"
 
 const SEO = ({ data }) => {
-  if (!data || !data.seo) return null
+  if (!data) return null
 
   const {
-    isBlog,
+    isBlog = false,
     metaDesc,
     opengraphImage,
     opengraphTitle,
@@ -15,7 +15,7 @@ const SEO = ({ data }) => {
     twitterDescription,
     twitterImage,
     twitterTitle,
-  } = data.seo
+  } = data
 
   const postURL = `/`
 
@@ -58,7 +58,7 @@ const SEO = ({ data }) => {
   ]
 
   return (
-    <Helmet>
+    <Helmet defer={false}>
       {/* General tags */}
       <title>
         {opengraphTitle ? he.decode(opengraphTitle) : he.decode(title)}

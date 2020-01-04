@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
-import PropTypes, { arrayOf, shape, string, bool } from "prop-types"
+import { arrayOf, shape, string, bool } from "prop-types"
 import SlickSlider from "react-slick"
+import { generateID } from "../../helpers"
 
 import "../../../assets/lib/slick/slick.css"
 import "../../../assets/lib/slick/slick-theme.css"
@@ -55,7 +56,7 @@ const Slider = ({ items, variant }) => {
             {...settings}
           >
             {items.map(item => (
-              <SliderItem {...item} />
+              <SliderItem key={`slider-item-${item.title}`} {...item} />
             ))}
           </SlickSlider>
         ) : (
@@ -89,6 +90,7 @@ const Slider = ({ items, variant }) => {
                 <SliderOption
                   {...item}
                   index={index}
+                  key={generateID("slider-option")}
                   onControlClick={onControlClick}
                   slideIndex={slideIndex}
                 />
@@ -105,11 +107,15 @@ Slider.propTypes = {
   items: arrayOf(
     shape({
       cta: shape({
-        label: string.isRequired,
-        url: string.isRequired,
+        target: string,
+        title: string,
+        url: string,
       }),
       description: string,
-      image: string.isRequired,
+      image: shape({
+        altText: string,
+        mediaItemUrl: string.isRequired,
+      }),
       light: bool.isRequired,
       title: string,
     })
@@ -121,9 +127,13 @@ const SliderItem = ({ cta, description, image, light = false, title }) => (
     <div className="slider__item__content">
       {title && <h2>{title}</h2>}
       {description && ParseHTML(description)}
-      {cta && <Button href={cta.url}>{cta.label}</Button>}
+      {cta && cta.title && cta.title !== "" && (
+        <Button href={cta.url} target={cta.target}>
+          {cta.title}
+        </Button>
+      )}
     </div>
-    <img src={image} />
+    <img alt={image.altText} src={image.mediaItemUrl} />
   </StyledSliderItem>
 )
 
@@ -136,7 +146,7 @@ const SliderOption = ({ index, image, onControlClick, slideIndex }) => (
     }
     onClick={e => onControlClick(e, index)}
   >
-    <img src={image} />
+    <img alt={image.altText} src={image.mediaItemUrl} />
   </button>
 )
 

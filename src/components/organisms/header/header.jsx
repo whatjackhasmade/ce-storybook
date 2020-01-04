@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledHeader from "./header.styles"
 
@@ -9,11 +9,9 @@ import Link from "../../atoms/link/link"
 
 import Navigation from "../../molecules/navigation/navigation"
 
-const { arrayOf, shape, string } = PropTypes
-
 const Header = props => {
-  const { navigation } = props
   const [isOpen, setOpen] = useState(false)
+  const { navigation } = props
 
   const toggleNavigation = e => {
     e.preventDefault()
@@ -25,14 +23,13 @@ const Header = props => {
       {...props}
       className={isOpen ? `header--open` : `header--closed`}
     >
-      <button onClick={toggleNavigation}>
-        {isOpen ? `Hide` : `Show`} Navigation
-      </button>
-      {navigation &&
-        navigation.length &&
-        navigation.map(({ items }, i) => (
-          <Navigation key={`header-nav-${i}`} items={items} />
-        ))}
+      <div className="header__navigation">
+        {navigation &&
+          navigation.length &&
+          navigation.map(({ items }, i) => (
+            <Navigation key={`header-nav-${i}`} items={items} />
+          ))}
+      </div>
       <Link href="/">
         <img
           alt="Celtic Elements Logo"
@@ -40,6 +37,10 @@ const Header = props => {
           src={BrandLogo}
         />
       </Link>
+      <button onClick={toggleNavigation}>
+        <span className="hide">Mobile</span>
+        {isOpen ? `Hide` : `Show`} Navigation
+      </button>
     </StyledHeader>
   )
 }

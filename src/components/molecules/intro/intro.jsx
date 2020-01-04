@@ -1,12 +1,10 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { shape, string } from "prop-types"
 
 import StyledIntro from "./intro.styles"
 
 import CTA from "../../atoms/cta/cta"
 import Link from "../../atoms/link/link"
-
-const { shape, string } = PropTypes
 
 const Intro = ({ cta, subtitle, text, title }) => (
   <StyledIntro className="intro">

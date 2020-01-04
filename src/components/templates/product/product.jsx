@@ -16,8 +16,23 @@ import Button from "../../atoms/button/button"
 import Link from "../../atoms/link/link"
 import HR from "../../atoms/hr/hr"
 
+import SignIn from "../../molecules/signin/signin"
+
 import Banner from "../../organisms/banner/banner"
-import Carousel from "../../organisms/carousel/carousel"
+import Related from "../../organisms/related/related"
+import SliceGrid from "../../organisms/slice-grid/slice-grid"
+
+const relatedIntro = {
+  cta: {
+    href: "/shop",
+    label: "Shop all products",
+    target: null,
+  },
+  subtitle: "Our products",
+  text:
+    "Multi Award Winning Spa Manager Clare Pritchard shares the story of Celtic Elements.",
+  title: "Premium, Handcrafted Care",
+}
 
 const ProductWrapper = props => (
   <Layout {...props}>
@@ -26,27 +41,78 @@ const ProductWrapper = props => (
 )
 
 const ProductTemplate = props => {
-  const [addToCart, { data, error, loading }] = useMutation(
-    ADD_TO_CART_MUTATION
+  const { gatsbyContext, pageContext } = props
+  const { productFields, related } = pageContext
+  const { globalFields } = gatsbyContext
+  const { enabledComponents } = productFields
+
+  return (
+    <StyledProduct>
+      <HR full={true} mb="0px" mt="0px" />
+      <ProductIntro {...pageContext} />
+      {enabledComponents && (
+        <ProductContent
+          enabledComponents={enabledComponents}
+          productFields={productFields}
+          global={globalFields}
+        />
+      )}
+      {related && (
+        <Related
+          intro={relatedIntro}
+          items={related.nodes}
+          variant="products"
+        />
+      )}
+    </StyledProduct>
   )
+}
 
-  // Debugging changes 🕵🏻‍♂️
-  console.log({ data })
-  console.log({ error })
-  console.log({ loading })
+const ProductContent = ({ enabledComponents, productFields, globalFields }) => {
+  const enabledFields = Object.keys(productFields)
+    .filter(k => enabledComponents.includes(k))
+    .reduce((obj, key) => {
+      obj[key] = productFields[key]
+      return obj
+    }, {})
 
-  const { pageContext } = props
-  const {
-    banner,
-    carousel,
-    description,
-    image,
-    price,
-    productCategories,
-    productId,
-    name,
-  } = pageContext
+  if (!enabledFields) return null
 
+  const slices = Object.keys(enabledFields)
+    .filter(k => k.startsWith("slice_"))
+    .map(item => enabledFields[item])
+
+  const { cta } = enabledFields
+
+  return (
+    <>
+      {slices &&
+        slices.length > 0 &&
+        slices.map(slice => (
+          <SliceGrid
+            {...slice}
+            key={generateID("slice-grid")}
+            images={slice.images.map(i => i.image)}
+          />
+        ))}
+      {cta && cta.useGlobalCta && globalFields && globalFields.ctaBanner && (
+        <Banner {...globalFields.ctaBanner} />
+      )}
+      {cta && !cta.useGlobalCta && cta.content && <Banner {...cta} />}
+    </>
+  )
+}
+
+const ProductIntro = ({
+  description,
+  image,
+  price,
+  productCategories,
+  productId,
+  name,
+}) => {
+  const [addToCart] = useMutation(ADD_TO_CART_MUTATION)
+  const authToken = localStorage.getItem("authToken")
   const updateCart = e => {
     e.preventDefault()
 
@@ -63,41 +129,40 @@ const ProductTemplate = props => {
   }
 
   return (
-    <StyledProduct>
-      <HR full={true} mb="0px" mt="0px" />
-      <section className="product__intro">
-        {/* <Img fluid={pageContext.imageFile.childImageSharp.fluid} /> */}
-        <header className="product__header">
-          <div className="product__header__content">
-            <nav>
-              <Link href="/shop">Products</Link>
-              {productCategories &&
-                productCategories.nodes &&
-                productCategories.nodes.length > 0 && (
-                  <Link
-                    href={`/product-category/${productCategories.nodes[0].slug}`}
-                  >
-                    {productCategories.nodes[0].title}
-                  </Link>
-                )}
-            </nav>
-            {name && <h1>{name}</h1>}
-            {price && <h2 className="h4">{price}</h2>}
-            <div className="product__description">
-              {description && ParseHTML(description)}
-            </div>
-            <ProductActions currentId={productId} updateCart={updateCart} />
+    <section className="product__intro">
+      {/* <Img fluid={pageContext.imageFile.childImageSharp.fluid} /> */}
+      <header className="product__header">
+        <div className="product__header__content">
+          <nav>
+            <Link href="/shop">Products</Link>
+            {productCategories &&
+              productCategories.nodes &&
+              productCategories.nodes.length > 0 && (
+                <Link
+                  href={`/product-category/${productCategories.nodes[0].slug}`}
+                >
+                  {productCategories.nodes[0].title}
+                </Link>
+              )}
+          </nav>
+          {name && <h1>{name}</h1>}
+          {price && <h2 className="h4">{price}</h2>}
+          <div className="product__description">
+            {description && ParseHTML(description)}
           </div>
-        </header>
-        <div className="product__image">
-          {image && image.mediaItemUrl && (
-            <img alt="Product" src={image.mediaItemUrl} />
+          {authToken ? (
+            <ProductActions currentId={productId} updateCart={updateCart} />
+          ) : (
+            <SignIn action="purchase this product" />
           )}
         </div>
-      </section>
-      {banner && <Banner {...banner} />}
-      {carousel && <Carousel {...carousel} />}
-    </StyledProduct>
+      </header>
+      <div className="product__image">
+        {image && image.mediaItemUrl && (
+          <img alt="Product" src={image.mediaItemUrl} />
+        )}
+      </div>
+    </section>
   )
 }
 
@@ -114,7 +179,7 @@ const ProductActions = ({ currentId, updateCart }) => {
       data.cart.contents.nodes.length > 0 &&
       data.cart.contents.nodes.some(p => p.product.productId === currentId)
     setInCart(checkCart)
-  }, [data, error, loading])
+  }, [currentId, data, error, loading])
 
   if (!inCart) return <Button onClick={updateCart}>Add to Cart</Button>
   return <Button href="/checkout">View cart</Button>

@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes, { node } from "prop-types"
+import { node } from "prop-types"
 
 import StyledArticle from "./article.styles"
 

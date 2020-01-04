@@ -1,6 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { formatMoney } from "../../helpers"
+import { shape, string } from "prop-types"
 
 import StyledArchiveItem from "./archiveItem.styles"
 
@@ -8,8 +7,6 @@ import Link from "../../atoms/link/link"
 
 import ParseParagraphs from "../../particles/parseParagraphs"
 import CTA from "../../atoms/cta/cta"
-
-const { number, shape, string } = PropTypes
 
 const ArchiveItem = ({
   description,
@@ -55,7 +52,7 @@ ArchiveItem.propTypes = {
   image: shape({
     mediaItemUrl: string.isRequired,
   }),
-  price: string.isRequired,
+  price: string,
   shortDescription: string,
   slug: string.isRequired,
   title: string.isRequired,

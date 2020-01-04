@@ -1,8 +1,9 @@
 import ApolloClient from "apollo-boost"
 import fetch from "unfetch"
 import { GRAPHQL_API } from "../../../../config"
+import { generateID } from "../../helpers"
 
-import CREATE_CUSTOMER_MUTATION from "../mutations/user/REFRESH_AUTHTOKEN_MUTATION"
+import REFRESH_AUTHTOKEN_MUTATION from "../mutations/user/REFRESH_AUTHTOKEN_MUTATION"
 
 export default async (uri, options) => {
   const initialRequest = await fetch(uri, options)
@@ -19,9 +20,10 @@ export default async (uri, options) => {
   })
 
   const { data } = await refreshClient.mutate({
-    mutation: CREATE_CUSTOMER_MUTATION,
+    mutation: REFRESH_AUTHTOKEN_MUTATION,
     variables: {
-      refreshToken,
+      clientMutationId: generateID("refresh-authtoken"),
+      jwtRefreshToken: refreshToken,
     },
   })
   const { refreshJwtAuthToken } = data

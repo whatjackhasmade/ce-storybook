@@ -1,6 +1,5 @@
 import React from "react"
-import PropTypes, { array, shape, string } from "prop-types"
-import he from "he"
+import { array, shape, string } from "prop-types"
 import Slider from "react-slick"
 import { generateID } from "../../helpers"
 import { breakpoints } from "../../particles/mediaQueries"
@@ -127,9 +126,9 @@ const CarouselItem = ({
 Carousel.propTypes = {
   intro: shape({
     cta: shape({
-      href: string.isRequired,
-      label: string.isRequired,
       target: string,
+      title: string,
+      url: string,
     }),
     subtitle: string.isRequired,
     text: string.isRequired,

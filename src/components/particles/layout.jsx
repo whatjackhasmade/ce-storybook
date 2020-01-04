@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes, { bool, node } from "prop-types"
+import { bool, node } from "prop-types"
 
 import SEO from "../particles/seo"
 
@@ -15,8 +15,10 @@ const Layout = props => {
     gatsbyContext,
     header,
     headerVariant,
-    seo,
+    pageContext,
   } = props
+
+  const { seo } = pageContext
 
   return (
     <React.Fragment>

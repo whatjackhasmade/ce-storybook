@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { number, shape, string } from "prop-types"
 import { useMutation } from "@apollo/react-hooks"
 import { generateID } from "../../helpers"
 
@@ -16,13 +16,10 @@ import Link from "../../atoms/link/link"
 
 import ErrorMessage from "../../molecules/error-message/errorMessage"
 
-const { number, shape, string } = PropTypes
+const CartItem = ({ cartKey, product, quantity, subtotal }) => {
+  const { image, slug, title } = product
 
-const CartItem = node => {
-  const { cartKey, product, quantity, subtotal } = node
-  const { image, price, slug, title } = product
-
-  const [updateCartQuantity, { data, error, loading }] = useMutation(
+  const [updateCartQuantity, { error, loading }] = useMutation(
     UPDATE_QUANTITY_MUTATION
   )
 
@@ -133,11 +130,13 @@ export default CartItem
 
 // Expected prop values
 CartItem.propTypes = {
-  image: shape({
-    mediaItemUrl: string.isRequired,
+  product: shape({
+    image: shape({
+      mediaItemUrl: string.isRequired,
+    }),
+    slug: string.isRequired,
+    title: string.isRequired,
   }),
-  price: string.isRequired,
   quantity: number.isRequired,
-  slug: string.isRequired,
-  title: string.isRequired,
+  subtotal: string.isRequired,
 }

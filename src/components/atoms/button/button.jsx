@@ -1,6 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
-import Link from "gatsby-link"
+import { node, func, string } from "prop-types"
 import { isInternal } from "../../helpers"
 
 import StyledButton, {
@@ -13,6 +12,8 @@ import IconBag from "../../../assets/images/icons/shopping-bag.svg"
 import IconCart from "../../../assets/images/icons/shopping-cart.svg"
 import IconUser from "../../../assets/images/icons/user.svg"
 import IconX from "../../../assets/images/icons/x.svg"
+
+import Link from "../link/link"
 
 // Assign SVGs to object with named keys
 const Icons = {
@@ -48,7 +49,7 @@ const Button = props => {
   href = href.startsWith("/") ? href : "/" + href
   return (
     <StyledLinkWrapper {...props}>
-      <Link {...props} className="button" to={href}>
+      <Link {...props} className="button" href={href}>
         {icon && <ButtonIcon icon={icon} />}
         {children}
       </Link>
@@ -58,12 +59,12 @@ const Button = props => {
 
 // Expected prop values
 Button.propTypes = {
-  background: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  href: PropTypes.string,
-  icon: PropTypes.string,
-  onClick: PropTypes.func,
-  variant: PropTypes.string,
+  background: string,
+  children: node.isRequired,
+  href: string,
+  icon: string,
+  onClick: func,
+  variant: string,
 }
 
 // Default prop values
@@ -86,7 +87,7 @@ const ButtonIcon = ({ icon }) => {
 
 // Button Icon component always expects on prop value for icon name
 ButtonIcon.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: string.isRequired,
 }
 
 export default Button

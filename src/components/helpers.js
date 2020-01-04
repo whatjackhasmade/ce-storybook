@@ -9,8 +9,9 @@ export function formatMoney(value) {
 
 export function generateID(type) {
   const timestamp = Date.now()
-  if (!type) return timestamp
-  return type + `-${timestamp}`
+  const randomInt = Math.floor(Math.random() * 500000)
+  if (!type) return timestamp + "-" + randomInt
+  return type + `-${timestamp}-${randomInt}`
 }
 
 export function hexToRGB(hex) {
@@ -24,6 +25,11 @@ export function hexToRGB(hex) {
 
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return `${result[1].toString()}, ${result[2].toString()}, ${result[3].toString()}`
+}
+
+export function isEmptyObject(obj) {
+  if (!obj) return true
+  return Object.entries(obj).length === 0 && obj.constructor === Object
 }
 
 export function isInternal(url) {

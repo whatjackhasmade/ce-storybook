@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes, { bool, string } from "prop-types"
+import { bool, string } from "prop-types"
 
 import StyledHR from "./hr.styles"
 

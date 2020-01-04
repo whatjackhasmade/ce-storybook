@@ -1,24 +1,23 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { shape, string } from "prop-types"
 
 import StyledBanner from "./banner.styles"
 
-import Button from "../../atoms/button/button"
+import ParseHTML from "../../particles/parseHTML"
 
-const { shape, string } = PropTypes
+import Button from "../../atoms/button/button"
 
 const Banner = props => {
   const { content, cta, title } = props
-
   return (
     <StyledBanner {...props} className="banner">
       <div className="banner__contents">
         {title && <h2 className="banner__title">{title}</h2>}
-        <p className="banner__content">{content}</p>
-        {cta && (
+        {content && <div className="banner__content">{ParseHTML(content)}</div>}
+        {cta && cta.title && cta.title !== "" && (
           <footer className="banner__footer">
-            <Button href={cta.href} target={cta.target} variant="tertiary">
-              {cta.label}
+            <Button href={cta.url} target={cta.target} variant="tertiary">
+              {cta.title}
             </Button>
           </footer>
         )}
@@ -29,9 +28,9 @@ const Banner = props => {
 
 Banner.propTypes = {
   cta: shape({
-    href: string.isRequired,
-    label: string.isRequired,
     target: string,
+    title: string,
+    url: string,
   }),
   content: string.isRequired,
   title: string,

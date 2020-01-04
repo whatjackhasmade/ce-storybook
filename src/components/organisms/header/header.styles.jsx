@@ -1,4 +1,21 @@
 import styled from "styled-components"
+import { device } from "../../particles/mediaQueries"
+
+function delayGenerator() {
+  let str = ""
+  for (let i = 1; i < 6; i++) {
+    str += nthGenerator(i)
+  }
+  return str
+}
+
+const nthGenerator = i => {
+  return `
+		:nth-of-type(${i}n) {
+      animation-delay: ${i * 0.4}s;
+		}
+	`
+}
 
 const headerColour = props => {
   // Fallback value if we can't get access to props
@@ -48,29 +65,41 @@ const headerPosition = props => {
 export const StyledHeader = styled.header`
   align-items: center;
   display: flex;
-  min-height: 124px;
   left: ${props => (props.variant ? `0` : undefined)};
   padding: 30px;
-  position: ${props => headerPosition(props)};
+  position: relative;
   top: ${props => (props.variant ? `0` : undefined)};
   width: 100%;
   z-index: 9;
 
   color: ${props => headerColour(props)};
 
+  @media ${device.md} {
+    display: block;
+    padding: 0;
+    position: ${props => headerPosition(props)};
+  }
+
   button {
     display: inline-flex;
+    margin-left: auto;
 
-    display: none;
+    @media ${device.md} {
+      display: none;
+    }
   }
 
   img {
-    left: 50%;
-    height: 64px;
-    position: absolute;
-    top: 50%;
+    height: 40px;
 
-    transform: translate(-50%, -50%);
+    @media ${device.md} {
+      height: 64px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+    }
   }
 
   nav {
@@ -84,6 +113,105 @@ export const StyledHeader = styled.header`
   svg {
     height: 24px;
     stroke: 1px solid ${props => props.theme.black};
+  }
+
+  .header__navigation {
+    align-items: center;
+    display: block;
+    height: 100%;
+    padding: 124px 30px 30px;
+    position: fixed;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    z-index: -1;
+
+    background-color: ${props => props.theme.offWhite};
+    color: ${props => props.theme.black};
+    transition: 0.4s top ease;
+
+    a {
+      opacity: 0;
+
+      @media ${device.md} {
+        opacity: 1;
+      }
+    }
+
+    a + a {
+      margin-left: 0;
+      margin-top: 16px;
+
+      @media ${device.md} {
+        margin-left: 32px;
+        margin-top: 0;
+      }
+    }
+
+    nav {
+      padding-top: 24px;
+      flex-direction: column;
+
+      border-top: 1px solid ${props => props.theme.grey600};
+
+      @media ${device.md} {
+        flex-direction: unset;
+        padding-top: 0;
+
+        border-top: none;
+      }
+    }
+
+    nav + nav {
+      margin-top: 24px;
+
+      @media ${device.md} {
+        margin-top: 0;
+      }
+    }
+
+    @media ${device.md} {
+      display: flex;
+      left: unset;
+      margin: 0 auto;
+      max-width: 1920px;
+      min-height: 124px;
+      padding: 30px;
+      position: relative;
+
+      background-color: transparent;
+      color: inherit;
+    }
+  }
+
+  &.header--open {
+    .header__navigation {
+      top: 0%;
+
+      @media ${device.md} {
+        left: unset;
+      }
+
+      a {
+        animation-name: navFade;
+        animation-duration: 0.8s;
+        animation-direction: forwards;
+        animation-fill-mode: forwards;
+
+        ${delayGenerator()}
+      }
+    }
+  }
+
+  @keyframes navFade {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
   }
 `
 

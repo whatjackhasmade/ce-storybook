@@ -1,11 +1,9 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 
 import StyledArchive from "./archive.styles"
 
 import ArchiveItem from "../../molecules/archive-item/archiveItem"
-
-const { arrayOf, number, shape, string } = PropTypes
 
 const Archive = ({ items }) => (
   <StyledArchive className="archive">
@@ -28,7 +26,7 @@ Archive.propTypes = {
       image: shape({
         mediaItemUrl: string.isRequired,
       }),
-      price: string.isRequired,
+      price: string,
       shortDescription: string,
       slug: string.isRequired,
       title: string.isRequired,

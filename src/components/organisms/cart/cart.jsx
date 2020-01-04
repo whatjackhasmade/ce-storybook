@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useQuery } from "@apollo/react-hooks"
-import PropTypes from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
+import { generateID } from "../../helpers"
 
 import StyledCart, { StyledCartToggle } from "./cart.styles.jsx"
 
@@ -13,10 +14,11 @@ import Button from "../../atoms/button/button"
 import CartItem from "../../molecules/cart-item/cartItem"
 import ErrorMessage from "../../molecules/error-message/errorMessage"
 
-const { arrayOf, number, shape, string } = PropTypes
-
 const Cart = ({ items }) => {
   const [isOpen, setOpen] = useState(false)
+
+  const authToken = localStorage.getItem("authToken")
+  if (!authToken) return null
 
   if (!isOpen) {
     return (
@@ -62,7 +64,7 @@ const FullCart = ({ items, setOpen }) => {
           {data && data.cart && data.cart.total && (
             <span className="cart__total">
               {data.cart.total}
-              {Number(data.cart.total.replace(/[^0-9\.]+/g, "")) > 100 &&
+              {Number(data.cart.total.replace(/[^0-9]+/g, "")) > 100 &&
                 ` + Free P&P`}
             </span>
           )}
@@ -78,11 +80,15 @@ const FullCart = ({ items, setOpen }) => {
 				*/}
         <div className="cart__products">
           {cartHasContents &&
-            data.cart.contents.nodes.map(product => <CartItem {...product} />)}
+            data.cart.contents.nodes.map(product => (
+              <CartItem key={generateID("cart-item")} {...product} />
+            ))}
           {!data &&
             items &&
             items.length > 0 &&
-            items.map(product => <CartItem {...product} />)}
+            items.map(product => (
+              <CartItem key={generateID("cart-item")} {...product} />
+            ))}
         </div>
         <div className="cart__actions">
           {/* If no items are available, disable the checkout option */}
