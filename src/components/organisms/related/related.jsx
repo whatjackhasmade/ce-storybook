@@ -1,5 +1,5 @@
 import React from "react"
-import { array, object, shape, string, arrayOf } from "prop-types"
+import { array, object, shape, string } from "prop-types"
 import { generateID } from "../../helpers"
 
 import StyledRelated from "./related.styles"
